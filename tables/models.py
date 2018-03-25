@@ -1,5 +1,8 @@
 from django.db import models
 
+# Create your models here.
+from django.db import models
+
 class restaurant(models.Model):
     rest_id    = models.AutoField(primary_key=True)
     name       = models.CharField(max_length=40)
@@ -22,15 +25,15 @@ class employees(models.Model):
     phone      = models.CharField(max_length=10)
     ssn        = models.CharField(max_length=9)
     birthday   = models.DateField()
-    salary     = models.DecimalField(decimal_places=5,max_digits=2)
+    salary     = models.DecimalField(decimal_places=2,max_digits=5)
     date_hired = models.DateTimeField()
-    compliment = models.IntegerField()
-    complaints = models.IntegerField()
+    num_compliment = models.IntegerField()
+    num_complaint = models.IntegerField()
     last_order = models.DateTimeField()
 
 #Table for the customer
 class customer(models.Model):
-    user_id     = models.CharField(primary_key=True)
+    user_id     = models.CharField(max_length=60,primary_key=True)
     password    = models.CharField(max_length=25)
     user_fname  = models.CharField(max_length=25)
     user_lname  = models.CharField(max_length=25)
@@ -41,17 +44,18 @@ class customer(models.Model):
     phone       = models.CharField(max_length=10)
     birthday    = models.DateField()
     memb_since  = models.DateTimeField()
-    wallet      = models.DecimalField(decimal_places=5,max_digits=2)
+    wallet      = models.DecimalField(decimal_places=2,max_digits=5)
     VIP         = models.BooleanField()
     warning     = models.IntegerField()
     order_count = models.IntegerField()
-    complaints  = models.IntegerField()
+    num_complaints  = models.IntegerField()
     last_order  = models.DateTimeField()
 
 #Table for chef
 class chef(models.Model):
     chef_id   = models.AutoField(primary_key=True)
     emp_id    = models.ForeignKey(employees,on_delete=models.CASCADE)
+    store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
     menu_name = models.CharField(max_length=10)
     warning   = models.IntegerField()
 
@@ -59,6 +63,7 @@ class chef(models.Model):
 class delivery(models.Model):
     deliver_id = models.AutoField(primary_key=True)
     emp_id     = models.ForeignKey(employees,on_delete=models.CASCADE)
+    store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
     status     = models.BooleanField()
     warning    = models.IntegerField()
 
@@ -66,7 +71,7 @@ class delivery(models.Model):
 class menu(models.Model):
     menu_id     = models.AutoField(primary_key=True)
     chef_id     = models.ForeignKey(chef,on_delete=models.CASCADE)
-    price       = models.DecimalField(decimal_places=5,max_digits=2)
+    price       = models.DecimalField(decimal_places=2,max_digits=5)
     description = models.CharField(max_length=100)
     rating      = models.IntegerField()
     picture     = models.CharField(max_length=1000)
@@ -82,6 +87,7 @@ class order(models.Model):
 class customer_review(models.Model):
     review_id       = models.AutoField(primary_key=True)
     user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
+    emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
     order_number    = models.ForeignKey(order,on_delete=models.CASCADE)
     pizza_rating    = models.IntegerField()
     store_rating    = models.IntegerField()
@@ -91,28 +97,29 @@ class customer_review(models.Model):
 class delivery_review(models.Model):
     review_id       = models.AutoField(primary_key=True)
     emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
+    user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
     customer_rating = models.CharField(max_length=100)
 
 #Table for checkout
 class checkout(models.Model):
     user_id = models.ForeignKey(customer, on_delete=models.CASCADE)
-    menu_id = models.ForeignKey(menu, on_delete=models.CASCADE)
-    total   = models.DecimalField(decimal_places=5,max_digits=2)
+    item    = models.CharField(max_length=50)
+    total   = models.DecimalField(decimal_places=2,max_digits=5)
 
 #Table for complaints
-class complaint(models.Model):
-    complaint_id    = models.AutoField(primary_key=True)
+class complaints(models.Model):
+    comp_id    = models.AutoField(primary_key=True)
     user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
     emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
-    complaint       = models.CharField(max_length=1000)
+    complaint_text       = models.CharField(max_length=1000)
     approval        = models.BooleanField()
 
 #Table for compliment
-class compliment(models.Model):
-    compliment_id   = models.AutoField(primary_key=True)
+class compliments(models.Model):
+    comp_id   = models.AutoField(primary_key=True)
     user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
     emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
-    compliment      = models.CharField(max_length=1000)
+    compliment_text      = models.CharField(max_length=1000)
     approval        = models.BooleanField()
 
 
