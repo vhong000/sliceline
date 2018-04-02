@@ -1,8 +1,8 @@
-# Pizzahub
+# Sliceline
 
 ## To run the app:
 
-In `pizzahub` folder
+In `sliceline` folder
 1. Run `npm run build` to create build folder
 2. Run `python manage.py runserver`
 3. Click on the development server link and app should be loaded in browser.
