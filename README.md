@@ -2,7 +2,7 @@
 
 ## To run the app:
 
-In `sliceline` folder
+### In `sliceline` folder
 1. Run `npm run build` to create build folder
 2. Run 'source /venv/bin/activate' to load the enviroment
 3. Run `python manage.py runserver`
