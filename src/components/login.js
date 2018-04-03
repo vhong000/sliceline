@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, Radio, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
 import sliceline_header from '../images/sliceline_header.jpg';
-import '../css/login.css';
+import '../css/login_signup.css';
 
 class Login extends Component {
   constructor(props) {
