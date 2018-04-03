@@ -1,5 +1,3 @@
-from django.db import models
-
 # Create your models here.
 from django.db import models
 
@@ -30,6 +28,7 @@ class employees(models.Model):
     num_compliment = models.IntegerField()
     num_complaint = models.IntegerField()
     last_order = models.DateTimeField()
+    email = models.CharField(max_length=100,default='DEFAULT VALUE')
 
 #Table for the customer
 class customer(models.Model):
@@ -50,6 +49,8 @@ class customer(models.Model):
     order_count = models.IntegerField()
     num_complaints  = models.IntegerField()
     last_order  = models.DateTimeField()
+    email = models.CharField(max_length=100,default='DEFAULT VALUE')
+
 
 #Table for chef
 class chef(models.Model):
