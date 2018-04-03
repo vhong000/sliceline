@@ -1,0 +1,10 @@
+
+# files #
+
+*.pyc
+
+
+# folders #
+
+build/
+node_modules/
