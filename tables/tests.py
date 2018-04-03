@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.db import connection, transaction
 
+
 from django.conf import settings
 settings.configure()
 # Create your tests here.
@@ -22,5 +23,15 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
                    [password,username,lastname,address,city,state,zipcode,phone,birthday,email])
     transaction.commit()
     cursor.close()
+
+# def checkEmail(email):
+#
+#
+# def login(email,password):
+#     cursor = connection.cursor()
+#
+#     cursor.execute("""select email from tables_customer""")
+
+
 
 customerSignUp('carlos','ng','123','CCNY','harlem','NY','11013','123-231-0123','11/12/1996',"sahdf@gmail.com")
