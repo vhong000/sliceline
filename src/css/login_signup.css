@@ -1,11 +1,11 @@
 
-.login {
+.login, .signup {
   padding: 60px 0;
   margin: auto;
   width: 50%;
 }
 
-.login form {
+.login, .signup form {
   margin: 0 auto;
   min-width: 320px;
 }
@@ -19,3 +19,9 @@
   text-align: center;
   width: 50%;
 }
+
+.signup-address {
+	display: flex;
+  flex-direction: row;
+}
+

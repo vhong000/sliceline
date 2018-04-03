@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { Link, Route } from 'react-router-dom';
 import Login from './login.js';
+import Signup from './signup.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
@@ -15,7 +16,9 @@ class Header extends Component {
 					<Link to="/login" style={{ textDecoration: 'none' }}>
 						<Button block>Login</Button>
 					</Link>
-					<Button block >Sign Up</Button>
+          <Link to="/signup" style={{ textDecoration: 'none' }}>
+            <Button block>Sign Up</Button>
+          </Link>
         </div>
       </header>
     );
