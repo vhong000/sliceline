@@ -40,7 +40,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Pizzahub/settings.py">
+        <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
               <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
@@ -64,10 +64,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Pizzahub/models.py" />
-        <option value="$PROJECT_DIR$/Pizzahub/Databases/models.py" />
-        <option value="$PROJECT_DIR$/Pizzahub/Databases/apps.py" />
-        <option value="$PROJECT_DIR$/Pizzahub/settings.py" />
+        <option value="$PROJECT_DIR$/Sliceline/models.py" />
+        <option value="$PROJECT_DIR$/Sliceline/Databases/models.py" />
+        <option value="$PROJECT_DIR$/Sliceline/Databases/apps.py" />
+        <option value="$PROJECT_DIR$/Sliceline/settings.py" />
         <option value="$PROJECT_DIR$/tables/models.py" />
       </list>
     </option>
@@ -102,8 +102,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="Pizzahub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pizzahub" type="462c0819:PsiDirectoryNode" />
+              <item name="Sliceline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sliceline" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -120,7 +120,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Pizzahub/Databases" />
+      <recent name="$PROJECT_DIR$/Sliceline/Databases" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -136,7 +136,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Pizzahub" type="Python.DjangoServer" factoryName="Django server">
+    <configuration name="Sliceline" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -147,7 +147,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Pizzahub" />
+      <module name="Sliceline" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
@@ -211,7 +211,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Pizzahub/Databases/models.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -219,7 +219,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pizzahub/Databases/models.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -234,7 +234,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pizzahub/Databases/__init__.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/Databases/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -250,7 +250,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pizzahub/Databases/apps.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/Databases/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
@@ -258,7 +258,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pizzahub/Databases/models.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-754">
           <caret line="76" column="21" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
@@ -292,7 +292,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pizzahub/settings.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
