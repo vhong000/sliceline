@@ -20,5 +20,14 @@
         </library>
       </libraries>
     </data-source>
+    <data-source source="LOCAL" name="db.sqlite3" uuid="6a9f0f58-2d16-463e-ae53-4984f1aa2872">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
+      <driver-properties>
+        <property name="enable_load_extension" value="true" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
