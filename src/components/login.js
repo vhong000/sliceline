@@ -10,21 +10,14 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      access: "customer",
     }
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event, isRadio) {
-    isRadio ? (
-      this.setState({
-        access: event.target.value,
-      })
-    ) : (
+  handleChange(event) {
       this.setState({
         [event.target.id]: event.target.value,
       })
-    )
   }
 
   validateForm() {
@@ -37,24 +30,8 @@ class Login extends Component {
         <header className='login-header'>   
           <img src={sliceline_header} className='login-header-logo' alt='main'/>
         </header>
+        <br></br>
         <form>
-          <ButtonToolbar>
-            <ToggleButtonGroup type='radio' name='access' defaultValue='customer' justified>
-              <ToggleButton name='access' value='customer' onChange={(event) => this.handleChange(event, true)}>
-                Customer
-              </ToggleButton>
-              <ToggleButton name='access' value='manager' onChange={(event) => this.handleChange(event, true)}>
-                Manager
-              </ToggleButton>
-              <ToggleButton name='access' value='cook' onChange={(event) => this.handleChange(event, true)}>
-                Cook
-              </ToggleButton>
-              <ToggleButton name='access' value='delivery' onChange={(event) => this.handleChange(event, true)}>
-                Delivery
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </ButtonToolbar>
-          <br></br>
           <FormGroup controlId='email'>
             <ControlLabel>Email: </ControlLabel>
             <FormControl autoFocus bsSize='large' type='email' onChange={this.handleChange}/>
