@@ -62,7 +62,6 @@ def login(email,password):
 
 print("ran")
 # customerSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','11/12/1996',"test@gmail.com")
-print("done")
-print(login('test@gmail.com','123'))
 # print(login('test@gmail.com','123'))
+print("done")
 conn.close()

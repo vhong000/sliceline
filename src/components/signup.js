@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Collapse, DropdownButton, MenuItem } from 'react-bootstrap';
-import { Row, Grid, Col } from 'react-bootstrap';
+import { Collapse } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -16,11 +16,12 @@ class Signup extends Component {
       password: "",
       phonenum: "",
       dob: {
-        month: '',
-        day: '',
+        month: 'January',
+        day: '1',
         year: '',
       },
       address: "",
+      city: "",
       state: "NY",
       zipcode: "",
       ssn: "",
@@ -126,8 +127,12 @@ class Signup extends Component {
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
+            <Col xs={1} >
+              <br></br>
+              <h4>DoB:</h4>
+            </Col>
             <FormGroup controlId='dob'>
-              <Col xs={4}>
+              <Col xs={3}>
                 <ControlLabel>Month: </ControlLabel>
                 <FormControl name='month' componentClass="select" onChange={this.handleDobChange}>
                   <option value="January">January</option>
@@ -188,9 +193,16 @@ class Signup extends Component {
           </Row>
 
           <Row className='signup-address'>
-            <Col xs={8}>
+            <Col xs={5}>
               <FormGroup controlId='address'>
                 <ControlLabel>Street Address: </ControlLabel>
+                <FormControl type='text' onChange={this.handleChange}/>
+              </FormGroup>
+            </Col>
+
+            <Col xs={3}>
+              <FormGroup controlId='city'>
+                <ControlLabel>City: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
@@ -254,15 +266,16 @@ class Signup extends Component {
               </FormGroup>
             </Col>
 
-            <Col xs={4}>
+            <Col xs={2}>
               <FormGroup controlId='zipcode'>
                 <ControlLabel>Zip Code: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
           </Row>
+          <br></br>
 
-          <Button block bsSize='large'>Sign Up</Button>
+          <Button block bsStyle='primary' bsSize='large'>Sign Up</Button>
           
         </form>
       </div>

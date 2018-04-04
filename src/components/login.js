@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, Radio, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
+import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -28,7 +28,7 @@ class Login extends Component {
   }
 
   validateForm() {
-    return this.state.email != "" && this.state.password != "";
+    return this.state.email !== "" && this.state.password !== "";
   }
 
   render() {
@@ -63,7 +63,8 @@ class Login extends Component {
             <ControlLabel>Password: </ControlLabel>
             <FormControl bsSize='large' type='password' onChange={this.handleChange}/>
           </FormGroup>
-          <Button block disabled={!this.validateForm()} bsSize='large'>Login</Button>
+
+          <Button block disabled={!this.validateForm()} bsStyle='primary' bsSize='large'>Login</Button>
          </form>
       </div>
     )

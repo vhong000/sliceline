@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, ButtonToolbar } from 'react-bootstrap';
-import { Link, Route } from 'react-router-dom';
-import Login from './login.js';
-import Signup from './signup.js';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
