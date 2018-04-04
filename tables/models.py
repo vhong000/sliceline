@@ -13,7 +13,7 @@ class restaurant(models.Model):
 
 class employees(models.Model):
     emp_id     = models.AutoField(primary_key=True)
-    password   = models.CharField(max_length=25)
+    password   = models.CharField(max_length=64)
     emp_fname  = models.CharField(max_length=25)
     emp_lname  = models.CharField(max_length=25)
     address    = models.CharField(max_length=30)
@@ -33,7 +33,7 @@ class employees(models.Model):
 #Table for the customer
 class customer(models.Model):
     user_id     = models.AutoField(primary_key=True)
-    password    = models.CharField(max_length=25)
+    password    = models.CharField(max_length=64)
     user_fname  = models.CharField(max_length=25)
     user_lname  = models.CharField(max_length=25)
     address     = models.CharField(max_length=30)
@@ -57,16 +57,16 @@ class chef(models.Model):
     chef_id    = models.AutoField(primary_key=True)
     emp_id    = models.ForeignKey(employees,on_delete=models.CASCADE)
     store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
-    menu_name = models.CharField(max_length=10)
-    warning   = models.IntegerField()
+    menu_name = models.CharField(max_length=10,null=True)
+    warning   = models.IntegerField(null=True)
 
 #Table for delivery guy
 class delivery(models.Model):
     deli_id    = models.AutoField(primary_key=True)
     emp_id     = models.ForeignKey(employees,on_delete=models.CASCADE)
     store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
-    status     = models.BooleanField()
-    warning    = models.IntegerField()
+    status     = models.IntegerField(null=True)
+    warning    = models.IntegerField(null=True)
 
 #Table for menu
 class menu(models.Model):
@@ -129,6 +129,12 @@ class Account(models.Model):
     acc_id = models.AutoField(primary_key=True)
     types  = models.CharField(max_length=10)
     email  = models.CharField(max_length=100)
+
+class Access(models.Model):
+    access_id = models.AutoField(primary_key=True)
+    access_code = models.CharField(max_length=64)
+    types = models.CharField(max_length=20)
+
 
 
 
