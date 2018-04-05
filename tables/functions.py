@@ -106,12 +106,22 @@ def checkAccess(access_code,id,store_id):
                        """VALUES (?,?,?,?)""", [0, 0, id, store_id])
         conn.commit()
 
+def showRestaurant():
+    cursor.execute("""SELECT name,address,city,state,zipcode,phone,logo 
+                  FROM tables_restaurant""" )
+    row = cursor.fetchall()
+    # print(row[0]
+    list_of_restaurant=[]
+    for i in row:
+        list_of_restaurant.append(i)
+    return list_of_restaurant
 
 
 #Will need a how menu function
 #Function to be done: Place order, Review, Delivery, Manager
 
 print("ran")
+showRestaurant()
 # employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com")
 # print(login('test@gmail.com','123'))
 # createMenu('1',12,"cheese pie","no picture")

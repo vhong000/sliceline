@@ -8,7 +8,8 @@ class restaurant(models.Model):
     city       = models.CharField(max_length=10)
     state      = models.CharField(max_length=5)
     zipcode    = models.CharField(max_length=5)
-    phone      = models.CharField(max_length=10)
+    phone      = models.CharField(max_length=15)
+    logo       = models.CharField(max_length=100)
 
 
 class employees(models.Model):
@@ -20,7 +21,7 @@ class employees(models.Model):
     city       = models.CharField(max_length=10)
     state      = models.CharField(max_length=5)
     zipcode    = models.CharField(max_length=5)
-    phone      = models.CharField(max_length=10)
+    phone      = models.CharField(max_length=15)
     ssn        = models.CharField(max_length=9)
     birthday   = models.DateField()
     salary     = models.DecimalField(decimal_places=2,max_digits=5,null=True)
@@ -40,7 +41,7 @@ class customer(models.Model):
     city        = models.CharField(max_length=10)
     state       = models.CharField(max_length=5)
     zipcode     = models.CharField(max_length=5)
-    phone       = models.CharField(max_length=10)
+    phone       = models.CharField(max_length=15)
     birthday    = models.DateField()
     memb_since  = models.DateTimeField(null=True)
     wallet      = models.DecimalField(decimal_places=2,max_digits=5,null=True)
