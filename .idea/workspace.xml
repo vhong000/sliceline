@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21762460-4185-459b-8cad-1c8cfa44cbfd.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/21762460-4185-459b-8cad-1c8cfa44cbfd.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Sliceline/settings.py" afterPath="$PROJECT_DIR$/Sliceline/settings.py" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/tables/functions.py" afterPath="$PROJECT_DIR$/tables/functions.py" />
-      <change beforePath="$PROJECT_DIR$/tables/models.py" afterPath="$PROJECT_DIR$/tables/models.py" />
-    </list>
+    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,17 +26,6 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Django default" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
-      </path>
     </expand>
     <select />
   </component>
@@ -57,38 +38,34 @@
         <entry file="file://$PROJECT_DIR$/tables/functions.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="634">
-              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
-                <marker date="1522950993736" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-                <marker date="1522950993736" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-                <marker date="1522950993736" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-                <marker date="1522950993736" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-                <marker date="1522950993736" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-                <marker date="1522950993736" expanded="true" signature="2312:2358" ph="SELECT type tables_account" />
-                <marker date="1522950993736" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-                <marker date="1522950993736" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-                <marker date="1522950993736" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-                <marker date="1522950993736" expanded="true" signature="3193:3247" ph="select emmp tables_customer" />
-                <marker date="1522950993736" expanded="true" signature="3543:3621" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1522950993736" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1522950993736" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-                <marker date="1522950993736" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-                <marker date="1522950993736" expanded="true" signature="4359:4429" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1522950993736" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1522950993736" expanded="true" signature="4557:4569" ph="INSERT INTO main.tables_delivery... " />
-                <marker date="1522950993736" expanded="true" signature="4557:4669" ph="INSERT INTO main.tables_deliveryVALUES... " />
-                <marker date="1522950993736" expanded="true" signature="4763:4812" ph="SELECT name,... " />
-                <marker date="1522950993736" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+                <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
+                <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
+                <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
+                <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
+                <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
+                <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
+                <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
+                <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
+                <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
+                <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
+                <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
+                <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
+                <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
+                <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
+                <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
+                <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,9 +100,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="-1" />
@@ -287,7 +261,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21462424" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24725275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25113124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21460892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -316,54 +290,65 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="4329">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding>
-            <marker date="1522950993736" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522950993736" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522950993736" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522950993736" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522950993736" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522950993736" expanded="true" signature="2312:2358" ph="SELECT type tables_account" />
-            <marker date="1522950993736" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522950993736" expanded="true" signature="3193:3247" ph="select emmp tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="3543:3621" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522950993736" expanded="true" signature="4359:4429" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522950993736" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522950993736" expanded="true" signature="4557:4569" ph="INSERT INTO main.tables_delivery... " />
-            <marker date="1522950993736" expanded="true" signature="4557:4669" ph="INSERT INTO main.tables_deliveryVALUES... " />
-            <marker date="1522950993736" expanded="true" signature="4763:4812" ph="SELECT name,... " />
-            <marker date="1522950993736" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
+            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
+            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
+            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
+            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
+            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1554">
+          <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/tables/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
+            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
+            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
+            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
+            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
+            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery" />
     <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -414,55 +399,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_checkout">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery_review">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer_review">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_compliments">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_complaints">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_checkout" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery_review" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_complaints" />
     <entry file="file://$PROJECT_DIR$/tables/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
@@ -470,55 +413,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_menu">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_menu" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access" />
     <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -607,7 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -618,39 +518,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="634">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding>
-            <marker date="1522950993736" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522950993736" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522950993736" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522950993736" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522950993736" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522950993736" expanded="true" signature="2312:2358" ph="SELECT type tables_account" />
-            <marker date="1522950993736" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522950993736" expanded="true" signature="3193:3247" ph="select emmp tables_customer" />
-            <marker date="1522950993736" expanded="true" signature="3543:3621" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522950993736" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522950993736" expanded="true" signature="4359:4429" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522950993736" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522950993736" expanded="true" signature="4557:4569" ph="INSERT INTO main.tables_delivery... " />
-            <marker date="1522950993736" expanded="true" signature="4557:4669" ph="INSERT INTO main.tables_deliveryVALUES... " />
-            <marker date="1522950993736" expanded="true" signature="4763:4812" ph="SELECT name,... " />
-            <marker date="1522950993736" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
+            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
+            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
+            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
+            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
+            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
+            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
+            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
+            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
+            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
+    <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
