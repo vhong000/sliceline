@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -27,10 +29,14 @@ class Login extends Component {
   render() {
     return (
       <div className='login'>
-        <header className='login-header'>   
-          <img src={sliceline_header} className='login-header-logo' alt='main'/>
+
+        <header className='login-header'>
+          <Link to="/">
+            <img src={sliceline_header} className='login-header-logo' alt='main'/>
+          </Link>
         </header>
         <br></br>
+
         <form>
           <FormGroup controlId='email'>
             <ControlLabel>Email: </ControlLabel>

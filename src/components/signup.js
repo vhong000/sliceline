@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
 import { Collapse } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -57,7 +58,9 @@ class Signup extends Component {
     return (
       <div className='signup'>
         <header className='login-header'>   
-          <img src={sliceline_header} className='login-header-logo' alt='main'/>
+          <Link to="/">
+            <img src={sliceline_header} className='login-header-logo' alt='main'/>
+          </Link>
         </header>
 
         <form>
