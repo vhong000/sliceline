@@ -1,7 +1,7 @@
 # Create your models here.
 from django.db import models
 
-class restaurant(models.Model):
+class Restaurant(models.Model):
     rest_id    = models.AutoField(primary_key=True)
     name       = models.CharField(max_length=40)
     address    = models.CharField(max_length=30)
@@ -12,7 +12,7 @@ class restaurant(models.Model):
     logo       = models.CharField(max_length=100)
 
 
-class employees(models.Model):
+class Employees(models.Model):
     emp_id     = models.AutoField(primary_key=True)
     password   = models.CharField(max_length=64)
     emp_fname  = models.CharField(max_length=25)
@@ -32,7 +32,7 @@ class employees(models.Model):
     email = models.CharField(max_length=100)
 
 #Table for the customer
-class customer(models.Model):
+class Customer(models.Model):
     user_id     = models.AutoField(primary_key=True)
     password    = models.CharField(max_length=64)
     user_fname  = models.CharField(max_length=25)
@@ -54,74 +54,74 @@ class customer(models.Model):
 
 
 #Table for chef
-class chef(models.Model):
+class Chef(models.Model):
     chef_id    = models.AutoField(primary_key=True)
-    emp_id    = models.ForeignKey(employees,on_delete=models.CASCADE)
-    store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
+    emp_id    = models.ForeignKey(Employees,on_delete=models.CASCADE)
+    store      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     menu_name = models.CharField(max_length=10,null=True)
     warning   = models.IntegerField(null=True)
 
 #Table for delivery guy
-class delivery(models.Model):
+class Delivery(models.Model):
     deli_id    = models.AutoField(primary_key=True)
-    emp_id     = models.ForeignKey(employees,on_delete=models.CASCADE)
-    store      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
+    emp_id     = models.ForeignKey(Employees,on_delete=models.CASCADE)
+    store      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     status     = models.IntegerField(null=True)
     warning    = models.IntegerField(null=True)
 
 #Table for menu
-class menu(models.Model):
+class Menu(models.Model):
     menu_id     = models.AutoField(primary_key=True)
-    chef_id     = models.ForeignKey(chef,on_delete=models.CASCADE)
+    chef_id     = models.ForeignKey(Chef,on_delete=models.CASCADE)
     price       = models.DecimalField(decimal_places=2,max_digits=5)
     description = models.CharField(max_length=100)
     rating      = models.IntegerField(null=True)
     picture     = models.CharField(max_length=1000,null=True)
 
 #Table for ordering
-class order(models.Model):
+class Order(models.Model):
     order_id     = models.AutoField(primary_key=True)
-    rest_id      = models.ForeignKey(restaurant,on_delete=models.CASCADE)
-    menu_id      = models.ForeignKey(menu,on_delete=models.CASCADE)
+    rest_id      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    menu_id      = models.ForeignKey(Menu,on_delete=models.CASCADE)
     total        = models.IntegerField()
 
 #Table for the customer_review
-class customer_review(models.Model):
+class Customer_review(models.Model):
     review_id       = models.AutoField(primary_key=True)
-    user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
-    emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
-    order_number    = models.ForeignKey(order,on_delete=models.CASCADE)
+    user_id         = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    emp_id          = models.ForeignKey(Employees,on_delete=models.CASCADE)
+    order_number    = models.ForeignKey(Order,on_delete=models.CASCADE)
     pizza_rating    = models.IntegerField()
     store_rating    = models.IntegerField()
     delivery_rating = models.IntegerField()
 
 #Table for the delivery_review
-class delivery_review(models.Model):
+class Delivery_review(models.Model):
     review_id       = models.AutoField(primary_key=True)
-    emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
-    user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
+    emp_id          = models.ForeignKey(Employees,on_delete=models.CASCADE)
+    user_id         = models.ForeignKey(Customer,on_delete=models.CASCADE)
     customer_rating = models.CharField(max_length=100)
 
 #Table for checkout
-class checkout(models.Model):
+class Checkout(models.Model):
     checkout_id       = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(customer, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     item    = models.CharField(max_length=50)
     total   = models.DecimalField(decimal_places=2,max_digits=5)
 
 #Table for complaints
-class complaints(models.Model):
+class Complaints(models.Model):
     complaint_id    = models.AutoField(primary_key=True)
-    user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
-    emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
+    user_id         = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    emp_id          = models.ForeignKey(Employees,on_delete=models.CASCADE)
     complaint_text       = models.CharField(max_length=1000)
     approval        = models.BooleanField()
 
 #Table for compliment
-class compliments(models.Model):
+class Compliments(models.Model):
     compliments_id  = models.AutoField(primary_key=True)
-    user_id         = models.ForeignKey(customer,on_delete=models.CASCADE)
-    emp_id          = models.ForeignKey(employees,on_delete=models.CASCADE)
+    user_id         = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    emp_id          = models.ForeignKey(Employees,on_delete=models.CASCADE)
     compliment_text      = models.CharField(max_length=1000)
     approval        = models.BooleanField()
 

@@ -5,7 +5,7 @@
 from django.conf import settings
 settings.configure()
 import hashlib,uuid,sqlite3
-conn = sqlite3.connect("/home/cng000/Documents/CSC322/sliceline/db.sqlite3")
+conn = sqlite3.connect("../db.sqlite3")
 cursor = conn.cursor()
 from django.utils import timezone
 
@@ -122,7 +122,7 @@ def showRestaurant():
 
 print("ran")
 showRestaurant()
-# employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com")
+employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com","f59ac0828b9a32293b348e398a0efd342b1e4377a687f3a9055ee2871dff35e4","2")
 # print(login('test@gmail.com','123'))
 # createMenu('1',12,"cheese pie","no picture")
 # updatePrices("12.99",'1')
