@@ -8,3 +8,5 @@
 
 build/
 node_modules/
+tables/__pycache__/
+Sliceline/__pycache__/
