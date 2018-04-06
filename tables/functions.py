@@ -1,7 +1,3 @@
-# import MySQLdb
-# import _mysql
-# db = MySQLdb.connect("127.0.0.1", "root", "23173099", "kkdata6")
-# cursor = db.cursor()
 from django.conf import settings
 settings.configure()
 import hashlib,uuid,sqlite3
@@ -121,8 +117,8 @@ def showRestaurant():
 #Function to be done: Place order, Review, Delivery, Manager
 
 print("ran")
-showRestaurant()
-employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com","f59ac0828b9a32293b348e398a0efd342b1e4377a687f3a9055ee2871dff35e4","2")
+# showRestaurant()
+# employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com","f59ac0828b9a32293b348e398a0efd342b1e4377a687f3a9055ee2871dff35e4","2")
 # print(login('test@gmail.com','123'))
 # createMenu('1',12,"cheese pie","no picture")
 # updatePrices("12.99",'1')
