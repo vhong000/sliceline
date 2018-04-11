@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="" />
+    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,26 +42,8 @@
       <file leaf-file-name="functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tables/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-              <folding>
-                <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-                <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-                <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-                <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-                <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-                <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-                <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-                <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-                <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-                <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-                <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-              </folding>
+            <state relative-caret-position="1755">
+              <caret line="117" selection-start-line="117" selection-end-line="117" />
             </state>
           </provider>
         </entry>
@@ -64,9 +51,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="300">
+              <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -102,9 +88,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-1" />
-    <option name="width" value="3200" />
-    <option name="height" value="1751" />
+    <option name="y" value="199" />
+    <option name="width" value="1920" />
+    <option name="height" value="1061" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -126,22 +112,11 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,6 +129,11 @@
               <item name="sliceline" type="462c0819:PsiDirectoryNode" />
               <item name="Sliceline" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sliceline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sliceline" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -161,10 +141,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -185,6 +165,7 @@
   </component>
   <component name="RunManager" selected="Python.functions">
     <configuration name="functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sliceline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -195,7 +176,6 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sliceline" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tables/functions.py" />
       <option name="PARAMETERS" value="" />
@@ -225,18 +205,14 @@
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Django server.Sliceline" />
-      <item index="1" class="java.lang.String" itemvalue="Python.functions" />
+    <list>
+      <item itemvalue="Python.functions" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.functions" />
+      <list>
+        <item itemvalue="Python.functions" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -252,29 +228,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="3200" height="1751" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="199" width="1920" height="1061" extended-state="0" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21462424" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25113124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21460892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13622129" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3297224" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297224" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.21391486" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.21460892" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,33 +258,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4329">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-          </folding>
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>
@@ -317,87 +270,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1554">
           <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery" />
     <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="das://table:/4943b9ab/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.auth_group" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/__init__.py" />
     <entry file="file://$PROJECT_DIR$/tables/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/apps.py" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="file://$PROJECT_DIR$/tables/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4436">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-4436" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/migrations/0010_account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6a9f0f58-2d16-463e-ae53-4984f1aa2872/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6a9f0f58-2d16-463e-ae53-4984f1aa2872/console.sql" />
     <entry file="file://$PROJECT_DIR$/tables/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_checkout" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order" />
@@ -420,142 +324,51 @@
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access" />
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef" />
     <entry file="file://$PROJECT_DIR$/tables/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant" />
     <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
-          <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding />
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-          </folding>
+        <state relative-caret-position="1755">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="300">
+          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
         </state>
       </provider>
     </entry>
