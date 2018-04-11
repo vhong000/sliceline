@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21762460-4185-459b-8cad-1c8cfa44cbfd.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/21762460-4185-459b-8cad-1c8cfa44cbfd.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a9f0f58-2d16-463e-ae53-4984f1aa2872.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ec47343b-89d6-4e94-9e3f-41f2489475c1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/tables/admin.py" afterPath="$PROJECT_DIR$/tables/admin.py" />
-      <change beforePath="$PROJECT_DIR$/tables/functions.py" afterPath="$PROJECT_DIR$/tables/functions.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/21762460-4185-459b-8cad-1c8cfa44cbfd.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b70df003-9749-4738-950f-11a086ca49bb.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,22 +55,22 @@
             <state relative-caret-position="888">
               <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
               <folding>
-                <marker date="1523025309459" expanded="true" signature="496:703" ph="insert into tables_employees... " />
-                <marker date="1523025309459" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
-                <marker date="1523025309459" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
-                <marker date="1523025309459" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
-                <marker date="1523025309459" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
-                <marker date="1523025309459" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
-                <marker date="1523025309459" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
-                <marker date="1523025309459" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
-                <marker date="1523025309459" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
-                <marker date="1523025309459" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
-                <marker date="1523025309459" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1523025309459" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
-                <marker date="1523025309459" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
-                <marker date="1523025309459" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1523025309459" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
-                <marker date="1523025309459" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
+                <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
+                <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
+                <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
+                <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
+                <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
+                <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
+                <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
+                <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
+                <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
+                <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
+                <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
+                <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
+                <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
+                <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
+                <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
+                <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
               </folding>
             </state>
           </provider>
@@ -86,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/tables/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="500">
-              <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+              <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -142,9 +136,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-1" />
-    <option name="width" value="3200" />
-    <option name="height" value="1751" />
+    <option name="x" value="-3" />
+    <option name="y" value="-45" />
+    <option name="width" value="3206" />
+    <option name="height" value="1848" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -297,22 +292,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="3200" height="1751" extended-state="0" />
+    <frame x="-3" y="-45" width="3206" height="1848" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21462424" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2550097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2011531" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12685603" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21460892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10329245" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -344,7 +339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -362,97 +356,19 @@
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access" />
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant" />
     <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -465,7 +381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -473,7 +388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -488,7 +402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -517,9 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -527,9 +437,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -538,22 +445,22 @@
         <state relative-caret-position="888">
           <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
           <folding>
-            <marker date="1523025309459" expanded="true" signature="496:703" ph="insert into tables_employees... " />
-            <marker date="1523025309459" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
-            <marker date="1523025309459" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
-            <marker date="1523025309459" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
-            <marker date="1523025309459" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
-            <marker date="1523025309459" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
-            <marker date="1523025309459" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
-            <marker date="1523025309459" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
-            <marker date="1523025309459" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
-            <marker date="1523025309459" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
-            <marker date="1523025309459" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1523025309459" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
-            <marker date="1523025309459" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
-            <marker date="1523025309459" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1523025309459" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
-            <marker date="1523025309459" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
+            <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
+            <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
+            <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
+            <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
+            <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
+            <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
           </folding>
         </state>
       </provider>
@@ -632,7 +539,7 @@
     <entry file="file://$PROJECT_DIR$/tables/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
-          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+          <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding />
         </state>
       </provider>
