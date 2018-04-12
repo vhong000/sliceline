@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "proxy": "http://127.0.0.1:8000/",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0",
@@ -16,10 +17,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:dev": "webpack-dev-server"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.4",
+    "webpack-bundle-tracker": "^0.3.0",
     "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.3"
   }
 }
