@@ -11,24 +11,24 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date_hired: new Date(),
-      email: "",
-      emp_fname: "",
-      emp_lname: "",
-      password: "",
-      phone: "",
-      birthday: {
-        month: 'January',
-        day: '1',
-        year: '',
-      },
-      address: "",
-      city: "",
-      state: "NY",
-      zipcode: "",
-      ssn: "",
-      access: "customer",
-      accessID: '',
+        date_hired: new Date(),
+        email: "",
+        emp_fname: "",
+        emp_lname: "",
+        password: "",
+        phone: "",
+        birthday: {
+          month: 'January',
+          day: '1',
+          year: '',
+        },
+        address: "",
+        city: "",
+        state: "NY",
+        zipcode: "",
+        ssn: "",
+      type: "customer",
+      access_code: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleDobChange = this.handleDobChange.bind(this)

@@ -21,7 +21,7 @@ class AccessViewSet(viewsets.ModelViewSet):
     serializer_class = AccessSerializer
 
 class AccountViewSet(viewsets.ModelViewSet):
-    queryset = Access.objects.all().order_by('acc_id')
+    queryset = Access.objects.all().order_by('access_id')
     serializer_class = AccessSerializer
 
 class CheckoutViewSet(viewsets.ModelViewSet):
