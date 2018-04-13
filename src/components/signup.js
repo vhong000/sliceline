@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Collapse } from 'react-bootstrap';
+import { Collapse, Panel, Label, Well } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import sliceline_header from '../images/sliceline_header.jpg';
@@ -11,23 +11,24 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      firstname: "",
-      lastname: "",
-      password: "",
-      phonenum: "",
-      dob: {
-        month: 'January',
-        day: '1',
-        year: '',
-      },
-      address: "",
-      city: "",
-      state: "NY",
-      zipcode: "",
-      ssn: "",
-      access: "customer",
-      accessID: '',
+        date_hired: new Date(),
+        email: "",
+        emp_fname: "",
+        emp_lname: "",
+        password: "",
+        phone: "",
+        birthday: {
+          month: 'January',
+          day: '1',
+          year: '',
+        },
+        address: "",
+        city: "",
+        state: "NY",
+        zipcode: "",
+        ssn: "",
+      type: "customer",
+      access_code: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleDobChange = this.handleDobChange.bind(this)
@@ -52,6 +53,12 @@ class Signup extends Component {
     this.setState({
       dob: newdob,
     })
+  }
+
+  handleSubmit(event) {
+    const final = this.state.employee;
+
+    //signupEmployee(final)
   }
 
   render() {
@@ -124,15 +131,17 @@ class Signup extends Component {
           </Row>
 
           <Row>
-            <Col xs={4}>
+            <Col xs={7} xsPush={5}>
+              <h4><Label>Date of Birth</Label></h4>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={5}>
               <FormGroup controlId='phonenum'>
                 <ControlLabel>Phone Number: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
-            </Col>
-            <Col xs={1} >
-              <br></br>
-              <h4>DoB:</h4>
             </Col>
             <FormGroup controlId='dob'>
               <Col xs={3}>
