@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from tables.serializers import *
+from tables.functions import *
 from .models import *
+from rest_framework import status
+from rest_framework.response import Response
 
 class RestaurantViewSet(viewsets.ModelViewSet):
     
@@ -21,8 +24,8 @@ class AccessViewSet(viewsets.ModelViewSet):
     serializer_class = AccessSerializer
 
 class AccountViewSet(viewsets.ModelViewSet):
-    queryset = Access.objects.all().order_by('access_id')
-    serializer_class = AccessSerializer
+    queryset = Account.objects.all().order_by('acc_id')
+    serializer_class = AccountSerializer
 
 class CheckoutViewSet(viewsets.ModelViewSet):
     queryset = Checkout.objects.all().order_by('user_id_id')
@@ -59,3 +62,40 @@ class MenuViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all().order_by('order_id')
     serializer_class = OrderSerializer
+
+class LoginViewSet(viewsets.ModelViewSet):
+    def create(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        return Response(login(email,password))
+
+class ESignupViewSet(viewsets.ModelViewSet):
+    def create(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        first_name = request.data.get('first_name')
+        last_name = request.data.get('last_name')
+        phone = request.data.get('phone')
+        birthday = request.data.get('birthday')
+        address  = request.data.get('address')
+        city  = request.data.get('city')
+        state  = request.data.get('state')
+        zip  = request.data.get('zipcode')
+        ssn  = request.data.get('ssn')
+        access  = request.data.get('access_code')
+        store_id = request.data.get('store_id')
+        employeeSignUp(first_name,last_name,password,address,city,state,zip,phone,ssn,birthday,email,access,store_id)
+        return Response("ROHAN SENPAI")
+class CSignupViewSet(viewsets.ModelViewSet):
+    def create(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        first_name = request.data.get('first_name')
+        last_name = request.data.get('last_name')
+        phone = request.data.get('phone')
+        birthday = request.data.get('birthday')
+        address  = request.data.get('address')
+        city  = request.data.get('city')
+        state  = request.data.get('state')
+        zip  = request.data.get('zipcode')
+        customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email)

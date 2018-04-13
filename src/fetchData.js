@@ -19,8 +19,9 @@ export function signupEmployee(newEmployee) {
       return Promise.reject({
         message: "Not authorized to sign up"
       });
-    } else if (response.status === 500) {
-      return Promise.reject({
+    }
+        else if (response.status === 500) {
+        return Promise.reject({
         message: "server error"
       });
     }
