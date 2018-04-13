@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tables/serializers.py" afterPath="$PROJECT_DIR$/tables/serializers.py" />
-      <change beforePath="$PROJECT_DIR$/tables/urls.py" afterPath="$PROJECT_DIR$/tables/urls.py" />
       <change beforePath="$PROJECT_DIR$/tables/views.py" afterPath="$PROJECT_DIR$/tables/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,50 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tables/functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1784">
-              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
-                <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
-                <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
-                <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
-                <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
-                <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
-                <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
-                <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
-                <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
-                <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
-                <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
-                <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
-                <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
-                <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tables/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1137">
-              <caret line="72" column="51" lean-forward="false" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tables/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1137">
-              <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+            <state relative-caret-position="318">
+              <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -102,14 +61,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tables/urls.py">
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tables/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+            <state relative-caret-position="394">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tables_account" pinned="false" current-in-tab="false">
+        <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_account">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -196,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -207,18 +176,12 @@
             <path>
               <item name="sliceline" type="b2602c69:ProjectViewProjectNode" />
               <item name="sliceline" type="462c0819:PsiDirectoryNode" />
-              <item name="Sliceline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sliceline" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sliceline" type="462c0819:PsiDirectoryNode" />
               <item name="tables" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,9 +306,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20081967" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16170764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16418876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18972205" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -392,8 +355,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery_review" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer_review" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_compliments" />
@@ -451,7 +412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -469,13 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_checkout">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -487,11 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="962">
           <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <marker date="1522952475816" expanded="true" signature="317:516" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="818:1010" ph="insert into tables_customer... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -521,31 +469,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tables/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1784">
-          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
-            <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
-            <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
-            <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
-            <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
-            <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
-            <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
-            <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
-            <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
-            <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
-            <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
-            <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
-            <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
-            <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -598,20 +521,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tables/serializers.py">
+    <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1137">
-          <caret line="72" column="51" lean-forward="false" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+        <state relative-caret-position="0">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
+            <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
+            <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
+            <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
+            <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
+            <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fetchData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1137">
-          <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+        <state relative-caret-position="318">
+          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -620,10 +576,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        <state relative-caret-position="370">
+          <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_account">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
