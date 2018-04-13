@@ -42,8 +42,8 @@ class Signup extends Component {
   handleChange(event) {
     if (this.state.access === 'employee') {
       this.setState({
-        employee: {
-          ...this.state.employee,
+        applicant: {
+          ...this.state.applicant,
           [event.target.id]: event.target.value,
         }
       })
@@ -58,11 +58,11 @@ class Signup extends Component {
 
   handleDobChange(event) {
     const name = event.target.name;
-    const newdob = this.state.employee.birthday;
+    const newdob = this.state.applicant.birthday;
     newdob[name] = event.target.value;
     this.setState({
-      employee: {
-        ...this.state.employee,
+      applicant: {
+        ...this.state.applicant,
         birthday: newdob,
       }
     })
@@ -141,13 +141,13 @@ class Signup extends Component {
           
           <Row>
             <Col xs={6}>
-              <FormGroup controlId='firstname'>
+              <FormGroup controlId='first_name'>
                 <ControlLabel>First Name: </ControlLabel>
                 <FormControl bsSize='lg' type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
             <Col xs={6}>
-              <FormGroup controlId='lastname'>
+              <FormGroup controlId='last_name'>
                 <ControlLabel>Last Name: </ControlLabel>
                 <FormControl bsSize='lg' type='text' onChange={this.handleChange}/>
               </FormGroup>
@@ -162,7 +162,7 @@ class Signup extends Component {
 
           <Row>
             <Col xs={5}>
-              <FormGroup controlId='phonenum'>
+              <FormGroup controlId='phone'>
                 <ControlLabel>Phone Number: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
