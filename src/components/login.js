@@ -5,6 +5,7 @@ import { Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
+import {checkEmail,employees,login,costumer} from "../fetchData";
 
 class Login extends Component {
   constructor(props) {
@@ -23,7 +24,42 @@ class Login extends Component {
   }
 
   validateForm() {
-    return this.state.email !== "" && this.state.password !== "";
+        // var object_email = checkEmail();
+        // var email ="";
+        // var i;
+        // for(i= 0; i < object_email.length; i++){
+        //     if (object_email.email == this.state.email){
+        //         email = object_email.email;
+        //     }
+        // }
+        // var password=""
+        // var check=""
+        // var AES = require("crypto-js/aes");
+        // var SHA256 = require("crypto-js/sha256");
+        // var j;
+        // if (email.type == 'customer') {
+        //     var object_costumer = costumer();
+        //     for (j = 0; j < object_costumer.length; j++) {
+        //         if (object_costumer.email == email) {
+        //             password = object_costumer.password = password;
+        //             check = SHA256(this.state.password);
+        //             if (password == check) {
+        //                 return true
+        //             }
+        //         }
+        //     }
+        // }
+        // else{
+        //     var object_employees = employees();
+        //     if(object_employees.email == email){
+        //         password = object_employees.password = password;
+        //         check = SHA256(this.state.password);
+        //         if(password == check){
+        //             return true
+        //         }
+        //     }
+        // }
+        return this.state.email !== "" && this.state.password !== "";
   }
 
   render() {

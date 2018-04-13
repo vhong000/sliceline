@@ -31,6 +31,7 @@ class Employees(models.Model):
     last_order = models.DateTimeField(null=True)
     email = models.CharField(max_length=100)
 
+
 #Table for the customer
 class Customer(models.Model):
     user_id     = models.AutoField(primary_key=True)
@@ -136,6 +137,9 @@ class Access(models.Model):
     access_code = models.CharField(max_length=64)
     types = models.CharField(max_length=20)
 
-
+class Customer_restaurant(models.Model):
+    cust_rest_id = models.AutoField(primary_key=True)
+    restaurant = models.CharField(max_length=10)
+    user_id = models.ForeignKey(Customer,on_delete=models.CASCADE)
 
 

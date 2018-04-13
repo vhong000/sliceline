@@ -19,19 +19,11 @@ export function signupEmployee(newEmployee) {
       return Promise.reject({
         message: "Not authorized to sign up"
       });
-    } else if (response.status === 500) {
-      return Promise.reject({
+    }
+        else if (response.status === 500) {
+        return Promise.reject({
         message: "server error"
       });
     }
 	})
 }
-
-export function login(loginInfo) {
-  return fetch("/api/account/", {
-    method: "GET",
-  }).then((response) => {
-      return response.json();
-    })
-}
-
