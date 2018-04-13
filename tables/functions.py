@@ -117,6 +117,10 @@ def showRestaurant():
 #Function to be done: Place order, Review, Delivery, Manager
 
 print("ran")
+a = "manager"
+hash_object = hashlib.sha256(a.encode('utf-8'))
+hex_dig = hash_object.hexdigest()
+print(hex_dig)
 # showRestaurant()
 # employeeSignUp('andrii','luchko','123','CCNY','harlem','NY','11013','123-231-0123','23456875','11/12/1996',"test@gmail.com","f59ac0828b9a32293b348e398a0efd342b1e4377a687f3a9055ee2871dff35e4","2")
 # print(login('test@gmail.com','123'))
