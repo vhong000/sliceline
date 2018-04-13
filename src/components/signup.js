@@ -4,6 +4,7 @@ import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bo
 import { Collapse, Panel, Label, Well } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { signupEmployee } from '../fetchData.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -11,10 +12,10 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        date_hired: new Date(),
+      applicant: {
         email: "",
-        emp_fname: "",
-        emp_lname: "",
+        first_name: "",
+        last_name: "",
         password: "",
         phone: "",
         birthday: {
@@ -27,36 +28,59 @@ class Signup extends Component {
         state: "NY",
         zipcode: "",
         ssn: "",
-      type: "customer",
-      access_code: '',
+        access_code: "", 
+        store_id: '',
+      },
+      access: 'customer',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleDobChange = this.handleDobChange.bind(this)
+    this.handleAccessChange = this.handleAccessChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event, isRadio) {
-    isRadio ? (
+  handleChange(event) {
+    if (this.state.access === 'employee') {
       this.setState({
-        access: event.target.value,
+        employee: {
+          ...this.state.employee,
+          [event.target.id]: event.target.value,
+        }
       })
-    ) : (
-      this.setState({
-        [event.target.id]: event.target.value,
-      })
-    )
+    }
+  }
+
+  handleAccessChange(event) {
+    this.setState({
+      access: event.target.value,
+    })
   }
 
   handleDobChange(event) {
     const name = event.target.name;
-    const newdob = this.state.dob;
+    const newdob = this.state.employee.birthday;
     newdob[name] = event.target.value;
     this.setState({
-      dob: newdob,
+      employee: {
+        ...this.state.employee,
+        birthday: newdob,
+      }
     })
   }
 
   handleSubmit(event) {
-    const final = this.state.employee;
+    const final = this.state.applicant;
+    const final_dob = final.birthday.month + '/' + final.birthday.day + '/' + final.birthday.year;
+    final.birthday = final_dob;
+    if (this.state.access === 'employee') {
+      console.log(JSON.stringify(final));
+      signupEmployee(final);
+    } else {
+      delete final.ssn;
+      delete final.access_code;
+      delete final.store_id;
+      console.log(JSON.stringify(final));
+    }
 
     //signupEmployee(final)
   }
@@ -73,17 +97,11 @@ class Signup extends Component {
         <form>
           <ButtonToolbar>
             <ToggleButtonGroup type='radio' name='access' defaultValue='customer' justified>
-              <ToggleButton name='access' value='customer' onChange={(event) => this.handleChange(event, true)}>
+              <ToggleButton name='access' value='customer' onChange={(event) => this.handleAccessChange(event, true)}>
                 Customer
               </ToggleButton>
-              <ToggleButton name='access' value='manager' onChange={(event) => this.handleChange(event, true)}>
-                Manager
-              </ToggleButton>
-              <ToggleButton name='access' value='cook' onChange={(event) => this.handleChange(event, true)}>
-                Cook
-              </ToggleButton>
-              <ToggleButton name='access' value='delivery' onChange={(event) => this.handleChange(event, true)}>
-                Delivery
+              <ToggleButton name='access' value='employee' onChange={(event) => this.handleAccessChange(event, true)}>
+                Employee
               </ToggleButton>
             </ToggleButtonGroup>
           </ButtonToolbar>
@@ -91,9 +109,15 @@ class Signup extends Component {
 
           <Collapse unmountOnExit mountOnEnter in={this.state.access !== 'customer'} >
             <Row>
-              <Col xs={6}>
-                <FormGroup controlId='accessID'>
-                  <ControlLabel>Access ID: </ControlLabel>
+              <Col xs={3}>
+                <FormGroup controlId='access_code'>
+                  <ControlLabel>Access Code: </ControlLabel>
+                  <FormControl type='text' onChange={this.handleChange}/>
+                </FormGroup>
+              </Col>
+              <Col xs={3}>
+                <FormGroup controlId='store_id'>
+                  <ControlLabel>Store Code: </ControlLabel>
                   <FormControl type='text' onChange={this.handleChange}/>
                 </FormGroup>
               </Col>
@@ -287,7 +311,7 @@ class Signup extends Component {
           </Row>
           <br></br>
 
-          <Button block bsStyle='primary' bsSize='large'>Sign Up</Button>
+          <Button block bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>Sign Up</Button>
           
         </form>
       </div>

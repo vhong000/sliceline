@@ -8,7 +8,7 @@ export function allRestaurants() {
 }
 
 export function signupEmployee(newEmployee) {
-  return fetch("/api/employees/", {
+  return fetch("/api/employSignup/", {
 		method: "POST",
 		headers: {
 			'Content-Type': 'application/json'
