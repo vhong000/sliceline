@@ -27,3 +27,12 @@ export function signupEmployee(newEmployee) {
     }
 	})
 }
+
+export function login(user) {
+  return fetch("/api/login/", {
+    method: "GET",
+  }).then((response) => {
+    return response.json();
+  })
+}
+
