@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.db import connection, transaction
 
 
-
 #Employees sign up function to insert into the DB
 def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,ssn,birthday,email,access_code,store_id):
     cursor = connection.cursor()
@@ -24,6 +23,7 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
     id = row[0]
     checkAccess(access_code,id,store_id)
     cursor.close()
+    return "Signup successful"
 
 
 #Customer sign up function to insert into the DB
@@ -34,7 +34,7 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
     hex_dig = hash_object.hexdigest()
     cursor.execute("""insert into tables_customer 
                   (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since)"""
-                  """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                  """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date])
     #need a wait function for manager approval before inserting to DB
     transaction.commit()
@@ -42,10 +42,10 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
                    """VALUES (%s,%s)""",["customer",email])
     transaction.commit()
     cursor.close()
+    return "Signup successful"
 
 #Checks if the email belongs to a customer or employee
 def checkEmail(email):
-    #conn = sqlite3.connect("../db.sqlite3")
     cursor = connection.cursor()
     cursor.execute("""SELECT types FROM tables_account WHERE email=%s""",[email])
     row = cursor.fetchone()
@@ -58,7 +58,6 @@ def checkEmail(email):
 
 #Authenticate the login
 def login(email,password):
-    #conn = sqlite3.connect("../db.sqlite3")
     cursor = connection.cursor()
     hash_object = hashlib.sha256(password.encode('utf-8'))
     hex_dig = hash_object.hexdigest()
@@ -88,20 +87,18 @@ def login(email,password):
 
 #chef creates a menu
 def createMenu(chef_id,price,description,picture):
-    #conn = sqlite3.connect("../db.sqlite3")
-    cursor = conn.cursor()
+    cursor = connection.cursor()
     cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id)""" 
                     """VALUES (?,?,?,?,?)""",[price,description,0,picture,chef_id])
-    conn.commit()
+    transaction.commit()
     cursor.close()
 
 #chef changes the price on a menu
 def updatePrices(price,menu_id):
-    #conn = sqlite3.connect("../db.sqlite3")
-    cursor = conn.cursor()
+    cursor = connection.cursor()
     cursor.execute("""UPDATE tables_menu set price = ? WHERE tables_menu.menu_id= ?""",
                    [price,menu_id])
-    conn.commit()
+    transaction.commit()
     cursor.close()
 
 #validate the access code and assign to the corresponding job(chef/delivery)
@@ -114,19 +111,19 @@ def checkAccess(access_code,id,store_id):
         cursor.execute("""INSERT INTO tables_chef (menu_name, warning, emp_id_id, store_id)"""
                        """VALUES (%s,%s,%s,%s)""",["",0,id,store_id])
         transaction.commit()
-    else:
+    elif(employer == 'delivery'):
         cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id)"""
                        """VALUES (%s,%s,%s,%s)""", [0, 0, id, store_id])
         transaction.commit()
+    else:
+        return "Invalid access code"
     cursor.close()
 
 def showRestaurant():
-    conn = sqlite3.connect("../db.sqlite3")
-    cursor = conn.cursor()
+    cursor = connection.cursor()
     cursor.execute("""SELECT name,address,city,state,zipcode,phone,logo 
                   FROM tables_restaurant""" )
     row = cursor.fetchall()
-    # print(row[0]
     list_of_restaurant=[]
     for i in row:
         list_of_restaurant.append(i)
