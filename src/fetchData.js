@@ -30,9 +30,21 @@ export function signupEmployee(newEmployee) {
 
 export function login(user) {
   return fetch("/api/login/", {
-    method: "GET",
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user),
   }).then((response) => {
-    return response.json();
+		if (response.status === 401) {
+      return Promise.reject({
+        message: "Not authorized to log in"
+      });
+    } else if (response.status === 500) {
+      return Promise.reject({
+        message: "server error"
+      });
+    }
   })
 }
 
