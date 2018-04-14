@@ -36,13 +36,87 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
                   (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date])
+    if(checkBlackList(email)):
+        return "You are blacklisted"
+    else:
     #need a wait function for manager approval before inserting to DB
-    transaction.commit()
-    cursor.execute("""INSERT INTO tables_account (types, email)"""
-                   """VALUES (%s,%s)""",["customer",email])
+        transaction.commit()
+        cursor.execute("""INSERT INTO tables_account (types, email)"""
+                        """VALUES (%s,%s)""",["customer",email])
+        transaction.commit()
+        cursor.close()
+        return "Signup successful"
+
+def checkBlackList(email):
+    cursor = connection.cursor()
+    cursor.execute("""select email from tables_black_list WHERE email=%s""",[email])
+    row = cursor.fetchone()
+    email_db = row[0]
+    if(email == email_db):
+        return True
+    cursor.close()
+
+
+# use this help function when checking out
+def blackListed(email):
+    cursor = connection.cursor()
+    cursor.execute("""insert into tables_black_list(email)"""
+                   """VALUES (%s)""",[email])
     transaction.commit()
     cursor.close()
-    return "Signup successful"
+
+def vipPromotion(user_id):
+    cursor = connection.cursor()
+    cursor.execute("""update Customer set VIP =%s WHERE user_id= %s""",["1",user_id])
+    transaction.commit()
+    cursor.close()
+
+
+# Don't know what to do with it atm
+def visitorDemotion(user_id):
+    cursor = connection.cursor()
+    cursor.execute("""delete from tables_checkout  WHERE user_id= %s""",[user_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_complaints  WHERE user_id= %s""", [user_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_compliments  WHERE user_id= %s""", [user_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_customer_restaurant  WHERE user_id= %s""", [user_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_customer_review  WHERE user_id= %s""", [user_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_customer  WHERE user_id= %s""",[user_id])
+    transaction.commit()
+    cursor.close()
+
+def checkOut(user_id):
+    cursor = connection.cursor()
+    if(user_id):
+        cursor.execute("""select user_id_id, count(*)
+                        FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
+        row = cursor.fetchone()
+        number = int(row[0])
+        if( number >= 3):
+            cursor.execute("""select sum(customer_rating), count(*) 
+                          FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
+            row = cursor.fetchone()
+            sum = int(row[0])
+            average = float(sum/number)
+            if(average >4):
+                vipPromotion(user_id)
+            elif(average > 1 and average < 2 ):
+                visitorDemotion(user_id)
+            elif(average < 1):
+                cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
+                row = cursor.fetchone()
+                email = row[0]
+                blackListed(email)
+            # procced checkout still thinking
+            return "still not done"
+        else:
+            # proceed checkout still thinking
+            return "still not done"
+
 
 #Checks if the email belongs to a customer or employee
 def checkEmail(email):
