@@ -4,7 +4,7 @@ import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bo
 import { Collapse, Panel, Label, Well } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { signupEmployee } from '../fetchData.js';
+import { signupEmployee, signupCustomer } from '../fetchData.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -40,14 +40,12 @@ class Signup extends Component {
   }
 
   handleChange(event) {
-    if (this.state.access === 'employee') {
-      this.setState({
-        applicant: {
-          ...this.state.applicant,
-          [event.target.id]: event.target.value,
-        }
-      })
-    }
+    this.setState({
+      applicant: {
+        ...this.state.applicant,
+        [event.target.id]: event.target.value,
+      }
+    })
   }
 
   handleAccessChange(event) {
@@ -80,6 +78,7 @@ class Signup extends Component {
       delete final.access_code;
       delete final.store_id;
       console.log(JSON.stringify(final));
+      signupCustomer(final);
     }
 
     //signupEmployee(final)
