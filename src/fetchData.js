@@ -28,6 +28,26 @@ export function signupEmployee(newEmployee) {
 	})
 }
 
+export function signupCustomer(newCustomer) {
+  return fetch("/api/custSignup/", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newCustomer),
+	}).then((response) => {
+		if (response.status === 401) {
+      return Promise.reject({
+        message: "Not authorized to sign up"
+      });
+    } else if (response.status === 500) {
+      return Promise.reject({
+        message: "server error"
+      });
+    }
+  })
+}
+
 export function login(user) {
   return fetch("/api/login/", {
     method: "POST",
