@@ -84,8 +84,9 @@ class ESignupViewSet(viewsets.ModelViewSet):
         ssn  = request.data.get('ssn')
         access  = request.data.get('access_code')
         store_id = request.data.get('store_id')
-        employeeSignUp(first_name,last_name,password,address,city,state,zip,phone,ssn,birthday,email,access,store_id)
-        return Response("ROHAN SENPAI")
+        return Response(employeeSignUp(first_name,last_name,password,address,city,state,zip,phone,ssn,birthday,email,access,store_id))
+
+
 class CSignupViewSet(viewsets.ModelViewSet):
     def create(self, request):
         email = request.data.get('email')
@@ -98,4 +99,4 @@ class CSignupViewSet(viewsets.ModelViewSet):
         city  = request.data.get('city')
         state  = request.data.get('state')
         zip  = request.data.get('zipcode')
-        customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email)
+        return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email))
