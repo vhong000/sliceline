@@ -139,7 +139,10 @@ class Access(models.Model):
 
 class Customer_restaurant(models.Model):
     cust_rest_id = models.AutoField(primary_key=True)
-    restaurant = models.CharField(max_length=10)
+    rest_id = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     user_id = models.ForeignKey(Customer,on_delete=models.CASCADE)
 
 
+class Black_list(models.Model):
+    black_list_id = models.AutoField(primary_key=True)
+    email = models.CharField(max_length=100)
