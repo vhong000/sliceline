@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/header.js';
 import Sidebar from './components/sidebar.js';
+import GoogleApiWrapper from './components/map.js';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,9 @@ class App extends Component {
         </div>
         <div className='app-sidebar'>
           <Sidebar/>
+        </div>
+        <div className='app-map'>
+          <GoogleApiWrapper/>
         </div>
       </div>
     )
