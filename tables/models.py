@@ -146,3 +146,7 @@ class Customer_restaurant(models.Model):
 class Black_list(models.Model):
     black_list_id = models.AutoField(primary_key=True)
     email = models.CharField(max_length=100)
+
+class Login(models.Model):
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)

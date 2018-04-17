@@ -71,3 +71,13 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
         fields = ('total','menu_id_id','rest_id_id')
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Login
+        fields = '__all__'
+
+    def get(self, validated_data):
+        info = Login.objects.get(**validated_data)
+        return info

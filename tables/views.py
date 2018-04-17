@@ -4,6 +4,7 @@ from tables.serializers import *
 from tables.functions import *
 from .models import *
 from rest_framework import status
+from django.forms.models import model_to_dict
 from rest_framework.response import Response
 
 class RestaurantViewSet(viewsets.ModelViewSet):
@@ -64,6 +65,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
 class LoginViewSet(viewsets.ModelViewSet):
+
     def create(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -100,3 +102,4 @@ class CSignupViewSet(viewsets.ModelViewSet):
         state  = request.data.get('state')
         zip  = request.data.get('zipcode')
         return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email))
+
