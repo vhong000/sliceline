@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Collapse, Panel, Label, Well } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel,
+  Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
+  Collapse, Panel, Label, Well, Row, Col
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { signupEmployee, signupCustomer } from '../fetchData.js';
 import sliceline_header from '../images/sliceline_header.jpg';
@@ -310,7 +310,21 @@ class Signup extends Component {
           </Row>
           <br></br>
 
-          <Button block bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>Sign Up</Button>
+          <Row>
+            <Col xs={8}>
+              <Button block bsStyle='primary' 
+                bsSize='large' onClick={this.handleSubmit}>
+                Sign Up
+              </Button>
+            </Col>
+            <Link to='/login'>
+              <Col xs={4}>
+                <Button block bsStyle='success' bsSize='large'>
+                  Login
+                </Button>
+              </Col>
+            </Link>
+          </Row>
           
         </form>
       </div>

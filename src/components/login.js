@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Panel } from 'react-bootstrap';
+import { Panel, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { login } from "../fetchData";
 import sliceline_header from '../images/sliceline_header.jpg';
@@ -45,7 +45,7 @@ class Login extends Component {
 
         <header className='login-header'>
           <Link to="/">
-            <img src={sliceline_header} className='login-header-logo' alt='main'/>
+            <Image src={sliceline_header} className='login-header-logo' alt='main'/>
           </Link>
         </header>
         <br></br>
@@ -60,9 +60,21 @@ class Login extends Component {
             <FormControl bsSize='large' type='password' onChange={this.handleChange}/>
           </FormGroup>
 
-          <Button block disabled={!this.validateForm()} 
-            bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>
-            Login</Button>
+          <Row>
+            <Col xs={8}>
+              <Button block disabled={!this.validateForm()} 
+                bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>
+                Login
+              </Button>
+            </Col>
+            <Col xs={4}>
+              <Link to='/signup'>
+                <Button block bsStyle='success' bsSize='large'>
+                  Register
+                </Button>
+              </Link>
+            </Col>
+          </Row>
          </form>
       </div>
     )
