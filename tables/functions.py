@@ -1,6 +1,8 @@
 import hashlib,sqlite3
 from django.utils import timezone
 from django.db import connection, transaction
+from rest_framework.response import Response
+
 
 
 #Employees sign up function to insert into the DB
@@ -15,8 +17,11 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,ssn,birthday,email,date])
     #need a wait function for manager approval before inserting to DB
     transaction.commit()
+    cursor.execute("""select types from tables_access where access_code=%s""",[access_code])
+    row = cursor.fetchone()
+    type= row[0]
     cursor.execute("""INSERT INTO tables_account (types, email)"""
-                   """VALUES (%s,%s)""", ["employees", email])
+                   """VALUES (%s,%s)""", [type, email])
     transaction.commit()
     cursor.execute("""SELECT emp_id FROM tables_employees WHERE email=%s""",[email])
     row = cursor.fetchone()
@@ -141,22 +146,57 @@ def login(email,password):
         hash_password = row[0]
         cursor.execute("""select user_id from tables_customer WHERE email=%s""",[email])
         row = cursor.fetchone()
-        # user_id = row[0]
-        # return  user_id
+        user_id = row[0]
+        cursor.execute("""select user_fname from tables_customer WHERE email=%s""", [email])
+        row = cursor.fetchone()
+        name = row[0]
+        cursor.execute("""select VIP from tables_customer WHERE email=%s""", [email])
+        row = cursor.fetchone()
+        vip = row[0]
+        if(vip == 1):
+            status = 'VIP'
+            returned_dict = {
+                'user_id': user_id,
+                'name': name,
+                'status': status
+            }
+        else:
+            status = 'Customer'
+            returned_dict = {
+                'user_id': user_id,
+                'name':name,
+                'status': status
+            }
+        if (hex_dig == hash_password):
+            return Response(returned_dict, status=200)
+        else:
+            requested_user = {'error': 'invalid credentials'}
+            return Response(requested_user, status=404)
+            # return  user_id
     else:
         cursor.execute("""select password from tables_employees WHERE email=%s""",[email])
         row = cursor.fetchone()
         hash_password = row[0]
         cursor.execute("""select emp_id from tables_employees WHERE email=%s""",[email])
         row = cursor.fetchone()
-        # emp_id  = row[0]
-        # return emp_id
-        #will need to return the user/employee id
+        emp_id  = row[0]
+        cursor.execute("""select emp_fname from tables_employees WHERE email=%s""",[email])
+        row = cursor.fetchone()
+        name = row[0]
+        cursor.execute("""select types from tables_account WHERE email=%s""",[email])
+        row = cursor.fetchone()
+        status = row[0]
+        returned_dict = {
+            'emp_id':emp_id,
+            'name':name,
+            'status':status
+        }
+        if (hex_dig == hash_password):
+            return Response(returned_dict, status= 200)
+        else:
+            requested_user = {'error': 'invalid credentials'}
+            return Response(requested_user, status = 404)
 
-    if(hex_dig == hash_password):
-        return "HTTP_202_ACCEPTED"
-    else:
-        return "HTTP_404_NOT_FOUND"
     cursor.close()
 
 #chef creates a menu
