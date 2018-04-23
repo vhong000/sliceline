@@ -66,6 +66,10 @@ export function login(user, show) {
       return Promise.reject({
         message: "Not authorized to log in"
       });
+    } else if (response.status === 404) {
+      return Promise.reject({
+        message: "Invalid username or password"
+      });
     } else if (response.status === 500) {
       return Promise.reject({
         message: "server error"
