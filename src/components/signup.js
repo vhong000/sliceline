@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel,
   Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
-  Collapse, Panel, Label, Well, Row, Col
+  Collapse, Panel, Label, Well, Row, Col, Alert, Image
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { signupEmployee, signupCustomer } from '../fetchData.js';
@@ -18,11 +18,7 @@ class Signup extends Component {
         last_name: "",
         password: "",
         phone: "",
-        birthday: {
-          month: 'January',
-          day: '1',
-          year: '',
-        },
+        birthday: "",
         address: "",
         city: "",
         state: "NY",
@@ -34,7 +30,6 @@ class Signup extends Component {
       access: 'customer',
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleDobChange = this.handleDobChange.bind(this)
     this.handleAccessChange = this.handleAccessChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -54,43 +49,33 @@ class Signup extends Component {
     })
   }
 
-  handleDobChange(event) {
-    const name = event.target.name;
-    const newdob = this.state.applicant.birthday;
-    newdob[name] = event.target.value;
-    this.setState({
-      applicant: {
-        ...this.state.applicant,
-        birthday: newdob,
-      }
-    })
-  }
-
   handleSubmit(event) {
     const final = this.state.applicant;
-    const final_dob = final.birthday.month + '/' + final.birthday.day + '/' + final.birthday.year;
-    final.birthday = final_dob;
     if (this.state.access === 'employee') {
       console.log(JSON.stringify(final));
-      signupEmployee(final);
+      signupEmployee(final, this.props.show).catch((error) => {
+        this.setState({
+          error: error,
+        })
+      }); 
     } else {
       delete final.ssn;
       delete final.access_code;
       delete final.store_id;
       console.log(JSON.stringify(final));
-      signupCustomer(final);
+      signupCustomer(final, this.props.show).catch((error) => {
+        this.setState({
+          error: error,
+        })
+      });
     }
-
-    //signupEmployee(final)
   }
 
   render() {
     return (
       <div className='signup'>
         <header className='login-header'>   
-          <Link to="/">
-            <img src={sliceline_header} className='login-header-logo' alt='main'/>
-          </Link>
+          <Image src={sliceline_header} className='login-header-logo' alt='main'/>
         </header>
 
         <form>
@@ -154,75 +139,16 @@ class Signup extends Component {
           </Row>
 
           <Row>
-            <Col xs={7} xsPush={5}>
-              <h4><Label>Date of Birth</Label></h4>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col xs={5}>
+            <Col xs={6}>
               <FormGroup controlId='phone'>
                 <ControlLabel>Phone Number: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
             <FormGroup controlId='dob'>
-              <Col xs={3}>
-                <ControlLabel>Month: </ControlLabel>
-                <FormControl name='month' componentClass="select" onChange={this.handleDobChange}>
-                  <option value="January">January</option>
-                  <option value="February">February</option>
-                  <option value="March">March</option>
-                  <option value="April">April</option>
-                  <option value="May">May</option>
-                  <option value="June">June</option>
-                  <option value="July">July</option>
-                  <option value="August">August</option>
-                  <option value="September">September</option>
-                  <option value="October">October</option>
-                  <option value="November">November</option>
-                  <option value="December">December</option>
-                </FormControl>
-              </Col>
-              <Col xs={2}>
-                <ControlLabel>Day: </ControlLabel>
-                <FormControl name='day' componentClass="select" onChange={this.handleDobChange}>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
-                  <option value='11'>11</option>
-                  <option value='12'>12</option>
-                  <option value='13'>13</option>
-                  <option value='14'>14</option>
-                  <option value='15'>15</option>
-                  <option value='16'>16</option>
-                  <option value='17'>17</option>
-                  <option value='18'>18</option>
-                  <option value='19'>19</option>
-                  <option value='20'>20</option>
-                  <option value='21'>21</option>
-                  <option value='22'>22</option>
-                  <option value='23'>23</option>
-                  <option value='24'>24</option>
-                  <option value='25'>25</option>
-                  <option value='26'>26</option>
-                  <option value='27'>27</option>
-                  <option value='28'>28</option>
-                  <option value='29'>29</option>
-                  <option value='30'>30</option>
-                  <option value='31'>31</option>
-                </FormControl>
-              </Col>
-              <Col xs={2}>
-                <ControlLabel>Year: </ControlLabel>
-                <FormControl name='year' type='text' onChange={this.handleDobChange}/>
+              <Col xs={6}>
+                <ControlLabel>Date of Birth:</ControlLabel>
+                <FormControl type='text' placeholder='mm/dd/yyyy' onChange={this.handleChange}/>
               </Col>
             </FormGroup>
           </Row>
@@ -245,8 +171,8 @@ class Signup extends Component {
             <Col xs={2}>
               <FormGroup controlId='state'>
                 <ControlLabel>State: </ControlLabel>
-                <FormControl componentClass="select" defaultValue='NY' onChange={this.handleChange}>
-                  <option value="AL">AL</option>
+              <FormControl componentClass="select" defaultValue='NY' onChange={this.handleChange}>
+                 <option value="AL">AL</option>
                   <option value="AK">AK</option>
                   <option value="AR">AR</option>  
                   <option value="AZ">AZ</option>
@@ -310,21 +236,15 @@ class Signup extends Component {
           </Row>
           <br></br>
 
-          <Row>
-            <Col xs={8}>
-              <Button block bsStyle='primary' 
-                bsSize='large' onClick={this.handleSubmit}>
-                Sign Up
-              </Button>
-            </Col>
-            <Link to='/login'>
-              <Col xs={4}>
-                <Button block bsStyle='success' bsSize='large'>
-                  Login
-                </Button>
-              </Col>
-            </Link>
-          </Row>
+          {this.state.error ? (
+            <Alert bsStyle='danger'>{this.state.error.message}</Alert>
+          ) : ( null )
+          }
+
+          <Button block bsStyle='primary' 
+            bsSize='large' onClick={this.handleSubmit}>
+            Sign Up
+          </Button>
           
         </form>
       </div>

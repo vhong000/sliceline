@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Header from './components/header.js';
-import Sidebar from './components/sidebar.js';
-import GoogleApiWrapper from './components/map.js';
-import './App.css';
+import Header from './header.js';
+import Sidebar from './sidebar.js';
+import GoogleApiWrapper from './map.js';
+import '../css/App.css';
 
-class App extends Component {
+class Main extends Component {
   render() {
     return (
       <div className='app'>
@@ -22,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;

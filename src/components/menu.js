@@ -20,11 +20,6 @@ class Menu extends Component {
   render() { 
     return(
       <div className='editmenu'>
-        <Header/>
-        <div className='editmenu-restaurant'>
-          <h3>RESTAURANT NAME</h3>
-        </div>
-
         <Tabs>
           <Tab eventKey={1} title='Drinks'>
             <DisplayMenuItems/>

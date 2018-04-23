@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Panel, Row, Col, Image } from 'react-bootstrap';
+import { Panel, Row, Col, Image, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { login } from "../fetchData";
 import sliceline_header from '../images/sliceline_header.jpg';
@@ -14,7 +14,7 @@ class Login extends Component {
       user: {
         email: "",
         password: "",
-      }
+      },
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +32,11 @@ class Login extends Component {
   handleSubmit(event) {
     const final = this.state.user;
     console.log(JSON.stringify(final));
-    login(final);
+    login(final, this.props.show).catch((error) => {
+      this.setState({
+        error: error,
+      });
+    })
   }
 
   validateForm() {
@@ -44,13 +48,11 @@ class Login extends Component {
       <div className='login'>
 
         <header className='login-header'>
-          <Link to="/">
-            <Image src={sliceline_header} className='login-header-logo' alt='main'/>
-          </Link>
+          <Image src={sliceline_header} className='login-header-logo' alt='main'/>
         </header>
         <br></br>
 
-        <form onsubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <FormGroup controlId='email'>
             <ControlLabel>Email: </ControlLabel>
             <FormControl autoFocus bsSize='large' type='email' onChange={this.handleChange}/>
@@ -60,21 +62,15 @@ class Login extends Component {
             <FormControl bsSize='large' type='password' onChange={this.handleChange}/>
           </FormGroup>
 
-          <Row>
-            <Col xs={8}>
-              <Button block disabled={!this.validateForm()} 
-                bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>
-                Login
-              </Button>
-            </Col>
-            <Col xs={4}>
-              <Link to='/signup'>
-                <Button block bsStyle='success' bsSize='large'>
-                  Register
-                </Button>
-              </Link>
-            </Col>
-          </Row>
+          {this.state.error ? (
+            <Alert bsStyle='danger'>{this.state.error.message}</Alert>
+          ) : ( null )
+          }
+
+          <Button block type='submit' disabled={!this.validateForm()} 
+            bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>
+            Login
+          </Button>
          </form>
       </div>
     )

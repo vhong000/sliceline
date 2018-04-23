@@ -1,10 +1,36 @@
 import React, { Component } from 'react';
-import { Button, Well, Image } from 'react-bootstrap';
+import { Button, Well, Image, Modal, ButtonGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Login from './login.js';
+import Signup from './signup.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLogin: false,
+      showSignup: false,
+    }
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+  }
+
+  handleLogin(event) {
+    const show = !this.state.showLogin;
+    this.setState({
+      showLogin: show,
+    })
+  }
+
+  handleSignup(event) {
+    const show = !this.state.showSignup;
+    this.setState({
+      showSignup: show,
+    })
+  }
+
   render() {
     return (
       <header className="header">
@@ -13,6 +39,7 @@ class Header extends Component {
             <Image responsive src={sliceline_header}/>
           </Link>
         </div>
+
         {this.props.user ? (
           <Well bsSize='small'>
             logged in as {this.props.user}
@@ -22,13 +49,24 @@ class Header extends Component {
           </Well>
           ) : (
           <div className='header-login'>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Button block>Login</Button>
-          </Link>
-          <Link to="/signup" style={{ textDecoration: 'none' }}>
-            <Button block>Sign Up</Button>
-          </Link>
-        </div>
+            <ButtonGroup vertical>
+              <Button block onClick={this.handleLogin}>
+                Login
+              </Button>
+              <Button block onClick={this.handleSignup}>
+                Sign Up
+              </Button>
+            </ButtonGroup>
+            
+            <Modal show={this.state.showLogin} onHide={this.handleLogin}>
+              <Login show={this.handleLogin}/>
+            </Modal>
+
+            <Modal bsSize='large' show={this.state.showSignup} onHide={this.handleSignup}>
+              <Signup show={this.handleSignup}/>
+            </Modal>
+
+          </div>
         )}
       </header>
     );
