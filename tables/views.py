@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters, generics
 from tables.serializers import *
 from tables.functions import *
 from .models import *
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from django.forms.models import model_to_dict
 from rest_framework.response import Response
@@ -69,7 +70,8 @@ class LoginViewSet(viewsets.ModelViewSet):
     def create(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        return Response(login(email,password))
+        return login(email,password)
+
 
 class ESignupViewSet(viewsets.ModelViewSet):
     def create(self, request):
