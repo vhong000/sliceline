@@ -7,7 +7,7 @@ export function allRestaurants() {
     })
 }
 
-export function signupEmployee(newEmployee) {
+export function signupEmployee(newEmployee, show) {
   return fetch("/api/employSignup/", {
 		method: "POST",
 		headers: {
@@ -15,7 +15,9 @@ export function signupEmployee(newEmployee) {
 		},
 		body: JSON.stringify(newEmployee),
 	}).then((response) => {
-		if (response.status === 401) {
+    if (response.status === 200) {
+      show()
+    } else if (response.status === 401) {
       return Promise.reject({
         message: "Not authorized to sign up"
       });
@@ -28,7 +30,7 @@ export function signupEmployee(newEmployee) {
 	})
 }
 
-export function signupCustomer(newCustomer) {
+export function signupCustomer(newCustomer, show) {
   return fetch("/api/custSignup/", {
     method: "POST",
     headers: {
@@ -36,7 +38,9 @@ export function signupCustomer(newCustomer) {
     },
     body: JSON.stringify(newCustomer),
 	}).then((response) => {
-		if (response.status === 401) {
+    if (response.status === 200) {
+      show()
+    } else if (response.status === 401) {
       return Promise.reject({
         message: "Not authorized to sign up"
       });
@@ -48,7 +52,7 @@ export function signupCustomer(newCustomer) {
   })
 }
 
-export function login(user) {
+export function login(user, show) {
   return fetch("/api/login/", {
     method: "POST",
     headers: {
@@ -56,7 +60,9 @@ export function login(user) {
     },
     body: JSON.stringify(user),
   }).then((response) => {
-		if (response.status === 401) {
+    if (response.status === 200) {
+      show()
+    } else if (response.status === 401) {
       return Promise.reject({
         message: "Not authorized to log in"
       });

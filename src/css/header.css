@@ -1,5 +1,7 @@
 
 .header {
+  min-width: 900px;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,6 +13,7 @@
 .header-login {
   width: 10%;
   padding-right: 10px;
+  float: right;
 }
 
 .header-logo {
@@ -24,5 +27,5 @@
   width: 200px;
 	height: 75px;
   padding: 5px;
-	margin: auto;
+  float: left;
 }
