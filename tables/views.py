@@ -71,9 +71,6 @@ class LoginViewSet(viewsets.ModelViewSet):
         password = request.data.get('password')
         return login(email,password)
 
-    # def create(self, request):
-    #     # return login(email,password)
-
 class ESignupViewSet(viewsets.ModelViewSet):
     def create(self, request):
         email = request.data.get('email')
