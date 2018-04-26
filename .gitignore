@@ -6,6 +6,7 @@
 
 # folders #
 
+db.sqlite3
 build/
 node_modules/
 tables/__pycache__/

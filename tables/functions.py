@@ -11,18 +11,20 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
     date = timezone.now()
     hash_object = hashlib.sha256(password.encode('utf-8'))
     hex_dig = hash_object.hexdigest()
+    cursor.execute("""select types from tables_access where access_code=%s""", [access_code])
+    row = cursor.fetchone()
+    type = row[0]
+    cursor.execute("""INSERT INTO tables_account (types, email)"""
+                   """VALUES (%s,%s)""", [type, email])
+    transaction.commit()
+
     cursor.execute("""insert into tables_employees 
                   (password, emp_fname, emp_lname, address, city, state, zipcode, phone, ssn, birthday,email,date_hired)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,ssn,birthday,email,date])
     #need a wait function for manager approval before inserting to DB
     transaction.commit()
-    cursor.execute("""select types from tables_access where access_code=%s""",[access_code])
-    row = cursor.fetchone()
-    type= row[0]
-    cursor.execute("""INSERT INTO tables_account (types, email)"""
-                   """VALUES (%s,%s)""", [type, email])
-    transaction.commit()
+
     cursor.execute("""SELECT emp_id FROM tables_employees WHERE email=%s""",[email])
     row = cursor.fetchone()
     id = row[0]
@@ -37,6 +39,7 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
     date = timezone.now()
     hash_object = hashlib.sha256(password.encode('utf-8'))
     hex_dig = hash_object.hexdigest()
+    #need to catch known email
     cursor.execute("""insert into tables_customer 
                   (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
@@ -56,9 +59,10 @@ def checkBlackList(email):
     cursor = connection.cursor()
     cursor.execute("""select email from tables_black_list WHERE email=%s""",[email])
     row = cursor.fetchone()
-    email_db = row[0]
-    if(email == email_db):
+    if(row):
         return True
+    else:
+        return False
     cursor.close()
 
 
@@ -128,11 +132,14 @@ def checkEmail(email):
     cursor = connection.cursor()
     cursor.execute("""SELECT types FROM tables_account WHERE email=%s""",[email])
     row = cursor.fetchone()
-    type = row[0]
-    if (type == "customer"):
-        return True
-    else:
+    if(row == None):
         return False
+    else:
+        type = row[0]
+        if (type == "customer"):
+            return True
+        else:
+            return False
     cursor.close()
 
 #Authenticate the login
@@ -186,10 +193,21 @@ def login(email,password):
         cursor.execute("""select types from tables_account WHERE email=%s""",[email])
         row = cursor.fetchone()
         status = row[0]
+        cursor.execute("""select store_id from tables_chef where emp_id_id=%s""",[emp_id])
+        row = cursor.fetchone()
+        chef = row[0]
+        cursor.execute("""select store_id from tables_delivery where emp_id_id=%s""",[emp_id])
+        row = cursor.fetchone()
+        delivery = row[0]
+        if(chef):
+            id = chef
+        else:
+            id = delivery
         returned_dict = {
             'emp_id':emp_id,
             'name':name,
-            'status':status
+            'status':status,
+            'rest_id': id
         }
         if (hex_dig == hash_password):
             return Response(returned_dict, status= 200)

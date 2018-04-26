@@ -9,7 +9,9 @@ class Restaurant(models.Model):
     state      = models.CharField(max_length=5)
     zipcode    = models.CharField(max_length=5)
     phone      = models.CharField(max_length=15)
-    logo       = models.CharField(max_length=100)
+    logo       = models.CharField(max_length=200)
+    latitude   = models.CharField(max_length=50)
+    longitude  = models.CharField(max_length=50)
 
 
 class Employees(models.Model):
@@ -29,7 +31,7 @@ class Employees(models.Model):
     num_compliment = models.IntegerField(null=True)
     num_complaint = models.IntegerField(null=True)
     last_order = models.DateTimeField(null=True)
-    email = models.CharField(max_length=100)
+    email = models.CharField(max_length=100,unique=True)
 
 
 #Table for the customer
@@ -51,7 +53,7 @@ class Customer(models.Model):
     order_count = models.IntegerField(null=True)
     num_complaints  = models.IntegerField(null=True)
     last_order  = models.DateTimeField(null=True)
-    email = models.CharField(max_length=100,)
+    email = models.CharField(max_length=100,unique=True)
 
 
 #Table for chef
