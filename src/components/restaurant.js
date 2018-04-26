@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header.js';
 import Menu from './menu.js';
+import Reviews from './reviews.js';
 import { Carousel, PageHeader, Navbar, Tab,
   TabContainer, TabPane, TabContent, Nav, NavItem, Image,
 } from 'react-bootstrap';
@@ -73,6 +74,10 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
 
               <Tab.Pane eventKey='menu'>
                 <Menu/>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey='reviews'>
+                <Reviews/>
               </Tab.Pane>
 
             </Tab.Content>

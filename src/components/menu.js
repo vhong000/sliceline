@@ -22,7 +22,7 @@ class Menu extends Component {
       <div className='editmenu'>
         <Tabs>
           <Tab eventKey={1} title='Drinks'>
-            <DisplayMenuItems/>
+            <DisplayMenuItems access='chef'/>
           </Tab>
           <Tab eventKey={2} title='Pizza'>
             <DisplayMenuItems/>

@@ -36,6 +36,8 @@ class Login extends Component {
       this.setState({
         error: error,
       });
+    }).then((jsonData) => {
+      console.log(jsonData);
     })
   }
 

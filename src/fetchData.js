@@ -56,12 +56,14 @@ export function login(user, show) {
   return fetch("/api/login/", {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
     body: JSON.stringify(user),
   }).then((response) => {
     if (response.status === 200) {
       show()
+      return response.json();
     } else if (response.status === 401) {
       return Promise.reject({
         message: "Not authorized to log in"

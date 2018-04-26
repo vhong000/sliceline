@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup, FormControl, Row, Col } from 'react-bootstrap';
 
 // need to fetch get all menu items
 class DisplayMenuItems extends Component {
@@ -7,28 +7,28 @@ class DisplayMenuItems extends Component {
     return (
       <div className='menuitem'>
         <div>
-        <p>A Name</p>
-        <p>A Price</p>
-        <p>some desc</p>
-        <Button>Update</Button>
-        <Button>Remove</Button>
-      </div>
+          <p>A Name</p>
+          <p>A Price</p>
+          <p>some desc</p>
 
-      <div className='menuitem'>
-        <p>A Name</p>
-        <p>A Price</p>
-        <p>some desc</p>
-        <Button>Update</Button>
-        <Button>Remove</Button>
-      </div>
-
-      <div className='menuitem'>
-        <p>A Name</p>
-        <p>A Price</p>
-        <p>some desc</p>
-        <Button>Update</Button>
-        <Button>Remove</Button>
-      </div>
+          {this.props.access === 'chef' ? (
+            <div>
+              <ButtonGroup>
+                <Button bsStyle='primary'>Update</Button>
+                <Button bsStyle='danger'>Remove</Button>
+              </ButtonGroup>
+            </div>
+          ) : (
+            <Row>
+              <Col xs={6}>
+                <FormControl type='number'/>
+              </Col>
+              <Col xs={6}>
+                <Button>Add to Cart</Button>
+              </Col>
+            </Row>
+          )}
+        </div>
 
       </div>
     )
