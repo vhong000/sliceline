@@ -4,7 +4,7 @@ from rest_framework import serializers
 class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Restaurant
-        fields = ('rest_id', 'name', 'address', 'city', 'state', 'zipcode', 'phone', 'logo')
+        fields = ('rest_id', 'name', 'address', 'city', 'state', 'zipcode', 'phone', 'logo','latitude','longitude')
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -78,6 +78,6 @@ class LoginSerializer(serializers.ModelSerializer):
         model = Login
         fields = '__all__'
 
-    def get(self, validated_data):
-        info = Login.objects.get(**validated_data)
-        return info
+    # def get(self, validated_data):
+    #     info = Login.objects.get(**validated_data)
+    #     return info

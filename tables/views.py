@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets, filters, generics
 from tables.serializers import *
 from tables.functions import *
@@ -66,12 +66,10 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
 class LoginViewSet(viewsets.ModelViewSet):
-
-    def create(self, request):
+    def create(self,request):
         email = request.data.get('email')
         password = request.data.get('password')
         return login(email,password)
-
 
 class ESignupViewSet(viewsets.ModelViewSet):
     def create(self, request):
