@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer.js';
+import restaurantReducer from './restaurantReducer.js';
 
 export default combineReducers({
-  Authenticate: authReducer
+  Authenticate: authReducer,
+  Restaurant: restaurantReducer
 });

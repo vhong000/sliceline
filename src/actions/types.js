@@ -1,5 +1,10 @@
 
 //    LOGIN     //
 export const USER_AUTH_SUCCESS = 'USER_AUTH_SUCCESS';
-export const USER_AUTH_ERROR = 'USER_AUTH_ERROR';
+export const USER_AUTH_FAIL = 'USER_AUTH_FAIL';
 export const USER_AUTH_LOAD = 'USER_AUTH_LOAD';
+
+//    RESTAURANTS   //
+export const REST_FETCH_SUCCESS = 'REST_FETCH_SUCCESS';
+export const REST_FETCH_FAIL = 'REST_FETCH_FAIL';
+export const REST_FETCH_LOADING = 'REST_FETCH_LOADING';

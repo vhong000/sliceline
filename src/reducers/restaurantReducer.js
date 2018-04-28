@@ -1,28 +1,22 @@
-import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD } from '../actions/types.js';
+import { REST_FETCH_SUCCESS, REST_FETCH_FAIL, REST_FETCH_LOADING } from '../actions/types'
 
 const initialState = {
-  //user: {
-  //  name: 'test',
-  //},
   loading: false,
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case USER_AUTH_SUCCESS:
+    case REST_FETCH_SUCCESS:
       return {
         ...state,
-        user: action.payload,       
-        error: '',
         loading: false,
       }
-    case USER_AUTH_FAIL:
+    case REST_FETCH_FAIL:
       return {
         ...state,
-        error: action.payload,
         loading: false,
       }
-    case USER_AUTH_LOAD:
+    case REST_FETCH_LOADING:
       return {
         ...state,
         loading: true,

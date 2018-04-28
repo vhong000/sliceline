@@ -1,4 +1,4 @@
-import { USER_AUTH_SUCCESS, USER_AUTH_ERROR, USER_AUTH_LOAD } from './types.js'; 
+import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD } from './types.js'; 
 //
 // export function signupEmployee(newEmployee, show) {
 //   return fetch("/api/employSignup/", {
@@ -59,7 +59,7 @@ export const login = (user) => dispatch => {
   }).catch((error) => {
     console.log(error);
     dispatch({
-      type: USER_AUTH_ERROR,
+      type: USER_AUTH_FAIL,
       payload: error,
     })
   })
