@@ -54,15 +54,22 @@ class Customer(models.Model):
     num_complaints  = models.IntegerField(null=True)
     last_order  = models.DateTimeField(null=True)
     email = models.CharField(max_length=100,unique=True)
+    approve = models.BooleanField()
 
 
 #Table for chef
 class Chef(models.Model):
     chef_id    = models.AutoField(primary_key=True)
-    emp_id    = models.ForeignKey(Employees,on_delete=models.CASCADE)
+    emp_id     = models.ForeignKey(Employees,on_delete=models.CASCADE)
     store      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
-    menu_name = models.CharField(max_length=10,null=True)
-    warning   = models.IntegerField(null=True)
+    menu_name  = models.CharField(max_length=10,null=True)
+    warning    = models.IntegerField(null=True)
+
+class Manager(models.Model):
+    mana_id =  models.AutoField(primary_key=True)
+    emp_id  =  models.ForeignKey(Employees,on_delete=models.CASCADE)
+    store   =  models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+
 
 #Table for delivery guy
 class Delivery(models.Model):
@@ -71,6 +78,7 @@ class Delivery(models.Model):
     store      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     status     = models.IntegerField(null=True)
     warning    = models.IntegerField(null=True)
+    current_order = models.CharField(max_length=100)
 
 #Table for menu
 class Menu(models.Model):
@@ -87,6 +95,8 @@ class Order(models.Model):
     rest_id      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     menu_id      = models.ForeignKey(Menu,on_delete=models.CASCADE)
     total        = models.IntegerField()
+    status       = models.BooleanField()
+    address      = models.CharField(max_length=100)
 
 #Table for the customer_review
 class Customer_review(models.Model):
@@ -141,7 +151,7 @@ class Access(models.Model):
 
 class Customer_restaurant(models.Model):
     cust_rest_id = models.AutoField(primary_key=True)
-    rest_id = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    rest_id = models.CharField(max_length=100)
     user_id = models.ForeignKey(Customer,on_delete=models.CASCADE)
 
 
