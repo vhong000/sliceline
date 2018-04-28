@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import connect from 'react-redux';
 import { FormGroup, FormControl, ControlLabel,
   Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
   Collapse, Panel, Label, Well, Row, Col, Alert, Image
@@ -26,6 +27,7 @@ class Signup extends Component {
         ssn: "",
         access_code: "", 
         store_id: '',
+        rest_ids: [],
       },
       access: 'customer',
     }
@@ -251,5 +253,8 @@ class Signup extends Component {
     )
   }
 }
+
+//const mapStateToProps = state => ({
+//})
 
 export default Signup;

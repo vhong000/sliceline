@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import { Row, Col, 
+} from 'react-bootstrap';
 import Header from './header.js';
 import Sidebar from './sidebar.js';
 import GoogleApiWrapper from './map.js';
@@ -11,12 +14,16 @@ class Main extends Component {
         <div className='app-header'>
           <Header/>
         </div>
-        <div className='app-sidebar'>
-          <Sidebar/>
-        </div>
-        <div className='app-map'>
-          <GoogleApiWrapper/>
-        </div>
+        <Row>
+          <Col xs={3}>
+            <div className='app-sidebar'>
+              <Sidebar/>
+            </div>
+          </Col>
+        </Row>
+          <div className='app-map'>
+              <GoogleApiWrapper/>
+          </div>
       </div>
     )
   }

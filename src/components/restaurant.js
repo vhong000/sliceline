@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from './header.js';
 import Menu from './menu.js';
 import Reviews from './reviews.js';
+import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Carousel, PageHeader, Navbar, Tab,
   TabContainer, TabPane, TabContent, Nav, NavItem, Image,
 } from 'react-bootstrap';
 import '../css/restaurant.css';
 
 class Restaurant extends Component {
+
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    this.props.fetchRestaurant(id);
+  }
+
   render() {
     return (
       <div className='restaurant'>
@@ -18,7 +26,7 @@ class Restaurant extends Component {
             <Navbar>
               <Navbar.Header>
                 <Navbar.Brand>
-                  RESTAURANT NAME
+                  {this.props.restaurant.name}
                 </Navbar.Brand>
               </Navbar.Header>
 
@@ -89,4 +97,10 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
   }
 }
 
-export default Restaurant
+const mapStateToProps = state => ({
+  restaurant: state.Restaurant.restaurant,
+  error: state.Restaurant.error,
+  isLoading: state.Restaurant.loading,
+})
+
+export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);

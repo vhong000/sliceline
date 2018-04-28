@@ -1,35 +1,43 @@
 import React, { Component } from 'react';
-import { allRestaurants } from '../fetchData.js';
-import { Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fetchRestaurant } from '../actions/restaurantActions.js';
+import { Button, Nav, NavItem } from 'react-bootstrap';
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      locations: [],
-    }
   }
 
   componentDidMount() {
-    allRestaurants().then((restaurants) => {
-      this.setState({
-        locations: restaurants,
-      })
-    })
+    this.props.fetchRestaurant()
   } 
 
   render() {
     return (
       <div className="sidebar">
-        {this.state.locations.map((elements, index) => (
-          <div className="sidebar-locations">
-            <h4>{elements.name}</h4>
-          </div>
-        ))} 
+        <Nav bsStyle='pills' stacked>
+          {this.props.locations.map((elements, index) => (
+            <NavItem eventKey={index} href={`/restaurant/${elements.rest_id}`}>
+              {elements.name}
+            </NavItem>
+          ))} 
+        </Nav>
       </div>
     )
   }
 }
 
-export default Sidebar;
+Sidebar.propTypes = {
+  fetchRestaurant: PropTypes.func.isRequired,
+  locations: PropTypes.array.isRequired,
+}
+
+const mapStateToProps = state => ({
+  locations: state.Restaurant.restaurants,
+  error: state.Restaurant.error,
+  isLoading: state.Restaurant.loading,
+})
+
+export default connect(mapStateToProps, { fetchRestaurant })(Sidebar);
 

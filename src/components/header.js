@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Button, Well, Image, Modal, ButtonGroup,
   Navbar, 
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './signup.js';
+import { signout } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
@@ -18,6 +20,7 @@ class Header extends Component {
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+    this.handleSignout = this.handleSignout.bind(this);
   }
 
   handleLogin(event) {
@@ -34,6 +37,11 @@ class Header extends Component {
     })
   }
 
+  handleSignout(event) {
+    this.props.signout();
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <header className="header">
@@ -48,7 +56,7 @@ class Header extends Component {
             <Navbar.Header>
               Welcome {this.props.userData.name}
           </Navbar.Header>
-            <Button block>
+            <Button block onClick={this.handleSignout}>
               Sign out
             </Button>
           </Navbar>
@@ -58,9 +66,11 @@ class Header extends Component {
               <Button block onClick={this.handleLogin}>
                 Login
               </Button>
-              <Button block onClick={this.handleSignup}>
-                Sign Up
-              </Button>
+                <Button block bsStyle='default'>
+              <Link to='/signup' style={{textDecoration: 'none'}}>
+                  Sign Up
+              </Link>
+                </Button>
             </ButtonGroup>
             
             <Modal show={this.state.showLogin} onHide={this.handleLogin}>
@@ -82,4 +92,4 @@ const mapStateToProps = state => ({
   userData: state.Authenticate.user,
 })
 
-export default connect(mapStateToProps, null)(Header);
+export default withRouter(connect(mapStateToProps, { signout })(Header));
