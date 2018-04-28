@@ -12,29 +12,35 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
     #hash the password to insert into the db
     hash_object = hashlib.sha256(password.encode('utf-8'))
     hex_dig = hash_object.hexdigest()
-    cursor.execute("""select types from tables_access where access_code=%s""", [access_code])
+    cursor.execute("""select email from tables_employees where email=%s""", [email])
     row = cursor.fetchone()
-    type = row[0]
-    cursor.execute("""INSERT INTO tables_account (types, email)"""
+    if (row):
+        redirect_message = {'error': "email already exist"}
+        return Response(redirect_message, status=409)
+    else:
+        cursor.execute("""select types from tables_access where access_code=%s""", [access_code])
+        row = cursor.fetchone()
+        type = row[0]
+        cursor.execute("""INSERT INTO tables_account (types, email)"""
                    """VALUES (%s,%s)""", [type, email])
-    transaction.commit()
-    cursor.execute("""insert into tables_employees 
+        transaction.commit()
+        cursor.execute("""insert into tables_employees 
                   (password, emp_fname, emp_lname, address, city, state, zipcode, phone, ssn, birthday,email,date_hired)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,ssn,birthday,email,date])
     #need a wait function for manager approval before inserting to DB
-    transaction.commit()
-    cursor.execute("""SELECT emp_id FROM tables_employees WHERE email=%s""",[email])
-    row = cursor.fetchone()
-    id = row[0]
+        transaction.commit()
+        cursor.execute("""SELECT emp_id FROM tables_employees WHERE email=%s""",[email])
+        row = cursor.fetchone()
+        id = row[0]
     #check what employee it is chef/delivery
-    checkAccess(access_code,id,store_id)
-    cursor.close()
-    return "Signup successful"
+        checkAccess(access_code,id,store_id)
+        cursor.close()
+        return "Signup successful"
 
 
 #Customer sign up function to insert into the DB
-def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,birthday,email):
+def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,birthday,email,store_id):
     cursor = connection.cursor()
     date = timezone.now()
     hash_object = hashlib.sha256(password.encode('utf-8'))
@@ -44,12 +50,12 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
     row = cursor.fetchone()
     if(row):
         redirect_message = {'error':"email already exist"}
-        return redirect_message
+        return Response(redirect_message,status= 409)
     else:
         cursor.execute("""insert into tables_customer 
-                  (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since)"""
-                  """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                   [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date])
+                  (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since,approve)"""
+                  """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                   [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date,0])
         if(checkBlackList(email)):
             cursor.close()
             return "You are blacklisted"
@@ -59,8 +65,14 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
             cursor.execute("""INSERT INTO tables_account (types, email)"""
                         """VALUES (%s,%s)""",["customer",email])
             transaction.commit()
+            cursor.execute("""select user_id from tables_customer WHERE email=%s""",[email])
+            row = cursor.fetchone()
+            user_id = row[0]
+            cursor.execute("""insert into tables_customer_restaurant (rest_id, user_id_id)"""
+                           """VALUES (%s,%s)""",[store_id,user_id])
+            transaction.commit()
             cursor.close()
-            return "Signup successful"
+            return Response("Sign up successful",status=202)
 
 #checks for a given email if it is blacklisted
 def checkBlackList(email):
@@ -116,6 +128,7 @@ def visitorDemotion(user_id):
         cursor.close()
 
 #checkout process
+#gets called after the user has made the review
 def checkOut(user_id):
     cursor = connection.cursor()
     #if it is a customer
@@ -145,7 +158,7 @@ def checkOut(user_id):
                 return "still not done"
         else:
             # proceed checkout still thinking, customer hasnt made more than 3 orders
-            return "still not done"
+            return "continue to checkout"
 
 
 #Checks if the email belongs to a customer or employee
@@ -169,65 +182,79 @@ def login(email,password):
     hash_object = hashlib.sha256(password.encode('utf-8'))
     hex_dig = hash_object.hexdigest()
     if (checkEmail(email)):
-        cursor.execute("""select password,user_id,user_fname,VIP,wallet from tables_customer WHERE email=%s""",[email])
-        row = cursor.fetchall()
-        hash_password = row[0][0]
-        user_id = row[0][1]
-        name = row[0][2]
-        vip = row[0][3]
-        wallet = row[0][4]
-        if(vip == 1):
-            status = 'VIP'
+        cursor.execute("""select email from tables_customer where email=%s""", [email])
+        row = cursor.fetchone()
+        if (not row):
+            redirect_message = {'error': "email or password doesn't exist"}
+            return Response(redirect_message, status=404)
         else:
-            status = 'Customer'
-        returned_dict = {
-            'user_id': user_id,
-            'name': name,
-            'status': status,
-            'wallet': wallet
-        }
-        if (hex_dig == hash_password):
-            # print('logged in')
-            return Response(returned_dict, status=200)
-        else:
-            # print('incorrect')
-            requested_user = {'error': 'invalid credentials'}
-            return Response(requested_user, status=404)
+            cursor.execute("""select password,user_id,user_fname,VIP,wallet from tables_customer WHERE email=%s""",[email])
+            row = cursor.fetchall()
+            hash_password = row[0][0]
+            user_id = row[0][1]
+            name = row[0][2]
+            vip = row[0][3]
+            wallet = row[0][4]
+            if(vip == 1):
+                status = 'VIP'
+            else:
+                status = 'Customer'
+            returned_dict = {
+                'user_id': user_id,
+                'name': name,
+                'status': status,
+                'wallet': wallet
+                }
+            if (hex_dig == hash_password):
+                print('logged in as customer')
+                return Response(returned_dict, status=200)
+            else:
+                print('incorrect customer')
+                requested_user = {'error': "email or password doesn't exist"}
+                return Response(requested_user, status=404)
             # return  user_id
     else:
-        cursor.execute("""select password,emp_id,emp_fname from tables_employees WHERE email=%s""",[email])
-        row = cursor.fetchall()
-        hash_password = row[0][0]
-        emp_id  = row[0][1]
-        name = row[0][2]
-        cursor.execute("""select types from tables_account WHERE email=%s""",[email])
+        cursor.execute("""select email from tables_employees where email=%s""", [email])
         row = cursor.fetchone()
-        status = row[0]
-        cursor.execute("""select store_id from tables_chef where emp_id_id=%s""",[emp_id])
-        row = cursor.fetchone()
-        if(row):
-            chef = row[0]
-            id = chef
+        if (not row):
+            redirect_message = {'error': "email or password doesn't exist"}
+            return Response(redirect_message, status=404)
         else:
-            cursor.execute("""select store_id from tables_delivery where emp_id=%s""", [emp_id])
+            cursor.execute("""select password,emp_id,emp_fname from tables_employees WHERE email=%s""",[email])
+            row = cursor.fetchall()
+            hash_password = row[0][0]
+            emp_id  = row[0][1]
+            name = row[0][2]
+            cursor.execute("""select types from tables_account WHERE email=%s""",[email])
             row = cursor.fetchone()
-            delivery = row[0]
-            id = delivery
-        returned_dict = {
-            'emp_id':emp_id,
-            'name':name,
-            'status':status,
-            'rest_id': id
-        }
-        if (hex_dig == hash_password):
-            # print('logged in')
-            return Response(returned_dict, status= 200)
-        else:
-            # print('incorrect')
-            requested_user = {'error': 'invalid credentials'}
-            return Response(requested_user, status = 404)
+            status = row[0]
+            cursor.execute("""select store_id from tables_chef where emp_id_id=%s""",[emp_id])
+            row = cursor.fetchone()
+            if(row):
+                chef = row[0]
+                id = chef
+            else:
+                cursor.execute("""select store_id from tables_delivery where emp_id=%s""", [emp_id])
+                row = cursor.fetchone()
+                delivery = row[0]
+                id = delivery
+            returned_dict = {
+                'emp_id':emp_id,
+                'name':name,
+                'status':status,
+                'rest_id': id
+            }
+            if (hex_dig == hash_password):
+                print('logged in as employeed')
+                return Response(returned_dict, status= 200)
+            else:
+                print('incorrect employee')
+                requested_user = {'error': "email or password doesn't exist"}
+                return Response(requested_user, status = 404)
 
     cursor.close()
+
+#CHEF FUNCTIONS
 
 #chef creates a menu
 def createMenu(chef_id,price,description,picture):
@@ -244,6 +271,44 @@ def updatePrices(price,menu_id):
                    [price,menu_id])
     transaction.commit()
     cursor.close()
+
+#MANAGER FUNCTIONS
+
+#fectches all of the order with status = not delivered
+#thinking on how to procced
+# def orderStatus():
+#     cursor = connection.cursor()
+#     cursor.execute("""select * from order where status = %s""",[0])
+#     row = cursor.fetchall()
+#     list = []
+#     for i in row:
+
+#approves a customer registration
+def customerApproval(user_id,aproval):
+    cursor = connection.cursor()
+    cursor.execute("""update tables_customer set approve=%s WHERE user_id=%s""",[aproval,user_id])
+    transaction.commit()
+    cursor.execute("""select approve from tables_customer WHERE user_id=%s""",[user_id])
+    row = cursor.fetchone()
+    approve = row[0]
+    if(approve == 0):
+        visitorDemotion(user_id)
+    else:
+        return "Approve by manager"
+    cursor.close()
+
+#pays of cook/delivery
+def employeeSalary(emp_id,salary):
+    cursor = connection.cursor()
+    cursor.execute("""update tables_employees set salary=%s WHERE emp_id=%s""",[salary,emp_id])
+    transaction.commit()
+    cursor.close()
+
+#pass the order to the delivery guy
+def chooseDelivery(emp_id,order_id):
+    cursor = connection.cursor()
+    cursor.execute("""update tables_delivery set current_order=%s where emp_id_id=%s""",[order_id,emp_id])
+    transaction.commit()
 
 #validate the access code and assign to the corresponding job(chef/delivery)
 def checkAccess(access_code,id,store_id):
