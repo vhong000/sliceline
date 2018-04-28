@@ -1,4 +1,6 @@
-import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD } from '../actions/types.js';
+import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
+  USER_SIGNOUT,
+} from '../actions/types.js';
 
 const initialState = {
   //user: {
@@ -26,6 +28,10 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true,
+      }
+    case USER_SIGNOUT:
+      return {
+        ...initialState,
       }
     default:
       return state;

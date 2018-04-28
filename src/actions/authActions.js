@@ -1,4 +1,6 @@
-import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD } from './types.js'; 
+import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
+  USER_SIGNOUT
+} from './types.js'; 
 //
 // export function signupEmployee(newEmployee, show) {
 //   return fetch("/api/employSignup/", {
@@ -27,7 +29,7 @@ import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD } from './types.js';
 //   )
 // }
 
-
+//    LOGIN   //
 export const login = (user) => dispatch => {
   return fetch("/api/login/", {
     method: "POST",
@@ -51,16 +53,21 @@ export const login = (user) => dispatch => {
         });
       } else { return response.json(); }
     }).then((json_data) => {
-    console.log(json_data)
     dispatch({
       type: USER_AUTH_SUCCESS,
       payload: json_data,
     })
   }).catch((error) => {
-    console.log(error);
     dispatch({
       type: USER_AUTH_FAIL,
       payload: error,
     })
+  })
+}
+
+//    SIGN_OUT    //
+export const signout = ()=> dispatch => {
+  dispatch({
+    type: USER_SIGNOUT,
   })
 }
