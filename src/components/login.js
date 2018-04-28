@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../actions/authActions.js';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
 import { Panel, Row, Col, Image, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { login } from "../fetchData";
+//import { login } from "../fetchData";
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -32,13 +34,14 @@ class Login extends Component {
   handleSubmit(event) {
     const final = this.state.user;
     console.log(JSON.stringify(final));
-    login(final, this.props.show).catch((error) => {
-      this.setState({
-        error: error,
-      });
-    }).then((jsonData) => {
-      console.log(jsonData);
-    })
+    this.props.login(final);
+    // login(final, this.props.show).catch((error) => {
+    //   this.setState({
+    //     error: error,
+    //   });
+    // }).then((jsonData) => {
+    //   console.log(jsonData);
+    // })
   }
 
   validateForm() {
@@ -64,14 +67,14 @@ class Login extends Component {
             <FormControl bsSize='large' type='password' onChange={this.handleChange}/>
           </FormGroup>
 
-          {this.state.error ? (
-            <Alert bsStyle='danger'>{this.state.error.message}</Alert>
+          {this.props.error ? (
+            <Alert bsStyle='danger'>{this.props.error.message}</Alert>
           ) : ( null )
           }
 
           <Button block type='submit' disabled={!this.validateForm()} 
             bsStyle='primary' bsSize='large' onClick={this.handleSubmit}>
-            Login
+            {this.props.isLoading ? 'Loading...' : 'Login' }
           </Button>
          </form>
       </div>
@@ -79,4 +82,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  userData: state.Authenticate.user,
+  isLoading: state.Authenticate.loading,
+  error: state.Authenticate.error,
+})
+
+export default connect(mapStateToProps, { login })(Login);

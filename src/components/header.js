@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Well, Image, Modal, ButtonGroup } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Button, Well, Image, Modal, ButtonGroup,
+  Navbar, 
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './signup.js';
@@ -40,13 +43,15 @@ class Header extends Component {
           </Link>
         </div>
 
-        {this.props.user ? (
-          <Well bsSize='small'>
-            logged in as {this.props.user}
+        {this.props.userData ? (
+          <Navbar fluid='true'>
+            <Navbar.Header>
+              Welcome {this.props.userData.name}
+          </Navbar.Header>
             <Button block>
               Sign out
             </Button>
-          </Well>
+          </Navbar>
           ) : (
           <div className='header-login'>
             <ButtonGroup vertical>
@@ -73,4 +78,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  userData: state.Authenticate.user,
+})
+
+export default connect(mapStateToProps, null)(Header);
