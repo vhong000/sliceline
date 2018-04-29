@@ -1,33 +1,80 @@
 import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
-  USER_SIGNOUT
+  USER_SIGNOUT, USER_REGISTER_SUCCESS,
 } from './types.js'; 
-//
-// export function signupEmployee(newEmployee, show) {
-//   return fetch("/api/employSignup/", {
-// 		method: "POST",
-// 		headers: {
-// 			'Content-Type': 'application/json'
-// 		},
-// 		body: JSON.stringify(newEmployee),
-// 	}).then((response) => {
-//     if (response.status === 200) {
-//       show()
-//     } else if (response.status === 401) {
-//       return Promise.reject({
-//         message: "Not authorized to sign up"
-//       });
-//     }
-//         else if (response.status === 500) {
-//         return Promise.reject({
-//         message: "server error"
-//       });
-//     }
-//   }).then(result =>
-//     dispatch({
-//       type: REGISTER_SUCCESS
-//     })
-//   )
-// }
+
+//    EMPLOYEE REGISTER   //
+export const registerEmployee = (newEmployee) => dispatch => {
+   return fetch("/api/employSignup/", {
+ 		method: "POST",
+ 		headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json'
+ 		},
+ 		body: JSON.stringify(newEmployee),
+ 	}).then((response) => {
+    dispatch({
+      type: USER_AUTH_LOAD,
+    }) 
+    if (response.status === 409) {
+      return Promise.reject({
+        message: "Email taken",
+      });
+    } 
+    else if (response.status === 500) {
+      return Promise.reject({
+        message: "server error"
+      });
+    }
+  }).then(result =>
+    dispatch({
+      type: USER_REGISTER_SUCCESS,
+    })
+  ).then(error =>
+    dispatch({
+      type: USER_AUTH_FAIL,
+      payload: error,
+    })
+  )
+}
+
+//    CUSTOMER REGISTER   // 
+export const registerCustomer = (newCustomer) => dispatch => {
+  return fetch("/api/custSignup/", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(newCustomer),
+	}).then((response) => {
+    dispatch({
+      type: USER_AUTH_LOAD,
+    })
+    if (response.status === 409) {
+      return Promise.reject({
+        message: "Email taken"
+      });
+    } else if (response.status === 404) {
+      return Promise.reject({
+        message: "Not authorized to register"
+      });
+    } else if (response.status === 500) {
+      return Promise.reject({
+        message: "server error"
+      });
+    }
+  }).then(res => 
+    dispatch({
+      type: USER_REGISTER_SUCCESS,
+    })
+  ).catch((error) => {
+    console.log(error),
+    dispatch({
+      type: USER_AUTH_FAIL,
+      payload: error,
+    })
+  })
+}
 
 //    LOGIN   //
 export const login = (user) => dispatch => {

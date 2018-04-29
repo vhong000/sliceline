@@ -1,8 +1,9 @@
 
-//    LOGIN     //
+//    LOGIN/REGISTER     //
 export const USER_AUTH_SUCCESS = 'USER_AUTH_SUCCESS';
 export const USER_AUTH_FAIL = 'USER_AUTH_FAIL';
 export const USER_AUTH_LOAD = 'USER_AUTH_LOAD';
+export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
 
 //    SIGNOUT   //
 export const USER_SIGNOUT = 'USER_SIGNOUT';

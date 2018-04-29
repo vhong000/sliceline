@@ -7,7 +7,7 @@ import { FormGroup, FormControl, ControlLabel,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
-import { signupEmployee, signupCustomer } from '../fetchData.js';
+import { registerEmployee, registerCustomer } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -73,22 +73,14 @@ class Signup extends Component {
     if (this.state.access === 'employee') {
       delete final.rest_ids
       console.log(JSON.stringify(final));
-      signupEmployee(final, this.props.show).catch((error) => {
-        this.setState({
-          error: error,
-        })
-      }); 
+      this.props.registerEmployee(final);
     } else {
       final.store_id = final_ids;
       delete final.ssn;
       delete final.access_code;
       delete final.rest_ids;
       console.log(JSON.stringify(final));
-      signupCustomer(final, this.props.show).catch((error) => {
-        this.setState({
-          error: error,
-        })
-      });
+      this.props.registerCustomer(final);
     }
   }
 
@@ -275,8 +267,8 @@ class Signup extends Component {
           </Collapse>
           <br></br>
 
-          {this.state.error ? (
-            <Alert bsStyle='danger'>{this.state.error.message}</Alert>
+          {this.props.error ? (
+            <Alert bsStyle='danger'>{this.props.error.message}</Alert>
           ) : ( null )
           }
 
@@ -293,11 +285,14 @@ class Signup extends Component {
 
 Signup.propTypes = {
   fetchRestaurant: PropTypes.func.isRequired,
+  registerCustomer: PropTypes.func.isRequired,
+  registerEmployee: PropTypes.func.isRequired,
   allRestaurants: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
-  allRestaurants: state.Restaurant.restaurants
+  allRestaurants: state.Restaurant.restaurants,
+  error: state.Authenticate.error,
 })
 
-export default connect(mapStateToProps, { fetchRestaurant })(Signup);
+export default connect(mapStateToProps, { fetchRestaurant, registerCustomer, registerEmployee })(Signup);
