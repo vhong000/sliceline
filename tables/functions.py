@@ -297,7 +297,7 @@ def customerApproval(user_id,aproval):
     if(approve == 0):
         visitorDemotion(user_id)
     else:
-        return "Approve by manager"
+        return Response("Approve by manager",status=200)
     cursor.close()
 
 def listOfUnapproveCustomer():
@@ -334,8 +334,12 @@ def checkAccess(access_code,id,store_id):
         cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id)"""
                        """VALUES (%s,%s,%s,%s)""", [0, 0, id, store_id])
         transaction.commit()
+    elif(employer=='manager'):
+        cursor.execute("""INSERT INTO tables_manager (emp_id_id, store_id)"""
+                       """VALUES (%s,%s,%s,%s)""", [id, store_id])
+        transaction.commit()
     else:
-        return "Invalid access code"
+        return Response("Invalid access code",status=404)
     cursor.close()
 
 #show restaurant given id
@@ -347,7 +351,7 @@ def showRestaurant(store_id):
     restaurant=row[0]
     # for i in row:
     #     list_of_restaurant.append(i)
-    return restaurant
+    return Response(restaurant,status=200)
     cursor.close()
 
 
