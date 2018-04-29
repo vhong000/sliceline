@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import connect from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { FormGroup, FormControl, ControlLabel,
   Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
   Collapse, Panel, Label, Well, Row, Col, Alert, Image
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { signupEmployee, signupCustomer } from '../fetchData.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
@@ -34,6 +36,11 @@ class Signup extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleAccessChange = this.handleAccessChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleRestSelect = this.handleRestSelect.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchRestaurant();
   }
 
   handleChange(event) {
@@ -41,6 +48,15 @@ class Signup extends Component {
       applicant: {
         ...this.state.applicant,
         [event.target.id]: event.target.value,
+      }
+    })
+  }
+
+  handleRestSelect(event) {
+    this.setState({
+      applicant: {
+        ...this.state.applicant,
+        rest_ids: event,
       }
     })
   }
@@ -53,7 +69,9 @@ class Signup extends Component {
 
   handleSubmit(event) {
     const final = this.state.applicant;
+    const final_ids = this.state.applicant.rest_ids;
     if (this.state.access === 'employee') {
+      delete final.rest_ids
       console.log(JSON.stringify(final));
       signupEmployee(final, this.props.show).catch((error) => {
         this.setState({
@@ -61,9 +79,10 @@ class Signup extends Component {
         })
       }); 
     } else {
+      final.store_id = final_ids;
       delete final.ssn;
       delete final.access_code;
-      delete final.store_id;
+      delete final.rest_ids;
       console.log(JSON.stringify(final));
       signupCustomer(final, this.props.show).catch((error) => {
         this.setState({
@@ -77,7 +96,9 @@ class Signup extends Component {
     return (
       <div className='signup'>
         <header className='login-header'>   
-          <Image src={sliceline_header} className='login-header-logo' alt='main'/>
+          <Link to='/'>
+            <Image src={sliceline_header} className='login-header-logo' alt='main'/>
+          </Link>
         </header>
 
         <form>
@@ -147,7 +168,7 @@ class Signup extends Component {
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
-            <FormGroup controlId='dob'>
+            <FormGroup controlId='birthday'>
               <Col xs={6}>
                 <ControlLabel>Date of Birth:</ControlLabel>
                 <FormControl type='text' placeholder='mm/dd/yyyy' onChange={this.handleChange}/>
@@ -238,6 +259,22 @@ class Signup extends Component {
           </Row>
           <br></br>
 
+          <Collapse unmountOnExit mountOnEnter in={this.state.access === 'customer'}>
+            <ToggleButtonGroup type='checkbox' vertical block onChange={this.handleRestSelect}>
+            <ControlLabel>Choose Restaurants</ControlLabel>
+            {/*
+              <ToggleButton>All Restaurants</ToggleButton>
+              */}
+              {this.props.allRestaurants.map((elements) => (
+                <ToggleButton value={elements.rest_id} >
+                  {elements.name}
+                </ToggleButton>
+              ))
+              }
+            </ToggleButtonGroup>
+          </Collapse>
+          <br></br>
+
           {this.state.error ? (
             <Alert bsStyle='danger'>{this.state.error.message}</Alert>
           ) : ( null )
@@ -254,7 +291,13 @@ class Signup extends Component {
   }
 }
 
-//const mapStateToProps = state => ({
-//})
+Signup.propTypes = {
+  fetchRestaurant: PropTypes.func.isRequired,
+  allRestaurants: PropTypes.array.isRequired,
+}
 
-export default Signup;
+const mapStateToProps = state => ({
+  allRestaurants: state.Restaurant.restaurants
+})
+
+export default connect(mapStateToProps, { fetchRestaurant })(Signup);

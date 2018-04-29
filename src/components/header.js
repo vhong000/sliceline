@@ -46,9 +46,9 @@ class Header extends Component {
     return (
       <header className="header">
         <div className="header-main"> 
-          <Link to="/">
-            <Image responsive src={sliceline_header}/>
-          </Link>
+          <Link to='/'>
+            <Image responsive src={sliceline_header} />
+      </Link>
         </div>
 
         {this.props.userData ? (
@@ -66,10 +66,8 @@ class Header extends Component {
               <Button block onClick={this.handleLogin}>
                 Login
               </Button>
-                <Button block bsStyle='default'>
-              <Link to='/signup' style={{textDecoration: 'none'}}>
+                <Button block bsStyle='default' href='/signup'>
                   Sign Up
-              </Link>
                 </Button>
             </ButtonGroup>
             

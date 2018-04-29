@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router';
 import { Row, Col, 
 } from 'react-bootstrap';
@@ -29,4 +30,8 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = state => ({
+  userData: state.Authenticate.user,
+})
+
+export default connect(mapStateToProps, null)(Main);
