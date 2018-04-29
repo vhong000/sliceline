@@ -36,7 +36,7 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
     #check what employee it is chef/delivery
         checkAccess(access_code,id,store_id)
         cursor.close()
-        return "Signup successful"
+        return Response("Signup successful",status=200)
 
 
 #Customer sign up function to insert into the DB
@@ -58,7 +58,7 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date,0])
         if(checkBlackList(email)):
             cursor.close()
-            return "You are blacklisted"
+            return Response("You are blacklisted",status=404)
         else:
         #need a wait function for manager approval before inserting to DB
             transaction.commit()
@@ -75,7 +75,7 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
                            """VALUES (%s,%s)""",[list,user_id])
             transaction.commit()
             cursor.close()
-            return Response("Sign up successful",status=202)
+            return Response("Sign up successful",status=200)
 
 #checks for a given email if it is blacklisted
 def checkBlackList(email):
