@@ -128,6 +128,8 @@ def visitorDemotion(user_id):
         transaction.commit()
         cursor.execute("""delete from tables_customer  WHERE user_id= %s""",[user_id])
         transaction.commit()
+        cursor.execute("""delete from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+        transaction.commit()
         cursor.close()
 
 #checkout process
