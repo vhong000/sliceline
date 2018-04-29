@@ -68,8 +68,11 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
             cursor.execute("""select user_id from tables_customer WHERE email=%s""",[email])
             row = cursor.fetchone()
             user_id = row[0]
+            print(store_id)
+            list = ''.join(str(e)+',' for e in store_id)
+            list = list[:-1]
             cursor.execute("""insert into tables_customer_restaurant (rest_id, user_id_id)"""
-                           """VALUES (%s,%s)""",[store_id,user_id])
+                           """VALUES (%s,%s)""",[list,user_id])
             transaction.commit()
             cursor.close()
             return Response("Sign up successful",status=202)
@@ -296,6 +299,13 @@ def customerApproval(user_id,aproval):
     else:
         return "Approve by manager"
     cursor.close()
+
+def listOfUnapproveCustomer():
+    cursor = connection.cursor()
+    cursor.execute("""select * from tables_customer WHERE approve=%s""",[0])
+    row = cursor.fetchall()
+    cursor.close()
+    return row
 
 #pays of cook/delivery
 def employeeSalary(emp_id,salary):

@@ -101,5 +101,11 @@ class CSignupViewSet(viewsets.ModelViewSet):
         city  = request.data.get('city')
         state  = request.data.get('state')
         zip  = request.data.get('zipcode')
-        return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email))
+        store_id = request.data.get('store_id')
+        print(store_id)
+        # return Response("showing store_id")
+        return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id))
 
+class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
+    def create(self,request):
+        return Response(listOfUnapproveCustomer())

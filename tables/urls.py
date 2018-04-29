@@ -20,6 +20,7 @@ router.register(r'order', OrderViewSet, base_name='order')
 router.register(r'login',LoginViewSet,base_name='login')
 router.register(r'employSignup',ESignupViewSet,base_name='employSignup')
 router.register(r'custSignup',CSignupViewSet,base_name='custSignup')
+router.register(r'manager',ListOfUnapproveCustomerViewSet,base_name='manager/list')
 
 
 
