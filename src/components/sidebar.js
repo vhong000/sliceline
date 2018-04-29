@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Button, Nav, NavItem } from 'react-bootstrap';
+import '../css/sidebar.css';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -18,8 +20,10 @@ class Sidebar extends Component {
       <div className="sidebar">
         <Nav bsStyle='pills' stacked>
           {this.props.locations.map((elements, index) => (
-            <NavItem eventKey={index} href={`/restaurant/${elements.rest_id}`}>
-              {elements.name}
+              <NavItem eventKey={index}>
+                <Link to={`/restaurant/${elements.rest_id}`}>
+                  {elements.name}
+                </Link>
             </NavItem>
           ))} 
         </Nav>
