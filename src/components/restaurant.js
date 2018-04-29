@@ -4,8 +4,9 @@ import Header from './header.js';
 import Menu from './menu.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
-import { Carousel, PageHeader, Navbar, Tab,
+import { Carousel, PageHeader, Navbar, Tab, Row, Col,
   TabContainer, TabPane, TabContent, Nav, NavItem, Image,
+  Glyphicon,
 } from 'react-bootstrap';
 import '../css/restaurant.css';
 
@@ -23,7 +24,7 @@ class Restaurant extends Component {
 
         <Tab.Container defaultActiveKey='home'>
           <div className='restaurant-body'>
-            <Navbar>
+            <Navbar fluid >
               <Navbar.Header>
                 <Navbar.Brand>
                   {this.props.restaurant.name}
@@ -35,13 +36,19 @@ class Restaurant extends Component {
                   Home
                 </NavItem>
                 <NavItem eventKey='menu'>
-                  Menu
+                  Order
                 </NavItem>
                 <NavItem eventKey='reviews'>
                   Reviews
                 </NavItem>
                 <NavItem eventKey='contact'>
                   Contact
+                </NavItem>
+              </Nav>
+              <Nav bsStyle='tabs' pullRight>
+                <NavItem eventKey='Cart' pullRight>
+                  <Glyphicon glyph='shopping-cart'/>
+                  Cart
                 </NavItem>
               </Nav>
             </Navbar>

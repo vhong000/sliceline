@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/authActions.js';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, Button,
+  ToggleButton, ButtonToolbar, ToggleButtonGroup, Glyphicon, 
+} from 'react-bootstrap';
 import { Panel, Row, Col, Image, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 //import { login } from "../fetchData";
@@ -68,7 +69,9 @@ class Login extends Component {
           </FormGroup>
 
           {this.props.error ? (
-            <Alert bsStyle='danger'>{this.props.error.message}</Alert>
+            <Alert bsStyle='danger'>
+              <Glyphicon glyph='exclamation-sign'/> {this.props.error.message}
+            </Alert>
           ) : ( null )
           }
 

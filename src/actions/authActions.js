@@ -17,7 +17,7 @@ export const registerEmployee = (newEmployee) => dispatch => {
     }) 
     if (response.status === 409) {
       return Promise.reject({
-        message: "Email taken",
+        message: "This email is not available",
       });
     } 
     else if (response.status === 500) {
@@ -52,7 +52,7 @@ export const registerCustomer = (newCustomer) => dispatch => {
     })
     if (response.status === 409) {
       return Promise.reject({
-        message: "Email taken"
+        message: "This email is not available"
       });
     } else if (response.status === 404) {
       return Promise.reject({

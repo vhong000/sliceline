@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormGroup, FormControl, ControlLabel,
   Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
-  Collapse, Panel, Label, Well, Row, Col, Alert, Image
+  Collapse, Panel, Label, Well, Row, Col, Alert, Image,
+	Glyphicon,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
@@ -253,8 +254,16 @@ class Signup extends Component {
               <ToggleButton>All Restaurants</ToggleButton>
               */}
               {this.props.allRestaurants.map((elements) => (
-                <ToggleButton value={elements.rest_id} >
-                  {elements.name}
+                <ToggleButton value={elements.rest_id}>
+                  {this.state.applicant.store_id.includes(elements.rest_id) ? (
+                    <div>
+                    <span class='glyphicon glyphicon-check'></span> {elements.name}
+                    </div>
+                  ): (
+                    <div>
+                    <span class='glyphicon glyphicon-unchecked'></span> {elements.name}
+                    </div>
+                  )}
                 </ToggleButton>
               ))
               }
@@ -263,7 +272,9 @@ class Signup extends Component {
           <br></br>
 
           {this.props.error ? (
-            <Alert bsStyle='danger'>{this.props.error.message}</Alert>
+            <Alert bsStyle='danger'>
+              <Glyphicon glyph='exclamation-sign'/> {this.props.error.message}
+            </Alert>
           ) : ( null )
           }
 

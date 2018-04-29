@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
-import { Button, Nav, NavItem } from 'react-bootstrap';
+import { Button, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import '../css/sidebar.css';
 
 class Sidebar extends Component {
@@ -22,7 +22,7 @@ class Sidebar extends Component {
           {this.props.locations.map((elements, index) => (
               <NavItem eventKey={index}>
                 <Link to={`/restaurant/${elements.rest_id}`}>
-                  {elements.name}
+                  <Glyphicon glyph='chevron-right'/> {elements.name}
                 </Link>
             </NavItem>
           ))} 
