@@ -29,7 +29,6 @@ class Signup extends Component {
         ssn: "",
         access_code: "", 
         store_id: '',
-        rest_ids: [],
       },
       access: 'customer',
     }
@@ -56,7 +55,7 @@ class Signup extends Component {
     this.setState({
       applicant: {
         ...this.state.applicant,
-        rest_ids: event,
+        store_id: event,
       }
     })
   }
@@ -69,16 +68,12 @@ class Signup extends Component {
 
   handleSubmit(event) {
     const final = this.state.applicant;
-    const final_ids = this.state.applicant.rest_ids;
     if (this.state.access === 'employee') {
-      delete final.rest_ids
       console.log(JSON.stringify(final));
       this.props.registerEmployee(final);
     } else {
-      final.store_id = final_ids;
       delete final.ssn;
       delete final.access_code;
-      delete final.rest_ids;
       console.log(JSON.stringify(final));
       this.props.registerCustomer(final);
     }
@@ -288,6 +283,7 @@ Signup.propTypes = {
   registerCustomer: PropTypes.func.isRequired,
   registerEmployee: PropTypes.func.isRequired,
   allRestaurants: PropTypes.array.isRequired,
+  error: PropTypes.object,
 }
 
 const mapStateToProps = state => ({

@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case USER_AUTH_SUCCESS:
       return {
-        ...state,
+        ...state, // initial state with user only??
         user: action.payload,       
         error: '',
         loading: false,

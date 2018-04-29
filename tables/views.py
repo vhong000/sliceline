@@ -86,7 +86,7 @@ class ESignupViewSet(viewsets.ModelViewSet):
         ssn  = request.data.get('ssn')
         access  = request.data.get('access_code')
         store_id = request.data.get('store_id')
-        return Response(employeeSignUp(first_name,last_name,password,address,city,state,zip,phone,ssn,birthday,email,access,store_id))
+        return employeeSignUp(first_name,last_name,password,address,city,state,zip,phone,ssn,birthday,email,access,store_id)
 
 
 class CSignupViewSet(viewsets.ModelViewSet):
@@ -104,7 +104,7 @@ class CSignupViewSet(viewsets.ModelViewSet):
         store_id = request.data.get('store_id')
         print(store_id)
         # return Response("showing store_id")
-        return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id))
+        return customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id)
 
 class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
     def create(self,request):

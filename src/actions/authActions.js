@@ -62,6 +62,8 @@ export const registerCustomer = (newCustomer) => dispatch => {
       return Promise.reject({
         message: "server error"
       });
+    } else {
+      return response;
     }
   }).then(res => 
     dispatch({
