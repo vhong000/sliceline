@@ -3,9 +3,7 @@ import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
 } from '../actions/types.js';
 
 const initialState = {
-  //user: {
-  //  name: 'test',
-  //},
+  user: '',
   loading: false,
 }
 

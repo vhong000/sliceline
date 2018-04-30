@@ -12,9 +12,37 @@ import '../css/restaurant.css';
 
 class Restaurant extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      privilege: 'visitor'
+    }
+  }
+
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.fetchRestaurant(id);
+    this.props.fetchRestaurant(id).then(()=> { 
+    if (this.props.userStatus) {
+      if (this.props.userRestId === this.props.restaurant.rest_id) {
+        this.setState({
+          privilege: this.props.userStatus,
+        })
+      } else {
+        this.setState({
+          privilege: 'Customer',
+        })
+      }
+    }
+    })
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.userRestId === this.props.restaurant.rest_id) {
+      this.setState({
+        privilege: nextProps.userStatus,
+      })
+    }
   }
 
   render() {
@@ -50,6 +78,11 @@ class Restaurant extends Component {
                   <Glyphicon glyph='shopping-cart'/>
                   Cart
                 </NavItem>
+                {this.state.privilege === 'chef' ? (
+                  <NavItem eventKey='menu-edit'>
+                    Menu Edit
+                  </NavItem>
+                ) : ( null )}
               </Nav>
             </Navbar>
 
@@ -108,6 +141,8 @@ const mapStateToProps = state => ({
   restaurant: state.Restaurant.restaurant,
   error: state.Restaurant.error,
   isLoading: state.Restaurant.loading,
+  userStatus: state.Authenticate.user.status,
+  userRestId: state.Authenticate.user.rest_id,
 })
 
 export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);

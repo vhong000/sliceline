@@ -27,8 +27,8 @@ class ReviewForm extends Component {
     return(
       <div className='review-form'>
         <header className='review-form-header'>
-          <Image src={sliceline_header} responsive className='login-header-logo' alt='main'/>
-          <Image src={this.props.restaurantLogo} responsive className='rest-logo' alt='logo'/>
+          <Image src={sliceline_header} responsive className='review-form-header-logo' alt='main'/>
+          <Image src={this.props.restaurantLogo} responsive className='review-form-rest-logo' alt='logo'/>
         </header>
 
         <Well>

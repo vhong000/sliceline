@@ -10,13 +10,13 @@
   display: inline-block;
 }
 
-.login-header-logo {
+.review-form-header-logo {
   padding: 5px;
   width: 25%;
   float: left;
 }
 
-.rest-logo {
+.review-form-rest-logo {
   padding: 5px;
   width: 25%;
   height: 25%;
