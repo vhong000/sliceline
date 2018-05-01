@@ -2,6 +2,10 @@ import hashlib,sqlite3
 from django.utils import timezone
 from django.db import connection, transaction
 from rest_framework.response import Response
+from .models import *
+from .serializers import *
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 
@@ -24,7 +28,7 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
         cursor.execute("""INSERT INTO tables_account (types, email)"""
                    """VALUES (%s,%s)""", [type, email])
         transaction.commit()
-        cursor.execute("""insert into tables_employees 
+        cursor.execute("""insert into tables_employees
                   (password, emp_fname, emp_lname, address, city, state, zipcode, phone, ssn, birthday,email,date_hired)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,ssn,birthday,email,date])
@@ -52,7 +56,7 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
         redirect_message = {'error':"email already exist"}
         return Response(redirect_message,status= 409)
     else:
-        cursor.execute("""insert into tables_customer 
+        cursor.execute("""insert into tables_customer
                   (password, user_fname, user_lname, address, city, state, zipcode, phone, birthday,email,memb_since,approve)"""
                   """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                    [hex_dig,username,lastname,address,city,state,zipcode,phone,birthday,email,date,0])
@@ -128,6 +132,8 @@ def visitorDemotion(user_id):
         transaction.commit()
         cursor.execute("""delete from tables_customer  WHERE user_id= %s""",[user_id])
         transaction.commit()
+        cursor.execute("""delete from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+        transaction.commit()
         cursor.close()
 
 #checkout process
@@ -141,7 +147,7 @@ def checkOut(user_id):
         row = cursor.fetchone()
         number = int(row[0])
         if( number >= 3):
-            cursor.execute("""select sum(customer_rating), count(*) 
+            cursor.execute("""select sum(customer_rating), count(*)
                           FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
             row = cursor.fetchone()
             sum = int(row[0])
@@ -259,10 +265,36 @@ def login(email,password):
 
 #CHEF FUNCTIONS
 
+#show menu
+# This funciton fectches all of the menu given an store_id
+def listMenu(store_id):
+    cursor = connection.cursor()
+    #grabs all of the chef from that store_id
+    cursor.execute("""select chef_id from tables_chef WHERE store_id=%s""",[store_id])
+    row = cursor.fetchall()
+    chef = []
+    # extracting the query and putting it in a array
+    for i in range(len(row)):
+        chef.append(row[i][0])
+    list = []
+    # looping to get all of the menu for each chef
+    for chef in chef:
+        cursor.execute("""select price,description,rating,picture from tables_menu WHERE chef_id_id=%s""",[chef])
+        row = cursor.fetchall()
+        for i in range(len(row)):
+            list.append(row[i])
+        # query = Menu.objects.filter(chef_id=chef)
+        # if(query):
+        #     list.append(query)
+    print(list)
+    # list = MenuSerializer(query,context={'request': request})
+    #returns an array containing menu's value array (2D)
+    return list
+
 #chef creates a menu
 def createMenu(chef_id,price,description,picture):
     cursor = connection.cursor()
-    cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id)""" 
+    cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id)"""
                     """VALUES (%s,%s,%s,%s,%s)""",[price,description,0,picture,chef_id])
     transaction.commit()
     cursor.close()
@@ -345,7 +377,7 @@ def checkAccess(access_code,id,store_id):
 #show restaurant given id
 def showRestaurant(store_id):
     cursor = connection.cursor()
-    cursor.execute("""SELECT name,address,city,state,zipcode,phone,logo 
+    cursor.execute("""SELECT name,address,city,state,zipcode,phone,logo
                   FROM tables_restaurant where rest_id=%s""",[store_id])
     row = cursor.fetchone()
     restaurant=row[0]
@@ -369,4 +401,3 @@ print("ran")
 # createMenu('1',12,"cheese pie","no picture")
 # updatePrices("12.99",'1')
 print("done")
-
