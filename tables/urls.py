@@ -21,10 +21,8 @@ router.register(r'login',LoginViewSet,base_name='login')
 router.register(r'employSignup',ESignupViewSet,base_name='employSignup')
 router.register(r'custSignup',CSignupViewSet,base_name='custSignup')
 router.register(r'manager/list',ListOfUnapproveCustomerViewSet,base_name='manager/list')
-
-
-
-
+#url path with get parameter
+router.register(r'menu/(?P<store_id>\d+)',ListMenuViewSet,base_name='menu')
 
 
 

@@ -65,7 +65,7 @@ class Delivery_reviewSerializer(serializers.HyperlinkedModelSerializer):
 class MenuSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Menu
-        fields = ('price','description','rating','picture','chef_id_id')
+        fields = '__all__'
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

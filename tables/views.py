@@ -9,7 +9,7 @@ from django.forms.models import model_to_dict
 from rest_framework.response import Response
 
 class RestaurantViewSet(viewsets.ModelViewSet):
-    
+
     queryset = Restaurant.objects.all().order_by('rest_id')
     serializer_class = RestaurantSerializer
 
@@ -102,10 +102,19 @@ class CSignupViewSet(viewsets.ModelViewSet):
         state  = request.data.get('state')
         zip  = request.data.get('zipcode')
         store_id = request.data.get('store_id')
-        print(store_id)
+        # print(store_id)
         # return Response("showing store_id")
         return Response(customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id))
 
 class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
     def create(self,request):
+        # store = request.data.get('store_id')
+        # return Response(MenuSerializer(listMenu(store),context={'request': request}).data,status=200)
         return Response(listOfUnapproveCustomer())
+
+#use to call the function in the url
+class ListMenuViewSet(viewsets.ModelViewSet):
+    serializer_class = MenuSerializer
+    def get_queryset(self,store_id):
+        query_param = self.request.query_params.get('store_id', None)
+        chef = Chef.objects.filter(query_param)
