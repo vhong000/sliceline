@@ -15,17 +15,18 @@ router.register(r'complaints', ComplaintsViewSet, base_name='complaints')
 router.register(r'compliments', ComplimentsViewSet, base_name='compliments')
 router.register(r'delivery', DeliveryViewSet, base_name='delivery')
 router.register(r'delivery_review', Delivery_reviewViewSet, base_name='delivery_review')
-router.register(r'menu', MenuViewSet, base_name='menu')
+# router.register(r'menu', MenuViewSet, base_name='menu')
 router.register(r'order', OrderViewSet, base_name='order')
 router.register(r'login',LoginViewSet,base_name='login')
 router.register(r'employSignup',ESignupViewSet,base_name='employSignup')
 router.register(r'custSignup',CSignupViewSet,base_name='custSignup')
 router.register(r'manager/list',ListOfUnapproveCustomerViewSet,base_name='manager/list')
+# router.register(r'menu/(?P<chef>\d+)', ListMenuViewSet, base_name='menu')
+
 #url path with get parameter
-router.register(r'menu/(?P<store_id>\d+)',ListMenuViewSet,base_name='menu')
-
-
-
+# router.register(r'menu/(?P<chef>\d+)/$',ListMenuViewSet)
+# ?P<chef>\d+)/ (?P<chef>\d+)/$
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^menu/(?P<chef>\d+)/$',ListMenu),
 ]

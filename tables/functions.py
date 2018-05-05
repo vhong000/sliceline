@@ -266,7 +266,7 @@ def login(email,password):
 #CHEF FUNCTIONS
 
 #show menu
-# This funciton fectches all of the menu given an store_id
+# This funciton fectches all of the menu given a store_id
 def listMenu(store_id):
     cursor = connection.cursor()
     #grabs all of the chef from that store_id
@@ -352,6 +352,7 @@ def chooseDelivery(emp_id,order_id):
     cursor.execute("""update tables_delivery set current_order=%s where emp_id_id=%s""",[order_id,emp_id])
     transaction.commit()
 
+# USE IN SIGNUP
 #validate the access code and assign to the corresponding job(chef/delivery)
 def checkAccess(access_code,id,store_id):
     cursor = connection.cursor()
