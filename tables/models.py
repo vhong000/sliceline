@@ -83,11 +83,18 @@ class Delivery(models.Model):
 #Table for menu
 class Menu(models.Model):
     menu_id     = models.AutoField(primary_key=True)
+    name        = models.CharField(max_length=100)
     chef_id     = models.ForeignKey(Chef,on_delete=models.CASCADE)
     price       = models.DecimalField(decimal_places=2,max_digits=5)
     description = models.CharField(max_length=100)
     rating      = models.IntegerField(null=True)
     picture     = models.CharField(max_length=1000,null=True)
+    crust       = models.CharField(max_length=100)
+    toppings    = models.CharField(max_length=100)
+    drinks      = models.CharField(max_length=100)
+    appetizers  = models.CharField(max_length=100)
+
+
 
 #Table for ordering
 class Order(models.Model):
@@ -162,3 +169,11 @@ class Black_list(models.Model):
 class Login(models.Model):
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
+
+class Create_pizza(models.Model):
+    ingredient_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
+    price = models.DecimalField(decimal_places=2,max_digits=5)
+
+

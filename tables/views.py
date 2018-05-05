@@ -1,12 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,get_list_or_404
 from rest_framework import viewsets, filters, generics
 from tables.serializers import *
 from tables.functions import *
 from .models import *
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from django.forms.models import model_to_dict
 from rest_framework.response import Response
+import json
+from django.core import serializers
+from django.db.models.query import QuerySet
+from django.utils.functional import curry
+from django.http import JsonResponse
+from django.http import HttpResponse
+from django.views.generic import DetailView
 
 class RestaurantViewSet(viewsets.ModelViewSet):
 
@@ -111,10 +117,12 @@ class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
         # store = request.data.get('store_id')
         # return Response(MenuSerializer(listMenu(store),context={'request': request}).data,status=200)
         return Response(listOfUnapproveCustomer())
+##GET FUNCTIONS!!
 
-#use to call the function in the url
-class ListMenuViewSet(viewsets.ModelViewSet):
-    serializer_class = MenuSerializer
-    def get_queryset(self,store_id):
-        query_param = self.request.query_params.get('store_id', None)
-        chef = Chef.objects.filter(query_param)
+def ListMenu(request,chef=None):
+    instance = get_list_or_404(Menu,chef_id=chef)
+    print(instance)
+    r = serializers.serialize("json", instance)
+    return HttpResponse(r,content_type='application/json')
+
+
