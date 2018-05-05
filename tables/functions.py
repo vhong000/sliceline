@@ -307,6 +307,16 @@ def updatePrices(price,menu_id):
     transaction.commit()
     cursor.close()
 
+def listOfChef(store_id):
+    cursor = connection.cursor()
+    cursor.execute("""select chef_id from tables_chef WHERE store_id=%s""",[store_id])
+    row = cursor.fetchall()
+    chef = []
+    for i in row:
+        chef.append(i[0])
+    cursor.close()
+    return chef
+
 #MANAGER FUNCTIONS
 
 #fectches all of the order with status = not delivered
