@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import Main from './components/main.js';
 import Restaurant from './components/restaurant.js';
-import Menu from './components/menu.js';
+import BuildOrder from './components/buildOrder.js';
 import Login from './components/login.js';
 import Signup from './components/signup.js';
 import store from './store.js';
@@ -19,7 +19,7 @@ ReactDOM.render(
 				<Route exact path="/login" component={Login}/>
 				<Route exact path="/signup" component={Signup}/>
 				<Route exact path="/restaurant/:id" component={Restaurant}/>
-				<Route exact path="/menu/:rest_id/:access" component={Menu}/>
+				<Route exact path="/build/:rest_id/:access" component={BuildOrder}/>
 			</div>
 		</Router> 
 	</Provider>,

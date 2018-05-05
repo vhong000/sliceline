@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchRestaurant } from '../actions/restaurantActions.js';
+//import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Button, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import '../css/sidebar.css';
 
@@ -11,9 +11,9 @@ class Sidebar extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchRestaurant()
-  } 
+  //componentDidMount() {
+  //  this.props.fetchRestaurant()
+  //} 
 
   render() {
     return (
@@ -33,15 +33,15 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-  fetchRestaurant: PropTypes.func.isRequired,
+  //fetchRestaurant: PropTypes.func.isRequired,
   locations: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
-  locations: state.Restaurant.restaurants,
   error: state.Restaurant.error,
+  locations: state.Restaurant.restaurants,
   isLoading: state.Restaurant.loading,
 })
 
-export default connect(mapStateToProps, { fetchRestaurant })(Sidebar);
+export default connect(mapStateToProps, null)(Sidebar);
 

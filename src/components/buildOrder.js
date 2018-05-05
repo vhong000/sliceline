@@ -16,12 +16,12 @@ import DisplayMenuItems from './displayMenuItems.js';
 //  picture: 'string'
 // }
 
-class Menu extends Component {
+class BuildOrder extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      progress: 16.6,
+      progress: 16.666,
     }
     this.handleSelected = this.handleSelected.bind(this);
   }
@@ -47,13 +47,13 @@ class Menu extends Component {
           <Tab eventKey={3} title='Topping 2'>
             <DisplayMenuItems/>
           </Tab>
-          <Tab eventKey={4} title='Drinks'>
+          <Tab eventKey={4} title='Topping 3'>
             <DisplayMenuItems/>
           </Tab>
-          <Tab eventKey={5} title='Appetizers'>
+          <Tab eventKey={5} title='Drinks'>
+            <DisplayMenuItems/>
           </Tab>
-          <Tab eventKey={6} title='Checkout'>
-            <Button bsStyle='success'>Checkout</Button>
+          <Tab eventKey={6} title='Appetizers'>
           </Tab>
         </Tabs>
      
@@ -62,4 +62,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu
+export default BuildOrder

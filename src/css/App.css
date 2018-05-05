@@ -2,8 +2,8 @@
   background-color: yellow;
 }
 
-.App {
-  text-align: center;
+.app {
+  text-align: left;
 }
 
 .App-logo {
@@ -24,6 +24,20 @@
 
 .App-intro {
   font-size: large;
+}
+
+.app-sidebar {
+  padding: 10px;
+}
+
+.app-body {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.app-map {
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {

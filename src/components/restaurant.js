@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from './header.js';
-import Menu from './menu.js';
+import BuildOrder from './buildOrder.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
@@ -63,8 +63,11 @@ class Restaurant extends Component {
                 <NavItem eventKey='home'>
                   Home
                 </NavItem>
-                <NavItem eventKey='menu'>
-                  Order
+                <NavItem eventKey='combo'>
+                  Combos 
+                </NavItem>
+                <NavItem eventKey='build'>
+                  Build Pizza
                 </NavItem>
                 <NavItem eventKey='reviews'>
                   Reviews
@@ -81,6 +84,16 @@ class Restaurant extends Component {
                 {this.state.privilege === 'chef' ? (
                   <NavItem eventKey='menu-edit'>
                     Menu Edit
+                  </NavItem>
+                ) : ( null )}
+                {this.state.privilege === 'manager' ? (
+                  <NavItem eventKey='manager_page'>
+                    Manager Center
+                  </NavItem>
+                ) : ( null )}
+                {this.state.privilege === 'delivery' ? (
+                  <NavItem eventKey='Choose Routes'>
+                    Delivery Routes 
                   </NavItem>
                 ) : ( null )}
               </Nav>
@@ -120,8 +133,8 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
                 </div>
               </Tab.Pane>
 
-              <Tab.Pane eventKey='menu'>
-                <Menu/>
+              <Tab.Pane eventKey='build'>
+                <BuildOrder/>
               </Tab.Pane>
 
               <Tab.Pane eventKey='reviews'>
