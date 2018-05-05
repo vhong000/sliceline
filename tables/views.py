@@ -117,15 +117,14 @@ class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
         # store = request.data.get('store_id')
         # return Response(MenuSerializer(listMenu(store),context={'request': request}).data,status=200)
         return Response(listOfUnapproveCustomer())
-##GET FUNCTIONS!!
 
+##GET FUNCTIONS!!
 def ListMenu(request,chef=None):
     instance = get_list_or_404(Menu,chef_id=chef)
     r = serializers.serialize("json", instance)
     return HttpResponse(r,content_type='application/json')
 
-    # instance = get_list_or_404(Menu, chef_id=chef)
-    # print(chef)
-    # r = serializers.serialize("json", instance)
-    # return HttpResponse(r, content_type='application/json')
-
+def Store_chef(request,store=None):
+    chef = get_list_or_404(Chef,store_id=store)
+    r = serializers.serialize("json", chef)
+    return HttpResponse(r,content_type='application/json')

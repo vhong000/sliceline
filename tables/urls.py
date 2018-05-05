@@ -27,4 +27,6 @@ router.register(r'manager/list',ListOfUnapproveCustomerViewSet,base_name='manage
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^menu/chef/(?P<chef>\d+)/$',ListMenu),
+    url(r'^restaurants/store/(?P<store>\d+)/$', Store_chef),
+
 ]
