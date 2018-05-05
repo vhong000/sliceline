@@ -1,22 +1,34 @@
-import { MENU_FETCH_SUCCESS, MENU_FETCH_FAIL, MENU_FETCH_LOADING,
+import { COMBO_FETCH_SUCCESS, COMBO_FETCH_FAIL, COMBO_FETCH_LOADING,
   ITEM_FETCH_SUCCESS, ITEM_FETCH_FAIL, ITEM_FETCH_LOADING,
 } from '../actions/types.js';
 
 const initialState = {
   combos: [],
-  custom: [],
+  crusts: [],
+  toppings: [],
+  drinks: [],
+  appetizers: [],
+  cart: [],
   loading: false,
 }
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case MENU_FETCH_SUCCESS:
+    case COMBO_FETCH_SUCCESS:
+      var allCombos = [];
+      action.payload.map((item) => {
+        allCombos.push(item.fields);
+      });
       return {
+        ...state,
+        combos: allCombos
       }
-    case MENU_FETCH_FAIL:
+    case COMBO_FETCH_FAIL:
       return {
+        ...state,
+        error: action.payload
       }
-    case MENU_FETCH_LOADING:
+    case COMBO_FETCH_LOADING:
       return {
         ...state,
         loading: true,

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchCombos } from '../actions/menuActions.js';
 
 class DisplayCombos extends Component {
 
@@ -78,17 +80,20 @@ class DisplayCombos extends Component {
     }   
   }
 
+  componentDidMount() {
+    this.props.fetchCombos(4);
+  }
+
   render() {
     return(
       <div className='display-combo'>
-        {this.state.predefined.map((combo, index) => {
+        {this.props.combos.map((combo, index) => {
           console.log(combo.name);
           return (
             <div key={index} className='display-combo-info'>
-            <p>test</p>
-            <p>name: {combo.name}</p>
-            <p>price: {combo.price}</p>
-          </div>
+              <p>name: {combo.name}</p>
+              <p>price: {combo.price}</p>
+            </div>
           )
         }) 
         }
@@ -97,4 +102,8 @@ class DisplayCombos extends Component {
   }
 }
 
-export default DisplayCombos;
+const mapStateToProps = state => ({
+  combos: state.Menu.combos,
+})
+
+export default connect(mapStateToProps, { fetchCombos })(DisplayCombos);
