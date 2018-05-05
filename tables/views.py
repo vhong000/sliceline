@@ -121,8 +121,11 @@ class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
 
 def ListMenu(request,chef=None):
     instance = get_list_or_404(Menu,chef_id=chef)
-    print(instance)
     r = serializers.serialize("json", instance)
     return HttpResponse(r,content_type='application/json')
 
+    # instance = get_list_or_404(Menu, chef_id=chef)
+    # print(chef)
+    # r = serializers.serialize("json", instance)
+    # return HttpResponse(r, content_type='application/json')
 
