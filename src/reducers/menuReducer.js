@@ -1,10 +1,10 @@
 import { MENU_FETCH_SUCCESS, MENU_FETCH_FAIL, MENU_FETCH_LOADING,
   ITEM_FETCH_SUCCESS, ITEM_FETCH_FAIL, ITEM_FETCH_LOADING,
-} from '../actions.types.js';
+} from '../actions/types.js';
 
 const initialState = {
-  menu: [],
-  item: {},
+  combos: [],
+  custom: [],
   loading: false,
 }
 

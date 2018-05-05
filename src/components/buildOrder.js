@@ -21,13 +21,13 @@ class BuildOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 16.666,
+      progress: 14.285,
     }
     this.handleSelected = this.handleSelected.bind(this);
   }
 
   handleSelected(key) {
-    const newProgress = key * 16.666;
+    const newProgress = key * 14.285;
     this.setState({
       progress: newProgress,
     })
@@ -54,6 +54,8 @@ class BuildOrder extends Component {
             <DisplayMenuItems/>
           </Tab>
           <Tab eventKey={6} title='Appetizers'>
+          </Tab>
+          <Tab eventKey={7} title='Chose Chef'>
           </Tab>
         </Tabs>
      

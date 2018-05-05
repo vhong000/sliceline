@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from './header.js';
 import BuildOrder from './buildOrder.js';
+import DisplayCombos from './displayCombos.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
@@ -131,6 +132,10 @@ Eget arcu dictum varius duis. Leo a diam sollicitudin tempor id eu nisl. Tristiq
 Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget mauris pharetra et. Duis convallis convallis tellus id interdum velit laoreet id. Eu nisl nunc mi ipsum faucibus vitae. At erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. In est ante in nibh mauris. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. In ante metus dictum at tempor commodo ullamcorper. Blandit libero volutpat sed cras ornare arcu dui vivamus. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Accumsan in nisl nisi scelerisque eu ultrices. Est ante in nibh mauris. Purus sit amet luctus venenatis lectus. Tristique et egestas quis ipsum suspendisse ultrices.
                   </p>
                 </div>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey='combo'>
+                <DisplayCombos/>
               </Tab.Pane>
 
               <Tab.Pane eventKey='build'>
