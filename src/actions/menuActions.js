@@ -3,7 +3,7 @@ import { COMBO_FETCH_SUCCESS, COMBO_FETCH_FAIL, COMBO_FETCH_LOADING,
 } from '../actions/types.js';
 
 export const fetchCombos = (chef_id) => dispatch => {
-  return fetch(`/api/menu/${chef_id}/`, {
+  return fetch(`/api/menu/chef/${chef_id}/`, {
     method: "GET",
   }).then((response) => {
     dispatch({

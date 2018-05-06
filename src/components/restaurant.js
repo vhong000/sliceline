@@ -78,15 +78,16 @@ class Restaurant extends Component {
                 </NavItem>
               </Nav>
               <Nav bsStyle='tabs' pullRight>
-                <NavItem eventKey='Cart' pullRight>
-                  <Glyphicon glyph='shopping-cart'/>
-                  Cart
-                </NavItem>
                 {this.state.privilege === 'chef' ? (
                   <NavItem eventKey='menu-edit'>
                     Menu Edit
                   </NavItem>
-                ) : ( null )}
+                ) : ( 
+                  <NavItem eventKey='Cart' pullRight>
+                    <Glyphicon glyph='shopping-cart'/>
+                    Cart
+                  </NavItem>
+                )}
                 {this.state.privilege === 'manager' ? (
                   <NavItem eventKey='manager_page'>
                     Manager Center

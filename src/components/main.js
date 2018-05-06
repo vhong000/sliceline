@@ -5,7 +5,7 @@ import { Row, Col,
 } from 'react-bootstrap';
 import Header from './header.js';
 import Sidebar from './sidebar.js';
-import { fetchRestaurant } from '../actions/restaurantActions.js';
+import { fetchAllRestaurants } from '../actions/restaurantActions.js';
 import { GoogleApiWrapper } from 'google-maps-react';
 import MapContainer from './map.js'
 import '../css/App.css';
@@ -13,7 +13,7 @@ import '../css/App.css';
 class Main extends Component {
 
   componentDidMount() {
-    this.props.fetchRestaurant()
+    this.props.fetchAllRestaurants()
   }
 
   render() {
@@ -41,4 +41,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { fetchRestaurant })(Main);
+export default connect(mapStateToProps, { fetchAllRestaurants })(Main);
