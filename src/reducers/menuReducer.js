@@ -8,7 +8,6 @@ const initialState = {
   toppings: [],
   drinks: [],
   appetizers: [],
-  cart: [],
   loading: false,
 }
 

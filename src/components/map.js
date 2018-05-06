@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import pizza_marker from '../images/pizza_marker.png';
 import { connect } from 'react-redux';
 
 const style = {
@@ -19,6 +20,8 @@ export class MapContainer extends Component {
   }
 
   render() {
+		var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
     return(
       <Map
         google={this.props.google}
@@ -41,6 +44,7 @@ export class MapContainer extends Component {
             lat: parseFloat(location.latitude),
             lng: parseFloat(location.longitude)
           }}
+          icon={pizza_marker}
         />
       )
     })
