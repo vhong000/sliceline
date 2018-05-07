@@ -48,7 +48,7 @@ class Customer(models.Model):
     birthday    = models.DateField()
     memb_since  = models.DateTimeField(null=True)
     wallet      = models.DecimalField(decimal_places=2,max_digits=5,null=True)
-    VIP         = models.IntegerField(null=True)
+    VIP         = models.BooleanField()
     warning     = models.IntegerField(null=True)
     order_count = models.IntegerField(null=True)
     num_complaints  = models.IntegerField(null=True)
@@ -62,8 +62,8 @@ class Chef(models.Model):
     chef_id    = models.AutoField(primary_key=True)
     emp_id     = models.ForeignKey(Employees,on_delete=models.CASCADE)
     store      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
-    menu_name  = models.CharField(max_length=10,null=True)
     warning    = models.IntegerField(null=True)
+    full_name  = models.CharField(max_length=50)
 
 class Manager(models.Model):
     mana_id =  models.AutoField(primary_key=True)

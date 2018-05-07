@@ -108,15 +108,28 @@ class CSignupViewSet(viewsets.ModelViewSet):
         state  = request.data.get('state')
         zip  = request.data.get('zipcode')
         store_id = request.data.get('store_id')
-        # print(store_id)
-        # return Response("showing store_id")
         return customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id)
 
-class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
-    def create(self,request):
-        # store = request.data.get('store_id')
-        # return Response(MenuSerializer(listMenu(store),context={'request': request}).data,status=200)
-        return Response(listOfUnapproveCustomer())
+class UpdateMenuViewSet(viewsets.ModelViewSet):
+    def put(self, request):
+        menu_id = request.data.get('pk')
+        price = request.data.get('price')
+        description = request.data.get('description')
+        rating = request.data.get('rating')
+        picture = request.data.get('picture')
+        appetizers = request.data.get('appetizers')
+        crust = request.data.get('crust')
+        drinks = request.data.get('drinks')
+        name = request.data.get('name')
+        toppings = request.data.get('toppings')
+        return updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,name,toppings)
+
+class ApprovalViewSet(viewsets.ModelViewSet):
+    def put(self,request):
+        approval = request.data.get('approval')
+        user_id = request.data.get('user_id')
+        return customerApproval(user_id,approval)
+
 
 ##GET FUNCTIONS!!
 def ListMenu(request,chef=None):
@@ -127,4 +140,14 @@ def ListMenu(request,chef=None):
 def Store_chef(request,store=None):
     chef = get_list_or_404(Chef,store_id=store)
     r = serializers.serialize("json", chef)
+    return HttpResponse(r,content_type='application/json')
+
+def Ingredients(request):
+    ingredient = get_list_or_404(Create_pizza)
+    r = serializers.serialize("json",ingredient)
+    return HttpResponse(r,content_type='application/json')
+
+def listOfUnapproveCustomer(request):
+    unapprove = get_list_or_404(Customer,approve=0)
+    r = serializers.serialize("json",unapprove)
     return HttpResponse(r,content_type='application/json')
