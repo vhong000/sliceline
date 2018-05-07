@@ -37,8 +37,9 @@ def employeeSignUp(username,lastname,password,address,city,state,zipcode,phone,s
         cursor.execute("""SELECT emp_id FROM tables_employees WHERE email=%s""",[email])
         row = cursor.fetchone()
         id = row[0]
+        name = username+' '+lastname
     #check what employee it is chef/delivery
-        checkAccess(access_code,id,store_id)
+        checkAccess(access_code,id,store_id,name)
         cursor.close()
         return Response("Signup successful",status=200)
 
@@ -109,32 +110,34 @@ def vipPromotion(user_id):
     cursor.close()
 
 
-# Don't know what to do with it atm
 #demotes the user to visitor and delete his account, if VIP demote to customer
 def visitorDemotion(user_id):
     cursor = connection.cursor()
     cursor.execute("""select VIP from tables_customer WHERE user_id=%s""",[user_id])
     row = cursor.fetchone()
-    if(row):
-        cursor.execute("""update tables_customer set VIP =%s WHERE user_id=%s""",[0,user_id])
+    if(row[0]):
+        cursor.execute("""update tables_customer set VIP =%s WHERE user_id=%s""",[False,user_id])
         transaction.commit()
         cursor.close()
+        return Response("You are demoted from VIP", status=200)
     else:
-        cursor.execute("""delete from tables_checkout  WHERE user_id= %s""",[user_id])
+        cursor.execute("""delete from tables_checkout  WHERE user_id_id= %s""",[user_id])
         transaction.commit()
-        cursor.execute("""delete from tables_complaints  WHERE user_id= %s""", [user_id])
+        cursor.execute("""delete from tables_complaints  WHERE user_id_id= %s""", [user_id])
         transaction.commit()
-        cursor.execute("""delete from tables_compliments  WHERE user_id= %s""", [user_id])
+        cursor.execute("""delete from tables_compliments  WHERE user_id_id= %s""", [user_id])
         transaction.commit()
-        cursor.execute("""delete from tables_customer_restaurant  WHERE user_id= %s""", [user_id])
+        cursor.execute("""delete from tables_customer_restaurant  WHERE user_id_id= %s""", [user_id])
         transaction.commit()
-        cursor.execute("""delete from tables_customer_review  WHERE user_id= %s""", [user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_customer  WHERE user_id= %s""",[user_id])
+        cursor.execute("""delete from tables_customer_review  WHERE user_id_id= %s""", [user_id])
         transaction.commit()
         cursor.execute("""delete from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
         transaction.commit()
+        cursor.execute("""delete from tables_customer  WHERE user_id= %s""", [user_id])
+        transaction.commit()
         cursor.close()
+        return Response("You are not a customer anymore", status=200)
+
 
 #checkout process
 #gets called after the user has made the review
@@ -300,12 +303,28 @@ def createMenu(chef_id,price,description,picture):
     cursor.close()
 
 #chef changes the price on a menu
-def updatePrices(price,menu_id):
+def updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,name,toppings):
     cursor = connection.cursor()
-    cursor.execute("""UPDATE tables_menu set price =%s WHERE tables_menu.menu_id=%s""",
-                   [price,menu_id])
+    cursor.execute("""UPDATE tables_menu set price =%s, description=%s,rating=%s,picture=%s,appetizers=%s,
+                  crust=%s, drinks=%s,name=%s, toppings=%s 
+                  WHERE tables_menu.menu_id=%s""",
+                   [price,description,rating,picture,appetizers,crust,drinks,name,toppings,menu_id])
     transaction.commit()
+    cursor.execute("""select * from tables_menu WHERE menu_id=%s""",[menu_id])
+    row = cursor.fetchall()
+    context = {
+        'price':row[0][0],
+        'description':row[0][1],
+        'rating':row[0][2],
+        'picture':row[0][3],
+        'appetizer':row[0][4],
+        'crust': row[0][5],
+        'drinks':row[0][6],
+        'name':row[0][7],
+        'toppings':row[0][8]
+    }
     cursor.close()
+    return Response(context, status=200)
 
 def listOfChef(store_id):
     cursor = connection.cursor()
@@ -336,18 +355,21 @@ def customerApproval(user_id,aproval):
     cursor.execute("""select approve from tables_customer WHERE user_id=%s""",[user_id])
     row = cursor.fetchone()
     approve = row[0]
-    if(approve == 0):
-        visitorDemotion(user_id)
+    if(approve):
+        cursor.close()
+        return Response("Approve by manager", status=200)
     else:
-        return Response("Approve by manager",status=200)
-    cursor.close()
+        cursor.close()
+        print("calling demotion on user: ",user_id)
+        return visitorDemotion(user_id)
 
-def listOfUnapproveCustomer():
-    cursor = connection.cursor()
-    cursor.execute("""select * from tables_customer WHERE approve=%s""",[0])
-    row = cursor.fetchall()
-    cursor.close()
-    return row
+
+# def listOfUnapproveCustomer():
+#     cursor = connection.cursor()
+#     cursor.execute("""select * from tables_customer WHERE approve=%s""",[0])
+#     row = cursor.fetchall()
+#     cursor.close()
+#     return row
 
 #pays of cook/delivery
 def employeeSalary(emp_id,salary):
@@ -364,22 +386,22 @@ def chooseDelivery(emp_id,order_id):
 
 # USE IN SIGNUP
 #validate the access code and assign to the corresponding job(chef/delivery)
-def checkAccess(access_code,id,store_id):
+def checkAccess(access_code,id,store_id,name):
     cursor = connection.cursor()
     cursor.execute("""SELECT types FROM tables_access WHERE access_code=%s""",[access_code])
     row = cursor.fetchone()
     employer = row[0]
     if(employer == "chef"):
-        cursor.execute("""INSERT INTO tables_chef (menu_name, warning, emp_id_id, store_id)"""
-                       """VALUES (%s,%s,%s,%s)""",["",0,id,store_id])
+        cursor.execute("""INSERT INTO tables_chef (menu_name, warning, emp_id_id, store_id,full_name)"""
+                       """VALUES (%s,%s,%s,%s,%s)""",["",0,id,store_id,name])
         transaction.commit()
     elif(employer == 'delivery'):
-        cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id)"""
-                       """VALUES (%s,%s,%s,%s)""", [0, 0, id, store_id])
+        cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id,full_name)"""
+                       """VALUES (%s,%s,%s,%s,%s)""", [0, 0, id, store_id],name)
         transaction.commit()
     elif(employer=='manager'):
-        cursor.execute("""INSERT INTO tables_manager (emp_id_id, store_id)"""
-                       """VALUES (%s,%s,%s,%s)""", [id, store_id])
+        cursor.execute("""INSERT INTO tables_manager (emp_id_id, store_id,full_name)"""
+                       """VALUES (%s,%s,%s,%s,%s)""", [id, store_id,name])
         transaction.commit()
     else:
         return Response("Invalid access code",status=404)

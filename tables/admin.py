@@ -33,7 +33,7 @@ class AccountAdmin(admin.ModelAdmin):
 admin.site.register(Account,AccountAdmin)
 
 class ChefAdmin(admin.ModelAdmin):
-    list_display = ['menu_name','warning','emp_id_id','store_id']
+    list_display = ['full_name','warning','emp_id_id','store_id']
 admin.site.register(Chef,ChefAdmin)
 
 class ComplaintsAdmin(admin.ModelAdmin):
