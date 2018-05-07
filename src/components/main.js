@@ -22,12 +22,25 @@ class Main extends Component {
         <div className='app-header'>
           <Header/>
         </div>
+        <div className='app-sidebar'>
+          <Sidebar/>
+        </div>
         <div className='app-body'>
-          <div className='app-sidebar'>
-            <Sidebar/>
+          <div className='app-map-outer'>
+            <div className='app-map'>
+              <MapContainer/>
+            </div>
           </div>
-          <div className='app-map'>
-						<MapContainer/>
+          <div className='app-recommend'>
+            <div className='app-option'>
+              <h3>iPizzaNY</h3>
+            </div>
+            <div className='app-option'>
+              <h3>Olga's Pizza</h3>
+            </div>
+            <div className='app-option'>
+              <h3>Papa John's Pizza</h3>
+            </div>
           </div>
         </div>
       </div>

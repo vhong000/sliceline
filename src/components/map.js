@@ -4,9 +4,10 @@ import pizza_marker from '../images/pizza_marker.png';
 import { connect } from 'react-redux';
 
 const style = {
-  width: '85%',
-  height: '50%'
+  width: '100%',
+  height: '100%'
 }
+
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -17,11 +18,20 @@ export class MapContainer extends Component {
         lng: -73.9529155,
       }
     }
+    this.fetchDistance = this.fetchDistance.bind(this);
+  }
+
+  fetchDistance(location) {
+    const currLocation = this.state.currentLocation.lat + ',' + this.state.currentLocation.lng;
+    const destination = location.latitude + ',' + location.longitude;
+    return fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${currLocation}&destinations=${destination}&key=AIzaSyAp3yqFx2Z7gQKR-4RtDT2BbNQ6Wf7noLo`, {
+      method: "GET",
+    }).then((response) => { 
+      return response.json(); 
+    })
   }
 
   render() {
-		var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-
     return(
       <Map
         google={this.props.google}

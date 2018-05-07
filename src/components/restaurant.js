@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './header.js';
 import BuildOrder from './buildOrder.js';
 import DisplayCombos from './displayCombos.js';
+import DisplayCart from './displayCart.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
@@ -18,6 +19,7 @@ class Restaurant extends Component {
     this.state = {
       privilege: 'visitor'
     }
+    this.employeeTabs = this.employeeTabs.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +45,36 @@ class Restaurant extends Component {
       this.setState({
         privilege: nextProps.userStatus,
       })
+    }
+  }
+
+  employeeTabs(position) {
+    switch(position) {
+      case 'chef':
+        return (
+          <NavItem eventKey='chef_page'>
+            Edit Menu
+          </NavItem>
+        )
+      case 'delivery':
+        return(
+          <NavItem eventKey='delivery_page'>
+            Delivery Routes
+          </NavItem>
+        )
+      case 'manager':
+        return(
+          <NavItem eventKey='manager_page'>
+            Manager Center
+          </NavItem>
+        )
+      default:
+        return(
+          <NavItem eventKey='Cart' pullRight>
+            <Glyphicon glyph='shopping-cart'/>
+            Cart
+          </NavItem>
+        )
     }
   }
 
@@ -78,26 +110,7 @@ class Restaurant extends Component {
                 </NavItem>
               </Nav>
               <Nav bsStyle='tabs' pullRight>
-                {this.state.privilege === 'chef' ? (
-                  <NavItem eventKey='menu-edit'>
-                    Menu Edit
-                  </NavItem>
-                ) : ( 
-                  <NavItem eventKey='Cart' pullRight>
-                    <Glyphicon glyph='shopping-cart'/>
-                    Cart
-                  </NavItem>
-                )}
-                {this.state.privilege === 'manager' ? (
-                  <NavItem eventKey='manager_page'>
-                    Manager Center
-                  </NavItem>
-                ) : ( null )}
-                {this.state.privilege === 'delivery' ? (
-                  <NavItem eventKey='Choose Routes'>
-                    Delivery Routes 
-                  </NavItem>
-                ) : ( null )}
+                {this.employeeTabs(this.state.privilege)}
               </Nav>
             </Navbar>
 
@@ -145,6 +158,10 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
 
               <Tab.Pane eventKey='reviews'>
                 <Reviews/>
+              </Tab.Pane>
+
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='Cart'>
+                <DisplayCart/>
               </Tab.Pane>
 
             </Tab.Content>

@@ -3,7 +3,6 @@ import { ORDER_ADD_SUCCESS, ORDER_ADD_FAIL, ORDER_ADD_LOAD,
 } from '../actions/types.js';
 
 const initialState = {
-  cart: []
   loading: false,
 }
 

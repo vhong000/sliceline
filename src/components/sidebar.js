@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
 //import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Button, Nav, NavItem, Glyphicon } from 'react-bootstrap';
+import spinner from '../images/spinner.svg';
 import '../css/sidebar.css';
 
 class Sidebar extends Component {
@@ -11,29 +13,32 @@ class Sidebar extends Component {
     super(props);
   }
 
-  //componentDidMount() {
-  //  this.props.fetchRestaurant()
-  //} 
-
   render() {
-    return (
-      <div className="sidebar">
-        <Nav bsStyle='pills' stacked>
-          {this.props.locations.map((elements, index) => (
-              <NavItem eventKey={index}>
-                <Link to={`/restaurant/${elements.rest_id}`}>
+    if (this.props.isLoading) {
+      return (
+        <div>
+          <img src={spinner}/>
+        </div>
+      )
+    } else {
+      return (
+        <div className="sidebar">
+          <Nav bsStyle='pills' stacked>
+            {this.props.locations.map((elements, index) => (
+              <LinkContainer to={`/restaurant/${elements.rest_id}`}>
+                <NavItem eventKey={index}>
                   <Glyphicon glyph='chevron-right'/> {elements.name}
-                </Link>
-            </NavItem>
-          ))} 
-        </Nav>
-      </div>
-    )
+                </NavItem>
+              </LinkContainer>
+            ))} 
+          </Nav>
+        </div>
+      )
+    }
   }
 }
 
 Sidebar.propTypes = {
-  //fetchRestaurant: PropTypes.func.isRequired,
   locations: PropTypes.array.isRequired,
 }
 

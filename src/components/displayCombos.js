@@ -1,109 +1,80 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Panel } from 'react-bootstrap';
 import { fetchCombos } from '../actions/menuActions.js';
+import { setActiveChef, addToCart, removeFromCart } from '../actions/restaurantActions.js';
+import '../css/displayCombos.css';
 
 class DisplayCombos extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      // placeholder menu
-      predefined: [
-        {
-          price: 13,
-          name: 'jumbo combo',
-          crust: {
-            name: 'fake crust',
-          },
-          top1: {
-            name: 'pineapple',
-          },
-          drink: {
-            name: 'pepsi',
-          },
-          appetizer: {
-            name: 'sticks',
-          },
-        },
-        {
-          price: 15,
-          name: 'wombo combo',
-          crust: {
-            name: 'real crust',
-          },
-          top1: {
-            name: 'pepperoni',
-          },
-          top2: {
-            name: 'chicken',
-          },
-          drink: {
-            name: 'coke',
-          },
-          appetizer: {
-            name: 'fries',
-          },
-        },
-      ],
-      menuitems: [ // array of items
-        { 
-          name: 'fake crust',
-          price: 5,
-          category: 'crust',
-        },
-        { 
-          name: 'fake top1',
-          price: 2,
-          category: 'topping',
-        },
-        { 
-          name: 'fake top2',
-          price: 1,
-          category: 'topping',
-        },
-        { 
-          name: 'fake top3',
-          price: 2,
-          category: 'topping',
-        },
-        { 
-          name: 'pepsi',
-          price: 3,
-          category: 'drink',
-        },
-        { 
-          name: 'cheesestick',
-          price: 4,
-          category: 'appetizer',
-        },
-      ]
-    }   
-  }
-
-  componentDidMount() {
-    this.props.fetchCombos(4);
   }
 
   render() {
-    return(
+    if( this.props.activeChef !== '' ) {
+      return(
+        <div className='display-combo'>
+          <div className='display-combo-menu'>
+            {this.props.combos.map((combo, index) => {
+              return(
+              <Panel>
+                <Panel.Heading>
+                  <Panel.Title>
+                    {combo.name}
+                  </Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                  <p> Price: {combo.price} </p>
+                  <Button bsStyle='success'
+                    onClick={()=> this.props.addToCart(combo)}>
+                    Add to Cart
+                  </Button>
+                  <Button bsStyle='danger'
+                    onClick={()=> this.props.removeFromCart(combo.name)}>
+                    Remove
+                  </Button>
+                </Panel.Body>
+              </Panel>
+              )
+            })}
+          </div>
+        </div>
+      )
+    } else {
+      return(
       <div className='display-combo'>
-        {this.props.combos.map((combo, index) => {
-          console.log(combo.name);
-          return (
-            <div key={index} className='display-combo-info'>
-              <p>name: {combo.name}</p>
-              <p>price: {combo.price}</p>
-            </div>
-          )
-        }) 
-        }
+        <h3>Select Chef</h3>
+        <div className='display-combo-chefs'>
+          {this.props.chefs.map((chef, index) => { // get chef names
+            return(
+              <Panel>
+                <Panel.Heading>
+                  <Panel.Title>
+                    Chef {chef.emp_id}
+                  </Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                  <Button bsSize='lg'
+                    bsStyle='success'
+                    onClick={()=> this.props.setActiveChef(chef)}>
+                    SELECT
+                  </Button>
+                </Panel.Body>
+              </Panel>
+            )
+          })}
+        </div>
       </div>
-    )
+      )
+    }
   }
 }
-
 const mapStateToProps = state => ({
+  chefs: state.Restaurant.chefs,
+  activeChef: state.Restaurant.activeChef,
   combos: state.Menu.combos,
+  cart: state.Restaurant.cart,
 })
 
-export default connect(mapStateToProps, { fetchCombos })(DisplayCombos);
+export default connect(mapStateToProps, { fetchCombos, setActiveChef, addToCart, removeFromCart })(DisplayCombos);

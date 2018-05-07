@@ -1,7 +1,9 @@
 import { REST_FETCH_SUCCESS, REST_FETCH_FAIL, 
   REST_FETCH_LOADING, ALL_REST_FETCH_SUCCESS, 
   CHEF_FETCH_SUCCESS, CHEF_FETCH_FAIL, CHEF_FETCH_LOADING,
-} from '../actions/types'
+  SET_ACTIVE_CHEF, ADD_TO_CART, REMOVE_FROM_CART,
+} from '../actions/types';
+import { fetchCombos } from './menuActions.js';
 
 const fetchChefs = (rest_id) => dispatch => {
   // chefs
@@ -28,6 +30,31 @@ const fetchChefs = (rest_id) => dispatch => {
       type: CHEF_FETCH_FAIL,
       payload: error,
     })
+  })
+}
+
+//    SET ACTIVE CHEF   //
+export const setActiveChef = (cook) => dispatch => {
+  dispatch({
+    type: SET_ACTIVE_CHEF,
+    payload: cook,
+  });
+  dispatch(fetchCombos(cook.emp_id))
+}
+
+//    ADD TO CART   //
+export const addToCart = (item) => dispatch => {
+  dispatch({
+    type: ADD_TO_CART,
+    payload: item,
+  })
+}
+
+//    REMOVE FROM CART   //
+export const removeFromCart = (item_name) => dispatch => {
+  dispatch({
+    type: REMOVE_FROM_CART,
+    payload: item_name,
   })
 }
 
