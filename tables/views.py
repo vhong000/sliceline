@@ -110,10 +110,6 @@ class CSignupViewSet(viewsets.ModelViewSet):
         store_id = request.data.get('store_id')
         return customerSignUp(first_name,last_name,password,address,city,state,zip,phone,birthday,email,store_id)
 
-class ListOfUnapproveCustomerViewSet(viewsets.ModelViewSet):
-    def create(self,request):
-        return Response(listOfUnapproveCustomer())
-
 class UpdateMenuViewSet(viewsets.ModelViewSet):
     def put(self, request):
         menu_id = request.data.get('pk')
