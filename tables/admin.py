@@ -46,7 +46,7 @@ admin.site.register(Compliments,ComplimentAdmin)
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['password','user_fname','user_lname','address','city','state',
-                    'zipcode','birthday','phone','email','memb_since','wallet','VIP',
+                    'zipcode','birthday','phone','email','memb_since','wallet',
                     'warning','order_count','num_complaints','last_order']
 admin.site.register(Customer,CustomerAdmin)
 
@@ -77,5 +77,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ['total','menu_id_id','rest_id_id']
 admin.site.register(Order,OrderAdmin)
 
-
+class IngredientsAdmin(admin.ModelAdmin):
+    list_display = ['name','type','price']
+admin.site.register(Create_pizza,IngredientsAdmin)
 

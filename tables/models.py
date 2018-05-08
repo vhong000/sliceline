@@ -48,7 +48,6 @@ class Customer(models.Model):
     birthday    = models.DateField()
     memb_since  = models.DateTimeField(null=True)
     wallet      = models.DecimalField(decimal_places=2,max_digits=5,null=True)
-    VIP         = models.BooleanField()
     warning     = models.IntegerField(null=True)
     order_count = models.IntegerField(null=True)
     num_complaints  = models.IntegerField(null=True)
@@ -160,6 +159,7 @@ class Customer_restaurant(models.Model):
     cust_rest_id = models.AutoField(primary_key=True)
     rest_id = models.CharField(max_length=100)
     user_id = models.ForeignKey(Customer,on_delete=models.CASCADE)
+    VIP = models.CharField(max_length=100)
 
 
 class Black_list(models.Model):
