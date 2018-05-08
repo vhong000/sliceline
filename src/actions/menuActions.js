@@ -28,3 +28,30 @@ export const fetchCombos = (chef_id) => dispatch => {
     })
   })
 }
+
+export const fetchMenuItems = () => dispatch => {
+  return fetch('/api/restaurants/ingredient', {
+    method: "GET",
+  }).then((response) => {
+    dispatch({
+      type: ITEM_FETCH_LOADING,
+    })
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot fetch menu items",
+      })
+    } else {
+      return response.json();
+    }
+  }).then((json_menu_item) => {
+    dispatch({
+      type: ITEM_FETCH_SUCCESS,
+      payload: json_menu_item,
+    })
+  }).catch((error) => {
+    dispatch({
+      type: ITEM_FETCH_FAIL,
+      payload: error,
+    })
+  })
+}

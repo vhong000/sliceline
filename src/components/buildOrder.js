@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FormGroup, FormControl, ControlLabel,
   Button, Row, Col, Tabs, Tab, ProgressBar,
 } from 'react-bootstrap';
 import Header from './header.js';
 import DisplayMenuItems from './displayMenuItems.js';
+import { fetchMenuItems } from '../actions/menuActions.js';
 
 // MENU OBJECT
 // {
@@ -24,6 +26,10 @@ class BuildOrder extends Component {
       progress: 14.285,
     }
     this.handleSelected = this.handleSelected.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchMenuItems();
   }
 
   handleSelected(key) {
@@ -64,4 +70,8 @@ class BuildOrder extends Component {
   }
 }
 
-export default BuildOrder
+const mapStateToProps = state => {
+  
+}
+
+export default connect(mapStateToProps, { fetchMenuItems })(BuildOrder)

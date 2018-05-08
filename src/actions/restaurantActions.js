@@ -7,7 +7,7 @@ import { fetchCombos } from './menuActions.js';
 
 const fetchChefs = (rest_id) => dispatch => {
   // chefs
-  return fetch(`/api/restaurants/store/${rest_id}/`, {
+  return fetch(`/api/restaurants/chef/${rest_id}/`, {
     method: "GET",
   }).then((response) => {
     dispatch({

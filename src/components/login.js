@@ -33,6 +33,7 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     const final = this.state.user;
     console.log(JSON.stringify(final));
     this.props.login(final);
