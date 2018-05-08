@@ -71,6 +71,10 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all().order_by('order_id')
     serializer_class = OrderSerializer
 
+class IngredientViewSet(viewsets.ModelViewSet):
+    queryset = Create_pizza.objects.all().order_by('ingredient_id')
+    serializer_class = IngredientSerializer
+
 class LoginViewSet(viewsets.ModelViewSet):
     def create(self,request):
         email = request.data.get('email')

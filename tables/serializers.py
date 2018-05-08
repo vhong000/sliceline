@@ -72,6 +72,11 @@ class ListMenuSerializer(serializers.HyperlinkedModelSerializer):
         model = Menu
         fields = '__all__'
 
+class IngredientSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Create_pizza
+        fields = '__all__'
+
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
