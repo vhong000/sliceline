@@ -73,11 +73,11 @@ def customerSignUp(username,lastname,password,address,city,state,zipcode,phone,b
             cursor.execute("""select user_id from tables_customer WHERE email=%s""",[email])
             row = cursor.fetchone()
             user_id = row[0]
-            print(store_id)
+            # print(store_id)
             list = ''.join(str(e)+',' for e in store_id)
             list = list[:-1]
-            cursor.execute("""insert into tables_customer_restaurant (rest_id, user_id_id)"""
-                           """VALUES (%s,%s)""",[list,user_id])
+            cursor.execute("""insert into tables_customer_restaurant (rest_id, user_id_id,VIP)"""
+                           """VALUES (%s,%s,%s)""",[list,user_id,0])
             transaction.commit()
             cursor.close()
             return Response("Sign up successful",status=200)
@@ -200,22 +200,24 @@ def login(email,password):
             redirect_message = {'error': "email or password doesn't exist"}
             return Response(redirect_message, status=404)
         else:
-            cursor.execute("""select password,user_id,user_fname,VIP,wallet from tables_customer WHERE email=%s""",[email])
+            cursor.execute("""select password,user_id,user_fname,wallet from tables_customer WHERE email=%s""",[email])
             row = cursor.fetchall()
             hash_password = row[0][0]
             user_id = row[0][1]
             name = row[0][2]
-            vip = row[0][3]
-            wallet = row[0][4]
-            if(vip == 1):
-                status = 'VIP'
-            else:
-                status = 'Customer'
+            wallet = row[0][3]
+            cursor.execute("""select VIP from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+            row = cursor.fetchall()
+            status = row[0][0]
+            cursor.execute("""select rest_id from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+            row = cursor.fetchall()
+            list = row[0][0]
             returned_dict = {
                 'user_id': user_id,
                 'name': name,
-                'status': status,
-                'wallet': wallet
+                'VIP': status,
+                'wallet': wallet,
+                'rest':list
                 }
             if (hex_dig == hash_password):
                 print('logged in as customer')
@@ -246,7 +248,7 @@ def login(email,password):
                 chef = row[0]
                 id = chef
             else:
-                cursor.execute("""select store_id from tables_delivery where emp_id=%s""", [emp_id])
+                cursor.execute("""select store_id from tables_delivery where emp_id_id=%s""", [emp_id])
                 row = cursor.fetchone()
                 delivery = row[0]
                 id = delivery

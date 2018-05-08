@@ -46,7 +46,7 @@ admin.site.register(Compliments,ComplimentAdmin)
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['password','user_fname','user_lname','address','city','state',
-                    'zipcode','birthday','phone','email','memb_since','wallet','VIP',
+                    'zipcode','birthday','phone','email','memb_since','wallet',
                     'warning','order_count','num_complaints','last_order']
 admin.site.register(Customer,CustomerAdmin)
 
