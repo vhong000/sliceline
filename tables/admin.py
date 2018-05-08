@@ -77,5 +77,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ['total','menu_id_id','rest_id_id']
 admin.site.register(Order,OrderAdmin)
 
-
+class IngredientsAdmin(admin.ModelAdmin):
+    list_display = ['name','type','price']
+admin.site.register(Create_pizza,IngredientsAdmin)
 
