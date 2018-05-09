@@ -328,11 +328,13 @@ def updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,
         'description':row[0][1],
         'rating':row[0][2],
         'picture':row[0][3],
-        'appetizer':row[0][4],
-        'crust': row[0][5],
-        'drinks':row[0][6],
-        'name':row[0][7],
-        'toppings':row[0][8]
+        'pk':row[0][4],
+        'appetizer':row[0][5],
+        'crust': row[0][6],
+        'drinks':row[0][7],
+        'name':row[0][8],
+        'toppings':row[0][9]
+
     }
     cursor.close()
     return Response(context, status=200)
