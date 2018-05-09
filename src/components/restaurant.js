@@ -7,6 +7,7 @@ import DisplayCombos from './displayCombos.js';
 import DisplayCart from './displayCart.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
+import { determineStatus } from '../actions/authActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
   TabContainer, TabPane, TabContent, Nav, NavItem, Image,
   Glyphicon,
@@ -25,26 +26,11 @@ class Restaurant extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id; // redo new authenticate
-    this.props.fetchRestaurant(id).then(()=> { 
-    if (this.props.employeeStatus) {
-      if (this.props.employeeRestId === this.props.restaurant.rest_id) {
-        this.setState({
-          privilege: this.props.employeeStatus,
-        })
-      } else {
-        this.setState({
-          privilege: 'Customer',
-        })
+    this.props.fetchRestaurant(id).then(()=> {
+      if (this.props.userData) {
+        this.props.determineStatus(this.props.userData, parseInt(id));
       }
-    }})
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.userRestId === this.props.restaurant.rest_id) {
-      this.setState({
-        privilege: nextProps.userStatus,
-      })
-    }
+    })
   }
 
   employeeTabs(position) {
@@ -109,7 +95,7 @@ class Restaurant extends Component {
                 </NavItem>
               </Nav>
               <Nav bsStyle='tabs' pullRight>
-                {this.employeeTabs(this.state.privilege)}
+                {this.employeeTabs(this.props.status)}
               </Nav>
             </Navbar>
 
@@ -183,11 +169,8 @@ const mapStateToProps = state => ({
   restaurant: state.Restaurant.restaurant,
   error: state.Restaurant.error,
   isLoading: state.Restaurant.loading,
-  employeeStatus: state.Authenticate.user.status,
-  employeeRestId: state.Authenticate.user.rest_id,
-  customerRests: state.Authenticate.user.rest,
-  customerVIPs: state.Authenticate.user.VIP,
-  mycart: state.Restaurant.cart,
+  userData: state.Authenticate.user,
+  status: state.Authenticate.status,
 })
 
-export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);
+export default connect(mapStateToProps, { fetchRestaurant, determineStatus })(Restaurant);

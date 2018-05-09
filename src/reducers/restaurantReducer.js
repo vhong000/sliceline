@@ -3,6 +3,7 @@ import { REST_FETCH_SUCCESS, REST_FETCH_FAIL,
   CHEF_FETCH_SUCCESS, CHEF_FETCH_FAIL, CHEF_FETCH_LOADING,
   SET_ACTIVE_CHEF, ADD_TO_CART, REMOVE_FROM_CART,
 } from '../actions/types'
+import { combineReducers } from './index.js';
 
 const initialState = {
   loading: false,

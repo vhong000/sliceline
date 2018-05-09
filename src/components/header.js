@@ -8,7 +8,7 @@ import { Button, Well, Image, Modal, ButtonGroup,
 import { Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './signup.js';
-import { signout } from '../actions/authActions.js';
+import { signout, determineStatus } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
@@ -36,7 +36,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="header">
+      <div className="header">
         <div className="header-main"> 
           <Link to='/'>
             <Image responsive src={sliceline_header} />
@@ -44,14 +44,12 @@ class Header extends Component {
         </div>
 
         {this.props.userData ? (
-          <Navbar fluid='true'>
-            <Navbar.Header>
-              Welcome {this.props.userData.name}
-          </Navbar.Header>
-            <Button block onClick={this.handleSignout}>
-              Sign out
-            </Button>
-          </Navbar>
+          <div>
+          <p>Welcome {this.props.status} {this.props.userData.name}</p>
+          <Button block bsSize='small' onClick={this.handleSignout}>
+            Sign out
+          </Button>
+          </div>
           ) : (
           <div className='header-login'>
             <ButtonGroup vertical>
@@ -69,14 +67,15 @@ class Header extends Component {
 
           </div>
         )}
-      </header>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  rest_id: state.Restaurant.restaurant.rest_id,
   userData: state.Authenticate.user,
-  cart: state.Restaurant.cart,
+  status: state.Authenticate.status,
 })
 
-export default withRouter(connect(mapStateToProps, { signout })(Header));
+export default withRouter(connect(mapStateToProps, { signout, determineStatus })(Header));
