@@ -297,12 +297,13 @@ def listMenu(store_id):
     return list
 
 #chef creates a menu
-def createMenu(chef_id,price,description,picture):
+def createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name):
     cursor = connection.cursor()
-    cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id)"""
-                    """VALUES (%s,%s,%s,%s,%s)""",[price,description,0,picture,chef_id])
+    cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id,crust,toppings,appetizers,drinks,name)"""
+                    """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",[price,description,0,picture,chef_id,crust,toppings,appetizers,drinks,name])
     transaction.commit()
     cursor.close()
+    return Response("Menu created",status=200)
 
 #chef changes the price on a menu
 def updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,name,toppings):

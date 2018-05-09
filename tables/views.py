@@ -134,6 +134,19 @@ class ApprovalViewSet(viewsets.ModelViewSet):
         user_id = request.data.get('user_id')
         return customerApproval(user_id,approval)
 
+class CreateMenuViewSet(viewsets.ModelViewSet):
+    def create(self, request):
+        chef_id = request.data.get('chef_id')
+        price = request.data.get('price')
+        description = request.data.get('description')
+        picture = request.data.get('picture')
+        crust   = request.data.get('crust')
+        toppings = request.data.get('toppings')
+        appetizers = request.data.get('appetizers')
+        drinks = request.data.get('drinks')
+        name = request.data.get('name')
+        return createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name)
+
 
 ##GET FUNCTIONS!!
 def ListMenu(request,chef=None):
