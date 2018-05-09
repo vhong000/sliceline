@@ -48,11 +48,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         chefs: allChefs,
+        loading: false,
       }
     case CHEF_FETCH_FAIL:
       return {
         ...state,
         error: action.payload,
+        loading: false,
       }
     case CHEF_FETCH_LOADING:
       return {
@@ -65,20 +67,25 @@ export default function(state = initialState, action) {
         activeChef: action.payload,
       }
     case ADD_TO_CART:
-      var newCart = state.cart;
-      newCart.push(action.payload);
-      console.log(newCart);
+      const newCart = state.cart.concat(action.payload);
       return {
         ...state,
         cart: newCart,
       }
     case REMOVE_FROM_CART:
-      var newCart = state.cart.filter((item) => {
-        return item.name !== action.payload;
+      const itemIndex = state.cart.findIndex((item) => {
+        return item.name === action.payload;
       })
-      return {
-        ...state,
-        cart: newCart,
+      if (itemIndex !== -1) {
+        const newCart = state.cart.filter((item, index) => {
+          return index !== itemIndex;
+        })
+        return {
+          ...state,
+          cart: newCart,
+        }
+      } else {
+        return { ...state, }
       }
     default:
       return state;

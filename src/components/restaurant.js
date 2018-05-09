@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from './header.js';
 import BuildOrder from './buildOrder.js';
 import DisplayCombos from './displayCombos.js';
@@ -23,21 +24,19 @@ class Restaurant extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id; // redo new authenticate
     this.props.fetchRestaurant(id).then(()=> { 
-    if (this.props.userStatus) {
-      if (this.props.userRestId === this.props.restaurant.rest_id) {
+    if (this.props.employeeStatus) {
+      if (this.props.employeeRestId === this.props.restaurant.rest_id) {
         this.setState({
-          privilege: this.props.userStatus,
+          privilege: this.props.employeeStatus,
         })
       } else {
         this.setState({
           privilege: 'Customer',
         })
       }
-    }
-    })
-
+    }})
   }
 
   componentWillReceiveProps(nextProps) {
@@ -173,12 +172,22 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
   }
 }
 
+Restaurant.Proptypes = {
+  fetchRestaurant: PropTypes.func.isRequired,
+  restaurant: PropTypes.obj,
+  isLoading: PropTypes.bool,
+  // status
+}
+
 const mapStateToProps = state => ({
   restaurant: state.Restaurant.restaurant,
   error: state.Restaurant.error,
   isLoading: state.Restaurant.loading,
-  userStatus: state.Authenticate.user.status,
-  userRestId: state.Authenticate.user.rest_id,
+  employeeStatus: state.Authenticate.user.status,
+  employeeRestId: state.Authenticate.user.rest_id,
+  customerRests: state.Authenticate.user.rest,
+  customerVIPs: state.Authenticate.user.VIP,
+  mycart: state.Restaurant.cart,
 })
 
 export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);

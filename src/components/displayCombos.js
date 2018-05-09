@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Button, Panel } from 'react-bootstrap';
 import { fetchCombos } from '../actions/menuActions.js';
 import { setActiveChef, addToCart, removeFromCart } from '../actions/restaurantActions.js';
-import '../css/displayCombos.css';
+import '../css/displayMenus.css';
 
 class DisplayCombos extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     if( this.props.activeChef !== '' ) {
@@ -70,11 +67,22 @@ class DisplayCombos extends Component {
     }
   }
 }
-const mapStateToProps = state => ({
+
+DisplayCombos.Proptypes = {
+  fetchCombos: PropTypes.func.isRequired,
+  setActiveChef: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  chefs: PropTypes.array,
+  activeChef: PropTypes.obj,
+  combos: PropTypes.array,
+  cart: PropTypes.array,
+}  
+
+const mapStateToProps = (state) => ({
   chefs: state.Restaurant.chefs,
   activeChef: state.Restaurant.activeChef,
   combos: state.Menu.combos,
-  cart: state.Restaurant.cart,
 })
 
 export default connect(mapStateToProps, { fetchCombos, setActiveChef, addToCart, removeFromCart })(DisplayCombos);

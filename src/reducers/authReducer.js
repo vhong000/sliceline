@@ -7,12 +7,34 @@ const initialState = {
   loading: false,
 }
 
+function stringToIntArray(array) {
+  const final = array.split(',').map((item) => {
+    return parseInt(item);
+  })
+  return final;
+}
+
 export default function(state = initialState, action) {
   switch(action.type) {
     case USER_AUTH_SUCCESS:
+      // parse user info
+      stringToIntArray('woop');
+      var userInfo = {}
+      if (action.payload.status) { // employee
+        userInfo = action.payload;
+      } else { // customer needs parsing
+        const vips = stringToIntArray(action.payload.VIP);
+        const rests = stringToIntArray(action.payload.rest);
+
+        userInfo = {
+          ...action.payload,
+          VIP: vips,
+          rest: rests,
+        }
+      }
       return {
-        ...state, // initial state with user only??
-        user: action.payload,       
+        ...state,
+        user: userInfo,
         error: '',
         loading: false,
       }

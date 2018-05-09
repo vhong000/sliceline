@@ -33,18 +33,31 @@ export default function(state = initialState, action) {
         loading: true,
       }
     case ITEM_FETCH_SUCCESS:
-      const newDrinks = action.payload.fields.filter((crust) => {
-        return crust.type === 'drink';
+      const newDrinks = action.payload.filter((drink) => {
+        return drink.type === 'drink';
       })
-      console.log(newDrinks);
+      const newCrusts = action.payload.filter((crust) => {
+        return crust.type === 'crust';
+      })
+      const newToppings = action.payload.filter((topping) => {
+        return topping.type === 'topping';
+      })
+      const newAppetizers = action.payload.filter((appetizer) => {
+        return appetizer.type === 'appetizer';
+      })
       return {
         ...state,
         drinks: newDrinks,
+        crusts: newCrusts,
+        toppings: newToppings,
+        appetizers: newAppetizers,
+        loading: false,
       }
     case ITEM_FETCH_FAIL:
       return {
         ...state,
         error: action.payload,
+        loading: false,
       }
     case ITEM_FETCH_LOADING:
       return {

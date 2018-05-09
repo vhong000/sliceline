@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Panel, } from 'react-bootstrap';
 import { removeFromCart } from '../actions/restaurantActions.js';
 
@@ -7,6 +8,23 @@ class DisplayCart extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      cart: [],
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      cart: this.props.cart,
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.cart !== nextProps.cart) {
+      this.setState({
+        cart: nextProps.cart,
+      })
+    }
   }
 
   render() {
@@ -33,6 +51,11 @@ class DisplayCart extends Component {
           )
         })
         }
+        <LinkContainer to='/checkout'>
+          <Button bsStyle='success'>
+            Checkout
+          </Button>
+        </LinkContainer>
       </div>
     )
   }

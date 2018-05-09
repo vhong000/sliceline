@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import { Button, Well, Image, Modal, ButtonGroup,
   Navbar, 
 } from 'react-bootstrap';
@@ -75,6 +76,7 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
   userData: state.Authenticate.user,
+  cart: state.Restaurant.cart,
 })
 
 export default withRouter(connect(mapStateToProps, { signout })(Header));

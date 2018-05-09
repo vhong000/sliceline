@@ -30,7 +30,7 @@ export const fetchCombos = (chef_id) => dispatch => {
 }
 
 export const fetchMenuItems = () => dispatch => {
-  return fetch('/api/restaurants/ingredient', {
+  return fetch('/api/ingredient/', {
     method: "GET",
   }).then((response) => {
     dispatch({
