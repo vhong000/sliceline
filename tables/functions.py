@@ -102,42 +102,50 @@ def blackListed(email):
                    """VALUES (%s)""",[email])
     transaction.commit()
     cursor.close()
+
 #promotes a customer to VIP
-def vipPromotion(user_id):
+def vipPromotion(user_id,store):
     cursor = connection.cursor()
-    cursor.execute("""update Customer set VIP =%s WHERE user_id= %s""",["1",user_id])
+    cursor.execute("""select VIP from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+    row = cursor.fetchone()
+    rest = row[0][0]
+    if (rest == '0'):
+        rest = ""
+    rest = rest+','+store
+    cursor.execute("""update tables_customer_restaurant set VIP =%s WHERE user_id_id= %s""",[rest,user_id])
     transaction.commit()
     cursor.close()
+    return Response("vip promotion",status=200)
 
-
-#demotes the user to visitor and delete his account, if VIP demote to customer
-def visitorDemotion(user_id):
+#demotes the user to visitor and delete his account
+def visitorDemotion(user_id,store):
     cursor = connection.cursor()
-    cursor.execute("""select VIP from tables_customer WHERE user_id=%s""",[user_id])
+    cursor.execute("""select VIP from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
     row = cursor.fetchone()
-    if(row[0]):
-        cursor.execute("""update tables_customer set VIP =%s WHERE user_id=%s""",[False,user_id])
+    rest = row[0]
+    rest = rest.split(',')
+    print(rest)
+    if(store in rest):
+        print("if statement")
+        rest.remove(store)
+        joined = ",".join(rest)
+        print(joined)
+        cursor.execute("""update tables_customer_restaurant set VIP =%s""",[joined,user_id])
         transaction.commit()
         cursor.close()
-        return Response("You are demoted from VIP", status=200)
+        return Response("Not vip anymore",status=200)
     else:
-        cursor.execute("""delete from tables_checkout  WHERE user_id_id= %s""",[user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_complaints  WHERE user_id_id= %s""", [user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_compliments  WHERE user_id_id= %s""", [user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_customer_restaurant  WHERE user_id_id= %s""", [user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_customer_review  WHERE user_id_id= %s""", [user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
-        transaction.commit()
-        cursor.execute("""delete from tables_customer  WHERE user_id= %s""", [user_id])
-        transaction.commit()
+        print("else statement")
+        cursor.execute("""select rest_id from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
+        row = cursor.fetchone()
+        rest = row[0]
+        rest = rest.split(',')
+        rest.remove(store)
+        joined = ",".join(rest)
+        cursor.execute("""update tables_customer_restaurant set rest_id=%s where user_id_id=%s""",[joined,user_id])
         cursor.close()
         return Response("You are not a customer anymore", status=200)
-
+# check the primary key for the store id
 
 #checkout process
 #gets called after the user has made the review
@@ -379,7 +387,15 @@ def employeeSalary(emp_id,salary):
     cursor = connection.cursor()
     cursor.execute("""update tables_employees set salary=%s WHERE emp_id=%s""",[salary,emp_id])
     transaction.commit()
+    cursor.execute("""select emp_fname,salary from tables_employees WHERE emp_id=%s""",[emp_id])
+    row = cursor.fetchall()
+    print(row)
+    context = {
+        "name":row[0][0],
+        "salary":row[0][1]
+    }
     cursor.close()
+    return Response(context,status=200)
 
 #pass the order to the delivery guy
 def chooseDelivery(emp_id,order_id):

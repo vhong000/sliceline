@@ -147,6 +147,17 @@ class CreateMenuViewSet(viewsets.ModelViewSet):
         name = request.data.get('name')
         return createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name)
 
+class SalaryViewSet(viewsets.ModelViewSet):
+    def put(self,request):
+        emp_id = request.data.get('emp_id')
+        salary = request.data.get('salary')
+        return employeeSalary(emp_id,salary)
+
+class vipViewSet(viewsets.ModelViewSet):
+    def put(self,request):
+        user_id = request.data.get('user_id')
+        store = request.data.get('store')
+        return vipPromotion(user_id,store)
 
 ##GET FUNCTIONS!!
 def ListMenu(request,chef=None):

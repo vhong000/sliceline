@@ -23,7 +23,9 @@ router.register(r'custSignup',CSignupViewSet,base_name='custSignup')
 router.register(r'menu/update',UpdateMenuViewSet,base_name='menu_update')
 router.register(r'menu', MenuViewSet, base_name='menu')
 router.register(r'manager/approval',ApprovalViewSet,base_name='approval')
+router.register(r'manager/salary',SalaryViewSet,base_name='salary')
 router.register(r'ingredient',IngredientViewSet,base_name='create_pizza')
+router.register(r'vip',vipViewSet,base_name='vip')
 
 
 urlpatterns = [
