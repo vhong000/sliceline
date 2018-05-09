@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import { Button, Well, Image, Modal, ButtonGroup,
   Navbar, 
 } from 'react-bootstrap';
@@ -16,10 +17,8 @@ class Header extends Component {
     super(props);
     this.state = {
       showLogin: false,
-      showSignup: false,
     }
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleSignup = this.handleSignup.bind(this);
     this.handleSignout = this.handleSignout.bind(this);
   }
 
@@ -27,13 +26,6 @@ class Header extends Component {
     const show = !this.state.showLogin;
     this.setState({
       showLogin: show,
-    })
-  }
-
-  handleSignup(event) {
-    const show = !this.state.showSignup;
-    this.setState({
-      showSignup: show,
     })
   }
 
@@ -48,7 +40,7 @@ class Header extends Component {
         <div className="header-main"> 
           <Link to='/'>
             <Image responsive src={sliceline_header} />
-      </Link>
+          </Link>
         </div>
 
         {this.props.userData ? (
@@ -66,17 +58,13 @@ class Header extends Component {
               <Button block onClick={this.handleLogin}>
                 Login
               </Button>
-                <Button block bsStyle='default' href='/signup'>
-                  Sign Up
-                </Button>
+              <Button block href='/signup'>
+                Sign Up
+              </Button>
             </ButtonGroup>
             
             <Modal show={this.state.showLogin} onHide={this.handleLogin}>
               <Login show={this.handleLogin}/>
-            </Modal>
-
-            <Modal bsSize='large' show={this.state.showSignup} onHide={this.handleSignup}>
-              <Signup show={this.handleSignup}/>
             </Modal>
 
           </div>
@@ -88,6 +76,7 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
   userData: state.Authenticate.user,
+  cart: state.Restaurant.cart,
 })
 
 export default withRouter(connect(mapStateToProps, { signout })(Header));

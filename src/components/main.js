@@ -5,26 +5,44 @@ import { Row, Col,
 } from 'react-bootstrap';
 import Header from './header.js';
 import Sidebar from './sidebar.js';
-import GoogleApiWrapper from './map.js';
+import { fetchAllRestaurants } from '../actions/restaurantActions.js';
+import { GoogleApiWrapper } from 'google-maps-react';
+import MapContainer from './map.js'
 import '../css/App.css';
 
 class Main extends Component {
+
+  componentDidMount() {
+    this.props.fetchAllRestaurants()
+  }
+
   render() {
     return (
       <div className='app'>
         <div className='app-header'>
           <Header/>
         </div>
-        <Row>
-          <Col xs={3}>
-            <div className='app-sidebar'>
-              <Sidebar/>
+        <div className='app-sidebar'>
+          <Sidebar/>
+        </div>
+        <div className='app-body'>
+          <div className='app-map-outer'>
+            <div className='app-map'>
+              <MapContainer/>
             </div>
-          </Col>
-        </Row>
-          <div className='app-map'>
-              <GoogleApiWrapper/>
           </div>
+          <div className='app-recommend'>
+            <div className='app-option'>
+              <h3>iPizzaNY</h3>
+            </div>
+            <div className='app-option'>
+              <h3>Olga's Pizza</h3>
+            </div>
+            <div className='app-option'>
+              <h3>Papa John's Pizza</h3>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -32,6 +50,8 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   userData: state.Authenticate.user,
+  locations: state.Restaurant.restaurants,
 })
 
-export default connect(mapStateToProps, null)(Main);
+
+export default connect(mapStateToProps, { fetchAllRestaurants })(Main);

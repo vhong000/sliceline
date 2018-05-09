@@ -7,7 +7,7 @@ import { FormGroup, FormControl, ControlLabel,
 	Glyphicon,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { fetchRestaurant } from '../actions/restaurantActions.js';
+import { fetchAllRestaurants } from '../actions/restaurantActions.js';
 import { registerEmployee, registerCustomer } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
@@ -40,7 +40,7 @@ class Signup extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchRestaurant();
+    this.props.fetchAllRestaurants();
   }
 
   handleChange(event) {
@@ -250,9 +250,6 @@ class Signup extends Component {
           <Collapse unmountOnExit mountOnEnter in={this.state.access === 'customer'}>
             <ToggleButtonGroup type='checkbox' vertical block onChange={this.handleRestSelect}>
             <ControlLabel>Choose Restaurants</ControlLabel>
-            {/*
-              <ToggleButton>All Restaurants</ToggleButton>
-              */}
               {this.props.allRestaurants.map((elements) => (
                 <ToggleButton value={elements.rest_id}>
                   {this.state.applicant.store_id.includes(elements.rest_id) ? (
@@ -290,7 +287,7 @@ class Signup extends Component {
 }
 
 Signup.propTypes = {
-  fetchRestaurant: PropTypes.func.isRequired,
+  fetchAllRestaurants: PropTypes.func.isRequired,
   registerCustomer: PropTypes.func.isRequired,
   registerEmployee: PropTypes.func.isRequired,
   allRestaurants: PropTypes.array.isRequired,
@@ -302,4 +299,4 @@ const mapStateToProps = state => ({
   error: state.Authenticate.error,
 })
 
-export default connect(mapStateToProps, { fetchRestaurant, registerCustomer, registerEmployee })(Signup);
+export default connect(mapStateToProps, { fetchAllRestaurants, registerCustomer, registerEmployee })(Signup);

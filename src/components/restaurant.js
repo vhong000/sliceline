@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from './header.js';
-import Menu from './menu.js';
+import BuildOrder from './buildOrder.js';
+import DisplayCombos from './displayCombos.js';
+import DisplayCart from './displayCart.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
@@ -17,24 +20,23 @@ class Restaurant extends Component {
     this.state = {
       privilege: 'visitor'
     }
+    this.employeeTabs = this.employeeTabs.bind(this);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id; // redo new authenticate
     this.props.fetchRestaurant(id).then(()=> { 
-    if (this.props.userStatus) {
-      if (this.props.userRestId === this.props.restaurant.rest_id) {
+    if (this.props.employeeStatus) {
+      if (this.props.employeeRestId === this.props.restaurant.rest_id) {
         this.setState({
-          privilege: this.props.userStatus,
+          privilege: this.props.employeeStatus,
         })
       } else {
         this.setState({
           privilege: 'Customer',
         })
       }
-    }
-    })
-
+    }})
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,6 +44,36 @@ class Restaurant extends Component {
       this.setState({
         privilege: nextProps.userStatus,
       })
+    }
+  }
+
+  employeeTabs(position) {
+    switch(position) {
+      case 'chef':
+        return (
+          <NavItem eventKey='chef_page'>
+            Edit Menu
+          </NavItem>
+        )
+      case 'delivery':
+        return(
+          <NavItem eventKey='delivery_page'>
+            Delivery Routes
+          </NavItem>
+        )
+      case 'manager':
+        return(
+          <NavItem eventKey='manager_page'>
+            Manager Center
+          </NavItem>
+        )
+      default:
+        return(
+          <NavItem eventKey='Cart' pullRight>
+            <Glyphicon glyph='shopping-cart'/>
+            Cart
+          </NavItem>
+        )
     }
   }
 
@@ -63,8 +95,11 @@ class Restaurant extends Component {
                 <NavItem eventKey='home'>
                   Home
                 </NavItem>
-                <NavItem eventKey='menu'>
-                  Order
+                <NavItem eventKey='combo'>
+                  Combos 
+                </NavItem>
+                <NavItem eventKey='build'>
+                  Build Pizza
                 </NavItem>
                 <NavItem eventKey='reviews'>
                   Reviews
@@ -74,15 +109,7 @@ class Restaurant extends Component {
                 </NavItem>
               </Nav>
               <Nav bsStyle='tabs' pullRight>
-                <NavItem eventKey='Cart' pullRight>
-                  <Glyphicon glyph='shopping-cart'/>
-                  Cart
-                </NavItem>
-                {this.state.privilege === 'chef' ? (
-                  <NavItem eventKey='menu-edit'>
-                    Menu Edit
-                  </NavItem>
-                ) : ( null )}
+                {this.employeeTabs(this.state.privilege)}
               </Nav>
             </Navbar>
 
@@ -120,12 +147,20 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
                 </div>
               </Tab.Pane>
 
-              <Tab.Pane eventKey='menu'>
-                <Menu/>
+              <Tab.Pane eventKey='combo'>
+                <DisplayCombos/>
+              </Tab.Pane>
+
+              <Tab.Pane eventKey='build'>
+                <BuildOrder/>
               </Tab.Pane>
 
               <Tab.Pane eventKey='reviews'>
                 <Reviews/>
+              </Tab.Pane>
+
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='Cart'>
+                <DisplayCart/>
               </Tab.Pane>
 
             </Tab.Content>
@@ -137,12 +172,22 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
   }
 }
 
+Restaurant.Proptypes = {
+  fetchRestaurant: PropTypes.func.isRequired,
+  restaurant: PropTypes.obj,
+  isLoading: PropTypes.bool,
+  // status
+}
+
 const mapStateToProps = state => ({
   restaurant: state.Restaurant.restaurant,
   error: state.Restaurant.error,
   isLoading: state.Restaurant.loading,
-  userStatus: state.Authenticate.user.status,
-  userRestId: state.Authenticate.user.rest_id,
+  employeeStatus: state.Authenticate.user.status,
+  employeeRestId: state.Authenticate.user.rest_id,
+  customerRests: state.Authenticate.user.rest,
+  customerVIPs: state.Authenticate.user.VIP,
+  mycart: state.Restaurant.cart,
 })
 
 export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);

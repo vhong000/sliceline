@@ -1,9 +1,24 @@
-.body {
-  background-color: yellow;
+html {
+  height: 100%
 }
 
-.App {
-  text-align: center;
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+#root > div {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
 }
 
 .App-logo {
@@ -24,6 +39,45 @@
 
 .App-intro {
   font-size: large;
+}
+
+.app-sidebar {
+  float: left;
+  width: 20%;
+  height: 90%;
+  padding: 10px;
+}
+
+.app-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-map-outer {
+  position: relative;
+  height: 50%;
+  padding: 10px;
+}
+
+.app-map {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.app-recommend {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app-option {
 }
 
 @keyframes App-logo-spin {
