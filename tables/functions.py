@@ -143,6 +143,7 @@ def visitorDemotion(user_id,store):
         rest.remove(store)
         joined = ",".join(rest)
         cursor.execute("""update tables_customer_restaurant set rest_id=%s where user_id_id=%s""",[joined,user_id])
+        transaction.commit()
         cursor.close()
         return Response("You are not a customer anymore", status=200)
 # check the primary key for the store id
