@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Button, Well, Image, Modal, ButtonGroup,
-  Navbar, 
+  Navbar, Popover, OverlayTrigger,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from './login.js';
@@ -22,6 +22,10 @@ class Header extends Component {
     this.handleSignout = this.handleSignout.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.props.determineStatus(nextProps.userData, this.props.rest_id) 
+  }
+
   handleLogin(event) {
     const show = !this.state.showLogin;
     this.setState({
@@ -35,6 +39,19 @@ class Header extends Component {
   }
 
   render() {
+    const infoPopover = (
+        <Popover id='info-pop'>
+          {this.props.userData.status ? (
+            <div>
+            <strong>Employee ID: </strong>{this.props.userData.emp_id}
+            </div>
+          ) : (
+            <div>
+            <strong>Wallet: </strong>{this.props.userData.wallet}
+            </div>
+          )}
+        </Popover>
+    )
     return (
       <div className="header">
         <div className="header-main"> 
@@ -44,11 +61,16 @@ class Header extends Component {
         </div>
 
         {this.props.userData ? (
-          <div>
-          <p>Welcome {this.props.status} {this.props.userData.name}</p>
-          <Button block bsSize='small' onClick={this.handleSignout}>
-            Sign out
-          </Button>
+            <div className='header-info'>
+          <OverlayTrigger trigger='hover' placement='bottom' overlay={infoPopover}>
+              <p>Welcome {this.props.status} {this.props.userData.name}</p>
+          </OverlayTrigger>
+              <Button block 
+                bsSize='small'
+                bsStyle='warning'
+                onClick={this.handleSignout}>
+                Sign out
+              </Button>
           </div>
           ) : (
           <div className='header-login'>

@@ -5,6 +5,7 @@ import Header from './header.js';
 import BuildOrder from './buildOrder.js';
 import DisplayCombos from './displayCombos.js';
 import DisplayCart from './displayCart.js';
+import EditMenu from './editMenu.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { determineStatus } from '../actions/authActions.js';
@@ -18,14 +19,11 @@ class Restaurant extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      privilege: 'visitor'
-    }
     this.employeeTabs = this.employeeTabs.bind(this);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id; // redo new authenticate
+    const id = this.props.match.params.id;
     this.props.fetchRestaurant(id).then(()=> {
       if (this.props.userData) {
         this.props.determineStatus(this.props.userData, parseInt(id));
@@ -143,6 +141,10 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
 
               <Tab.Pane eventKey='reviews'>
                 <Reviews/>
+              </Tab.Pane>
+
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='chef_page'>
+                <EditMenu/>
               </Tab.Pane>
 
               <Tab.Pane mountOnEnter unmountOnExit eventKey='Cart'>

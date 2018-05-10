@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormGroup, FormControl, ControlLabel,
-  Button, Row, Col, Tabs, Tab, ProgressBar,
+  Button, Row, Col, Tabs, Tab, ProgressBar, Panel,
 } from 'react-bootstrap';
 import Header from './header.js';
 import DisplayMenuItems from './displayMenuItems.js';
 import { fetchMenuItems } from '../actions/menuActions.js';
+import { setActiveChef } from '../actions/restaurantActions.js';
 
 class BuildOrder extends Component {
   
@@ -30,7 +31,7 @@ class BuildOrder extends Component {
   }
 
   render() { 
-    // make isLoading component
+    if (this.props.activeChef !== '') {
       return(
         <div className='editmenu'>
             <ProgressBar bsStyle='warning' striped active now={this.state.progress}/>
@@ -57,6 +58,33 @@ class BuildOrder extends Component {
        
         </div>
       )
+    } else {
+      return(
+      <div className='display-combo'>
+        <h3>Select Chef</h3>
+        <div className='display-combo-chefs'>
+          {this.props.chefs.map((chef, index) => { // get chef names
+            return(
+              <Panel>
+                <Panel.Heading>
+                  <Panel.Title>
+                    Chef {chef.emp_id}
+                  </Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
+                  <Button bsSize='lg'
+                    bsStyle='success'
+                    onClick={()=> this.props.setActiveChef(chef)}>
+                    SELECT
+                  </Button>
+                </Panel.Body>
+              </Panel>
+            )
+          })}
+        </div>
+      </div>
+      )
+    }
   }
 }
 
@@ -71,10 +99,12 @@ BuildOrder.propTypes = {
 
 const mapStateToProps = state => ({
   isLoading: state.Menu.loading,
+  chefs: state.Restaurant.chefs,
+  activeChef: state.Restaurant.activeChef,
   drinks: state.Menu.drinks,  
   crusts: state.Menu.crusts,
   toppings: state.Menu.toppings,
   appetizers: state.Menu.appetizers,
 })
 
-export default connect(mapStateToProps, { fetchMenuItems })(BuildOrder)
+export default connect(mapStateToProps, { fetchMenuItems, setActiveChef })(BuildOrder)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PageHeader, Button, Well, } from 'react-bootstrap';
+import { PageHeader, Button, Well, FormControl,
+  ControlLabel,
+} from 'react-bootstrap';
 import Header from './header.js';
 import '../css/checkout.css';
 
@@ -10,11 +12,27 @@ class Checkout extends Component {
     super(props);
     this.state = {
       total: '',
+      address: '',
+    }
+    this.calculateTotal = this.calculateTotal.bind(this);
+  }
+
+  calculateTotal(sum) {
+    var total = 0;
+    switch (this.props.userStatus) {
+      case 'Customer':
+        total = sum * .9;
+        return total;
+      case 'VIP':
+        total = sum * .85;
+        return total;
+      default:
+        return total;
     }
   }
 
   render() {
-    var newTotal = 0;
+    var sum = 0;
     return(
       <div className='checkout'>
         <Header/>
@@ -24,7 +42,7 @@ class Checkout extends Component {
           </PageHeader>
           <div className='checkout-map'>
             {this.props.cart.map((item) => {
-              newTotal = newTotal + parseInt(item.price);
+              sum = sum + parseInt(item.price);
               return(
                 <div className='checkout-items'>
                 <Well>
@@ -35,7 +53,10 @@ class Checkout extends Component {
             )})
             }
           </div>
-          <p>Total: {newTotal}</p>
+          <p>Total: {sum}</p>
+          <p>Discounted Total: {this.calculateTotal(sum)}</p>
+          <FormControl placeholder='Address' type='text'>
+          </FormControl>
           <Button bsStyle='success'>
             Finalize Order
           </Button>
@@ -48,6 +69,8 @@ class Checkout extends Component {
 
 const mapStateToProps = state => ({
   cart: state.Restaurant.cart,
+  userStatus: state.Authenticate.status,
+  chef_id: state.Restaurant.activeChef.emp_id,
 })
 
 export default connect(mapStateToProps, null)(Checkout)
