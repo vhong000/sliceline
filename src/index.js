@@ -5,7 +5,6 @@ import './index.css';
 import Main from './components/main.js';
 import Checkout from './components/checkout.js';
 import Restaurant from './components/restaurant.js';
-import BuildOrder from './components/buildOrder.js';
 import Login from './components/login.js';
 import Signup from './components/signup.js';
 import store from './store.js';
@@ -20,7 +19,6 @@ ReactDOM.render(
 				<Route exact path="/login" component={Login}/>
 				<Route exact path="/signup" component={Signup}/>
 				<Route exact path="/restaurant/:id" component={Restaurant}/>
-				<Route exact path="/build/:rest_id/:access" component={BuildOrder}/>
         <Route exact path="/checkout" component={Checkout}/>
 			</div>
 		</Router> 

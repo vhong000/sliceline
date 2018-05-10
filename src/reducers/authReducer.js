@@ -3,7 +3,11 @@ import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
 } from '../actions/types.js';
 
 const initialState = {
-  user: '',
+  //user: '',
+  user: {
+    rest_id: 3,
+    status: 'manager',
+  },
   loading: false,
   status: 'Member',
 }

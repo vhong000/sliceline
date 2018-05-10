@@ -42,9 +42,8 @@ export default function(state = initialState, action) {
         restaurants: action.payload,
       }
     case CHEF_FETCH_SUCCESS:
-      const allChefs = [];
-      action.payload.map((chef) => {
-        allChefs.push(chef.fields);
+      const allChefs = action.payload.map((chef) => {
+        return chef.fields;
       })
       return {
         ...state,

@@ -6,6 +6,7 @@ import BuildOrder from './buildOrder.js';
 import DisplayCombos from './displayCombos.js';
 import DisplayCart from './displayCart.js';
 import EditMenu from './editMenu.js';
+import ManagerEdit from './managerEdit.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
 import { determineStatus } from '../actions/authActions.js';
@@ -145,6 +146,10 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
 
               <Tab.Pane mountOnEnter unmountOnExit eventKey='chef_page'>
                 <EditMenu/>
+              </Tab.Pane>
+
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='manager_page'>
+                <ManagerEdit/>
               </Tab.Pane>
 
               <Tab.Pane mountOnEnter unmountOnExit eventKey='Cart'>

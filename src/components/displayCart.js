@@ -20,13 +20,13 @@ class DisplayCart extends Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.cart !== nextProps.cart) {
-      this.setState({
-        cart: nextProps.cart,
-      })
-    }
-  }
+  //componentWillReceiveProps(nextProps) {
+  //  if (this.props.cart !== nextProps.cart) {
+  //    this.setState({
+  //      cart: nextProps.cart,
+  //    })
+  //  }
+  //}
 
   render() {
     
