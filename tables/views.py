@@ -128,6 +128,11 @@ class UpdateMenuViewSet(viewsets.ModelViewSet):
         toppings = request.data.get('toppings')
         return updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,name,toppings)
 
+class DeleteMenuViewSet(viewsets.ModelViewSet):
+    def delete(self,request):
+        menu_id = request.data.get('menu_id')
+        return removeMenu(menu_id)
+
 class ApprovalViewSet(viewsets.ModelViewSet):
     def put(self,request):
         approval = request.data.get('approval')
@@ -152,6 +157,12 @@ class SalaryViewSet(viewsets.ModelViewSet):
         emp_id = request.data.get('emp_id')
         salary = request.data.get('salary')
         return employeeSalary(emp_id,salary)
+
+class removeWarningViewSet(viewsets.ModelViewSet):
+    def put(self,request):
+        status = request.data.get("status")
+        status_id = request.data.get("status_id")
+        return removeWarning(status,status_id)
 
 class vipViewSet(viewsets.ModelViewSet):
     def put(self,request):

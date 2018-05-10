@@ -339,6 +339,13 @@ def updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,
     cursor.close()
     return Response(context, status=200)
 
+def removeMenu(menu_id):
+    cursor = connection.cursor()
+    cursor.execute("""delete from tables_menu WHERE menu_id=%s""",[menu_id])
+    transaction.commit()
+    cursor.close()
+    return Response("deleted menu",status=200)
+
 def listOfChef(store_id):
     cursor = connection.cursor()
     cursor.execute("""select chef_id from tables_chef WHERE store_id=%s""",[store_id])
@@ -376,6 +383,24 @@ def customerApproval(user_id,aproval):
         print("calling demotion on user: ",user_id)
         return visitorDemotion(user_id)
 
+def removeWarning(status,status_id):
+    cursor = connection.cursor()
+    if(status == "chef"):
+        cursor.execute("""select warning from tables_chef WHERE chef_id=%s""",[status_id])
+        row = cursor.fetchone()
+        remove = row[0]
+        cursor.execute("""update tables_chef set warning=%s WHERE chef_id=%s""",[int(remove)-1,status_id])
+        transaction.commit()
+        cursor.close()
+        return Response("delete warning for chef",status=200)
+    else:
+        cursor.execute("""select warning from tables_delivery WHERE deli_id=%s""", [status_id])
+        row = cursor.fetchone()
+        remove = row[0]
+        cursor.execute("""update tables_delivery set warning=%s WHERE deli_id=%s""", [int(remove)-1,status_id])
+        transaction.commit()
+        cursor.close()
+        return Response("delete warning for delivery", status=200)
 
 # def listOfUnapproveCustomer():
 #     cursor = connection.cursor()
