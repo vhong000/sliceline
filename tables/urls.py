@@ -35,5 +35,6 @@ urlpatterns = [
     url(r'^menu/chef/(?P<chef>\d+)/$',ListMenu), #this gets all the predefined menu from given chef
     url(r'^restaurants/chef/(?P<store>\d+)/$', Store_chef), #this gets all the chefs from given store
     url(r'^manager/list$',listOfUnapproveCustomer), #gets all of the unapprove customer
-
+    url(r'^manager/delivery/(?P<store>\d+)/$',allDelivery),
+    url(r'^manager/chef/(?P<store>\d+)/$',allCook),
 ]

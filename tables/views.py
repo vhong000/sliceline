@@ -133,6 +133,7 @@ class DeleteMenuViewSet(viewsets.ModelViewSet):
         menu_id = request.data.get('menu_id')
         return removeMenu(menu_id)
 
+#manager
 class ApprovalViewSet(viewsets.ModelViewSet):
     def put(self,request):
         approval = request.data.get('approval')
@@ -152,12 +153,14 @@ class CreateMenuViewSet(viewsets.ModelViewSet):
         name = request.data.get('name')
         return createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name)
 
+#manager
 class SalaryViewSet(viewsets.ModelViewSet):
     def put(self,request):
         emp_id = request.data.get('emp_id')
         salary = request.data.get('salary')
         return employeeSalary(emp_id,salary)
 
+#manager
 class removeWarningViewSet(viewsets.ModelViewSet):
     def put(self,request):
         status = request.data.get("status")
@@ -169,6 +172,7 @@ class vipViewSet(viewsets.ModelViewSet):
         user_id = request.data.get('user_id')
         store = request.data.get('store')
         return vipPromotion(user_id,store)
+
 
 ##GET FUNCTIONS!!
 def ListMenu(request,chef=None):
@@ -186,7 +190,21 @@ def Ingredients(request):
     r = serializers.serialize("json",ingredient)
     return HttpResponse(r,content_type='application/json')
 
+#mangaer
 def listOfUnapproveCustomer(request):
     unapprove = get_list_or_404(Customer,approve=0)
     r = serializers.serialize("json",unapprove)
     return HttpResponse(r,content_type='application/json')
+
+#manager
+def allDelivery(request,store=None):
+    delivery = get_list_or_404(Delivery,store_id=store)
+    r = serializers.serialize("json",delivery)
+    return HttpResponse(r,content_type='application/json')
+
+#manager
+def allCook(request,store= None):
+    chef = get_list_or_404(Chef,store_id=store)
+    r = serializers.serialize("json",chef)
+    return HttpResponse(r, content_type='application/json')
+

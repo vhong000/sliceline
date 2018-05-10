@@ -147,9 +147,26 @@ def visitorDemotion(user_id,store):
         return Response("You are not a customer anymore", status=200)
 # check the primary key for the store id
 
+
+#place order
+def Order(total,address,store_id,menu_id):
+    cursor = connection.cursor()
+    #need to how to review each pizza
+    cursor.execute("""insert into tables_order (total,menu_id_id,address,status,rest_id_id) VALUES (%s,%s,%s,%s,%s)""",
+                   [total,menu_id,address,0,store_id])
+    transaction.commit()
+    cursor.execute("""select order_id from tables_order ORDER BY order_id ASC """)
+    row = cursor.fetchone()
+    context = {
+        "order": row[0]
+    }
+    return Response(context,status=200)
+
+
+
 #checkout process
 #gets called after the user has made the review
-def checkOut(user_id):
+def checkOut(user_id,store):
     cursor = connection.cursor()
     #if it is a customer
     if(user_id):
@@ -164,15 +181,15 @@ def checkOut(user_id):
             sum = int(row[0])
             average = float(sum/number)
             if(average > 4):
-                vipPromotion(user_id)
+                vipPromotion(user_id,store)
             elif(average > 1 and average < 2 ):
-                visitorDemotion(user_id)
+                visitorDemotion(user_id,store)
             elif(average < 1):
                 cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
                 row = cursor.fetchone()
                 email = row[0]
                 blackListed(email)
-                visitorDemotion(user_id)
+                visitorDemotion(user_id,store)
             # procced checkout still thinking
             else:
                 return "still not done"

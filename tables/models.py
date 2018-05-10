@@ -176,4 +176,7 @@ class Create_pizza(models.Model):
     type = models.CharField(max_length=50)
     price = models.DecimalField(decimal_places=2,max_digits=5)
 
-
+class Delivery_order(models.Model):
+    del_order_id = models.AutoField(primary_key=True)
+    delivery_id = models.ForeignKey(Delivery,on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order,on_delete=models.CASCADE)
