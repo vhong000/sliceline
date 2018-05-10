@@ -147,9 +147,26 @@ def visitorDemotion(user_id,store):
         return Response("You are not a customer anymore", status=200)
 # check the primary key for the store id
 
+
+#place order
+def Order(total,address,store_id,menu_id):
+    cursor = connection.cursor()
+    #need to how to review each pizza
+    cursor.execute("""insert into tables_order (total,menu_id_id,address,status,rest_id_id) VALUES (%s,%s,%s,%s,%s)""",
+                   [total,menu_id,address,0,store_id])
+    transaction.commit()
+    cursor.execute("""select order_id from tables_order ORDER BY order_id ASC """)
+    row = cursor.fetchone()
+    context = {
+        "order": row[0]
+    }
+    return Response(context,status=200)
+
+
+
 #checkout process
 #gets called after the user has made the review
-def checkOut(user_id):
+def checkOut(user_id,store):
     cursor = connection.cursor()
     #if it is a customer
     if(user_id):
@@ -164,15 +181,15 @@ def checkOut(user_id):
             sum = int(row[0])
             average = float(sum/number)
             if(average > 4):
-                vipPromotion(user_id)
+                vipPromotion(user_id,store)
             elif(average > 1 and average < 2 ):
-                visitorDemotion(user_id)
+                visitorDemotion(user_id,store)
             elif(average < 1):
                 cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
                 row = cursor.fetchone()
                 email = row[0]
                 blackListed(email)
-                visitorDemotion(user_id)
+                visitorDemotion(user_id,store)
             # procced checkout still thinking
             else:
                 return "still not done"
@@ -328,14 +345,23 @@ def updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,
         'description':row[0][1],
         'rating':row[0][2],
         'picture':row[0][3],
-        'appetizer':row[0][4],
-        'crust': row[0][5],
-        'drinks':row[0][6],
-        'name':row[0][7],
-        'toppings':row[0][8]
+        'pk':row[0][4],
+        'appetizer':row[0][5],
+        'crust': row[0][6],
+        'drinks':row[0][7],
+        'name':row[0][8],
+        'toppings':row[0][9]
+
     }
     cursor.close()
     return Response(context, status=200)
+
+def removeMenu(menu_id):
+    cursor = connection.cursor()
+    cursor.execute("""delete from tables_menu WHERE menu_id=%s""",[menu_id])
+    transaction.commit()
+    cursor.close()
+    return Response("deleted menu",status=200)
 
 def listOfChef(store_id):
     cursor = connection.cursor()
@@ -374,6 +400,24 @@ def customerApproval(user_id,aproval):
         print("calling demotion on user: ",user_id)
         return visitorDemotion(user_id)
 
+def removeWarning(status,status_id):
+    cursor = connection.cursor()
+    if(status == "chef"):
+        cursor.execute("""select warning from tables_chef WHERE chef_id=%s""",[status_id])
+        row = cursor.fetchone()
+        remove = row[0]
+        cursor.execute("""update tables_chef set warning=%s WHERE chef_id=%s""",[int(remove)-1,status_id])
+        transaction.commit()
+        cursor.close()
+        return Response("delete warning for chef",status=200)
+    else:
+        cursor.execute("""select warning from tables_delivery WHERE deli_id=%s""", [status_id])
+        row = cursor.fetchone()
+        remove = row[0]
+        cursor.execute("""update tables_delivery set warning=%s WHERE deli_id=%s""", [int(remove)-1,status_id])
+        transaction.commit()
+        cursor.close()
+        return Response("delete warning for delivery", status=200)
 
 # def listOfUnapproveCustomer():
 #     cursor = connection.cursor()
