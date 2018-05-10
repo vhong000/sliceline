@@ -128,6 +128,12 @@ class UpdateMenuViewSet(viewsets.ModelViewSet):
         toppings = request.data.get('toppings')
         return updateMenu(menu_id,price,description,rating,picture,appetizers,crust,drinks,name,toppings)
 
+class AssignDeliveryViewSet(viewsets.ModelViewSet):
+    def put(self,request):
+        emp_id = request.data.get('emp_id')
+        order = request.data.get('order')
+        return chooseDelivery(emp_id,order)
+
 class DeleteMenuViewSet(viewsets.ModelViewSet):
     def delete(self,request):
         menu_id = request.data.get('menu_id')
@@ -138,8 +144,10 @@ class ApprovalViewSet(viewsets.ModelViewSet):
     def put(self,request):
         approval = request.data.get('approval')
         user_id = request.data.get('user_id')
-        return customerApproval(user_id,approval)
+        store = request.data.get('store')
+        return customerApproval(user_id,approval,store)
 
+#chef
 class CreateMenuViewSet(viewsets.ModelViewSet):
     def create(self, request):
         chef_id = request.data.get('chef_id')
@@ -207,4 +215,9 @@ def allCook(request,store= None):
     chef = get_list_or_404(Chef,store_id=store)
     r = serializers.serialize("json",chef)
     return HttpResponse(r, content_type='application/json')
+
+def allOrder(request,store=None,current=None):
+    order = get_list_or_404(Order,rest_id_id=store,status=current)
+    r = serializers.serialize("json",order)
+    return HttpResponse(r,content_type='application/json')
 

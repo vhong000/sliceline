@@ -385,7 +385,7 @@ def listOfChef(store_id):
 #     for i in row:
 
 #approves a customer registration
-def customerApproval(user_id,aproval):
+def customerApproval(user_id,aproval,store):
     cursor = connection.cursor()
     cursor.execute("""update tables_customer set approve=%s WHERE user_id=%s""",[aproval,user_id])
     transaction.commit()
@@ -398,7 +398,7 @@ def customerApproval(user_id,aproval):
     else:
         cursor.close()
         print("calling demotion on user: ",user_id)
-        return visitorDemotion(user_id)
+        return visitorDemotion(user_id,store)
 
 def removeWarning(status,status_id):
     cursor = connection.cursor()
@@ -441,11 +441,14 @@ def employeeSalary(emp_id,salary):
     cursor.close()
     return Response(context,status=200)
 
+
 #pass the order to the delivery guy
 def chooseDelivery(emp_id,order_id):
     cursor = connection.cursor()
-    cursor.execute("""update tables_delivery set current_order=%s where emp_id_id=%s""",[order_id,emp_id])
+    cursor.execute("""update tables_delivery set current_order=%s, status=%s where emp_id_id=%s""",[order_id,1,emp_id])
     transaction.commit()
+    cursor.close()
+    return Response("Order assigned to delivery guy", status=200)
 
 # USE IN SIGNUP
 #validate the access code and assign to the corresponding job(chef/delivery)
