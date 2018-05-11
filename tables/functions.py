@@ -223,34 +223,38 @@ def chefLaidOff(emp_id, chef_id):
     transaction.commit()
     cursor.close()
 
-#checkout process
-#gets called after the user has made the review
-def checkOut(user_id,store):
+
+#gets called after delivery makes a review for the customer
+def deliveryReviewCheck(user_id, store):
     cursor = connection.cursor()
-    #if it is a customer
-    if(user_id):
+    if (user_id):
         cursor.execute("""select user_id_id, count(*)
-                        FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
+                           FROM tables_delivery_review WHERE user_id_id=%s""", [user_id])
         row = cursor.fetchone()
         number = int(row[1])
-        if( number >= 3):
+        if (number >= 3):
             cursor.execute("""select sum(customer_rating), count(*)
-                          FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
+                             FROM tables_delivery_review WHERE user_id_id=%s""", [user_id])
             row = cursor.fetchone()
             sum = int(row[0])
-            average = float(sum/number)
-            if(average > 4):
-                vipPromotion(user_id,store)
-            elif(average > 1 and average < 2 ):
-                visitorDemotion(user_id,store)
-            elif(average < 1):
-                cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
+            average = float(sum / number)
+            if (average > 4):
+                vipPromotion(user_id, store)
+            elif (average > 1 and average < 2):
+                visitorDemotion(user_id, store)
+            elif (average < 1):
+                cursor.execute("""select email from tables_customer WHERE user_id=%s""", [user_id])
                 row = cursor.fetchone()
                 email = row[0]
                 blackListed(email)
-                visitorDemotion(user_id,store)
+                visitorDemotion(user_id, store)
+    cursor.close()
 
 
+#gets called after customer makes a review for the delivery and menu(pizza)
+def customerReviewCheck(user_id):
+    cursor = connection.cursor()
+    if (user_id):
         #review of devilery person
         cursor.execute("""select D.delivery_id_id from tables_customer_review as R 
                           join tables_delivery_order as D on R.order_number_id=D.order_id_id 
@@ -323,6 +327,7 @@ def checkOut(user_id,store):
                             cursor.execute("""select emp_id_id from tables_chef where chef_id = %s""", [warning_chef_id[0]])
                             row = cursor.fetchone()
                             chefLaidOff(row[0], warning_chef_id[0])
+    cursor.close()
 
 
 def customerReview(pizza,store,delivery,emp_id,order,user_id):
