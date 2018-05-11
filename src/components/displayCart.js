@@ -14,11 +14,11 @@ class DisplayCart extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      cart: this.props.cart,
-    })
-  }
+  //componentDidMount() {
+  //  this.setState({
+  //    cart: this.props.cart,
+  //  })
+  //}
 
   //componentWillReceiveProps(nextProps) {
   //  if (this.props.cart !== nextProps.cart) {

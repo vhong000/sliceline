@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Label, Well, Button, Panel } from 'react-bootstrap';
 import { fetchEmployees, removeWarning, approveRegister } from '../actions/managerActions.js';
 import Header from './header.js';
+import '../css/managerEdit.css';
 
 class ManagerEdit extends Component {
 
@@ -12,7 +13,6 @@ class ManagerEdit extends Component {
   }
 
   componentDidMount() {
-    // fetch employees
     this.props.fetchEmployees(this.props.rest_id);
   }
 
@@ -20,6 +20,7 @@ class ManagerEdit extends Component {
     const userInfo = {
       approval: isApproved,
       user_id: pk,
+      store: this.props.rest_id,
     }
     this.props.approveRegister(userInfo);
   }
@@ -93,9 +94,10 @@ class ManagerEdit extends Component {
               <Panel.Title>Approval</Panel.Title>
             </Panel.Heading>
             <Panel.Body>
+              <div className='manager-approve-list'>
               {this.props.approvals.map((user) => {
                 return (
-                  <div className='manager-approve-list'>
+                  <div className='manager-approve-item'>
                     <Well>
                       <p><Label>Full Name:</Label> {user.name}</p>
                       <p><Label>Email:</Label> {user.email}</p>
@@ -112,6 +114,7 @@ class ManagerEdit extends Component {
                 )
               })
               }
+              </div>
             </Panel.Body>
           </Panel>
         </div>
