@@ -95,7 +95,7 @@ class Menu(models.Model):
     drinks      = models.CharField(max_length=100)
     appetizers  = models.CharField(max_length=100)
 
-class Menurating(models.Model):
+class Menu_rating(models.Model):
     menu_rating = models.AutoField(primary_key=True)
     rating = models.IntegerField()
     menu_id = models.ForeignKey(Menu,on_delete=models.CASCADE)

@@ -153,8 +153,9 @@ def visitorDemotion(user_id,store):
 def Ordering(total,address,store_id,menu_id):
     cursor = connection.cursor()
     print("called Order")
-    list = ''.join(str(e) + ',' for e in menu_id)
-    list = list[:-1]
+    # check when order is passing as a json
+    list = ''.join(str(e) for e in menu_id)
+    # list = list[:-1]
     # print(list)
     cursor.execute("""INSERT INTO tables_order (total,menu_id,address,status,rest_id_id)"""
                    """VALUES (%s,%s,%s,%s,%s)""",[total,list,address,0,store_id])
@@ -168,6 +169,16 @@ def Ordering(total,address,store_id,menu_id):
     }
     cursor.close()
     return Response(context, status=200)
+
+def Rating(rating,menu_id):
+    cursor = connection.cursor()
+    array = menu_id.split(",")
+    for i in array:
+        cursor.execute("""insert into tables_menu_rating (rating, menu_id_id)"""
+                       """VALUES (%s,%s)""", [rating,i])
+        transaction.commit()
+    print("DONE RATING")
+    cursor.close()
 
 #checkout process
 #gets called after the user has made the review
@@ -208,6 +219,11 @@ def customerReview(pizza,store,delivery,emp_id,order,user_id):
     cursor.execute("""insert into tables_customer_review (pizza_rating, store_rating, delivery_rating, emp_id_id, order_number_id, user_id_id) """
                    """VALUES (%s,%s,%s,%s,%s,%s)""",[pizza,store,delivery,emp_id,order,user_id])
     transaction.commit()
+    cursor.execute("""select menu_id from tables_order WHERE order_id=%s""",[order])
+    row = cursor.fetchone()
+    menu_id = row[0]
+    print(menu_id)
+    # Rating(pizza,menu_id)
     cursor.close()
     return Response("Thanks for the review",status=200)
 
