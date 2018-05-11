@@ -149,6 +149,14 @@ class ReviewViewSet(viewsets.ModelViewSet):
         user_id = request.data.get('user_id')
         return customerReview(pizza, store, delivery, emp_id, order, user_id)
 
+class DeliveryReviewViewSet(viewsets.ModelViewSet):
+    def create(self,request):
+        rating = request.data.get('rating')
+        emp_id = request.data.get('emp_id')
+        user_id= request.data.get('user_id')
+        store = request.data.get('store')
+        return deliveryReview(rating, emp_id, user_id, store)
+
 #manager
 class ApprovalViewSet(viewsets.ModelViewSet):
     def put(self,request):

@@ -174,7 +174,6 @@ def Rating(rating,menu_id):
     cursor = connection.cursor()
     array = menu_id.split(",")
     results = list(map(int, array))
-    # print(results)
     for i in range(len(results)):
         cursor.execute("""insert into tables_menu_rating (rating, menu_id_id)"""
                        """VALUES (%s,%s)""", [rating,results[i]])
@@ -342,8 +341,19 @@ def customerReview(pizza,store,delivery,emp_id,order,user_id):
     menu_id = row[0]
     print(menu_id)
     Rating(pizza,menu_id)
+    customerReviewCheck(user_id) #
     cursor.close()
     return Response("Thanks for the review",status=200)
+
+def deliveryReview(rating,emp_id,user_id,store):
+    cursor = connection.cursor()
+    cursor.execute("""insert into tables_delivery_review (customer_rating, emp_id_id, user_id_id) 
+                    VALUES (%s,%s,%s)""",[rating,emp_id,user_id])
+    transaction.commit()
+    deliveryReviewCheck(user_id,store)
+    cursor.close()
+    return Response("Customer reviewed",status=200)
+
 
 #Checks if the email belongs to a customer or employee
 def checkEmail(email):
