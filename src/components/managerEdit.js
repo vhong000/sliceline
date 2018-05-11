@@ -102,11 +102,11 @@ class ManagerEdit extends Component {
                       <p><Label>Full Name:</Label> {user.name}</p>
                       <p><Label>Email:</Label> {user.email}</p>
                       <Button bsStyle='success'
-                        onClick={()=> this.submitApproval(true, user.pk)}>
+                        onClick={()=> this.submitApproval(1, user.pk)}>
                         Approve
                       </Button>
                       <Button bsStyle='danger'
-                        onClick={()=> this.submitApproval(false, user.pk)}>
+                        onClick={()=> this.submitApproval(0, user.pk)}>
                         Deny
                       </Button>
                     </Well>
