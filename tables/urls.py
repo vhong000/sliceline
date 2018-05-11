@@ -16,6 +16,7 @@ router.register(r'complaints', ComplaintsViewSet, base_name='complaints')
 router.register(r'compliments', ComplimentsViewSet, base_name='compliments')
 router.register(r'delivery', DeliveryViewSet, base_name='delivery')
 router.register(r'delivery_review', Delivery_reviewViewSet, base_name='delivery_review')
+router.register(r'order/place', PlaceOrderViewSet, base_name='place')
 router.register(r'order', OrderViewSet, base_name='order')
 router.register(r'login',LoginViewSet,base_name='login')
 router.register(r'employSignup',ESignupViewSet,base_name='employSignup')
@@ -38,5 +39,5 @@ urlpatterns = [
     url(r'^manager/list$',listOfUnapproveCustomer), #gets all of the unapprove customer
     url(r'^manager/delivery/(?P<store>\d+)/$',allDelivery),
     url(r'^manager/chef/(?P<store>\d+)/$',allCook),
-    url(r'^manager/order/(?P<store>\d+)/(?P<current>\d+)/',allOrder),
+    url(r'^manager/order/(?P<store>\d+)/(?P<current>\d+)/',allOrder), #get all order with current status 0 and store #
 ]

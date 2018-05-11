@@ -161,6 +161,16 @@ class CreateMenuViewSet(viewsets.ModelViewSet):
         name = request.data.get('name')
         return createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name)
 
+class PlaceOrderViewSet(viewsets.ModelViewSet):
+    def create(self,request):
+        total = request.data.get('total')
+        address = request.data.get('address')
+        store_id = request.data.get('store_id')
+        menu_id = request.data.get('menu_id')
+        print("this is: "+menu_id)
+        return Order(total,address,store_id,menu_id)
+
+
 #manager
 class SalaryViewSet(viewsets.ModelViewSet):
     def put(self,request):

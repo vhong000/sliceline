@@ -153,15 +153,20 @@ def visitorDemotion(user_id,store):
 def Order(total,address,store_id,menu_id):
     cursor = connection.cursor()
     #need to how to review each pizza
-    cursor.execute("""insert into tables_order (total,menu_id_id,address,status,rest_id_id) VALUES (%s,%s,%s,%s,%s)""",
-                   [total,menu_id,address,0,store_id])
+    list = ''.join(str(e) + ',' for e in menu_id)
+    list = list[:-1]
+    print(list)
+    cursor.execute("""insert into tables_order (total,menu_id,address,status,rest_id_id) VALUES (%s,%s,%s,%s,%s)""",
+                   [total,list,address,0,store_id])
     transaction.commit()
-    cursor.execute("""select order_id from tables_order ORDER BY order_id ASC """)
-    row = cursor.fetchone()
-    context = {
-        "order": row[0]
-    }
-    return Response(context,status=200)
+    # cursor.execute("""select order_id from tables_order ORDER BY order_id ASC """)
+    # row = cursor.fetchone()
+    # print(row[0])
+    # context = {
+    #     "order": "lol"
+    # }
+    cursor.close()
+    return Response("lol",status=200)
 
 
 
