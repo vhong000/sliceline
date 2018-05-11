@@ -1,7 +1,6 @@
 import { COMBO_FETCH_SUCCESS, COMBO_FETCH_FAIL, COMBO_FETCH_LOADING,
   ITEM_FETCH_SUCCESS, ITEM_FETCH_FAIL, ITEM_FETCH_LOADING,
-  COMBO_ON_CHANGE, COMBO_UPDATED, COMBO_DELETED, COMBO_CREATED,
-  NEW_COMBO_FORM,
+  COMBO_ON_CHANGE, NEW_COMBO_FORM, COMBO_REMOVE,
 } from '../actions/types.js';
 
 const initialState = {
@@ -87,6 +86,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         combos: newForm,
+      }
+    case COMBO_REMOVE:
+      const removedCombo = [...state.combos];
+      removedCombo.pop();
+      return {
+        ...state,
+        combos: removedCombo,
       }
     default: 
       return state;

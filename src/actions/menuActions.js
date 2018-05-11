@@ -1,6 +1,6 @@
 import { COMBO_FETCH_SUCCESS, COMBO_FETCH_FAIL, COMBO_FETCH_LOADING,
   ITEM_FETCH_SUCCESS, ITEM_FETCH_FAIL, ITEM_FETCH_LOADING,
-  COMBO_ON_CHANGE, NEW_COMBO_FORM,
+  COMBO_ON_CHANGE, NEW_COMBO_FORM, COMBO_REMOVE,
 } from '../actions/types.js';
 
 export const fetchCombos = (chef_id) => dispatch => {
@@ -130,4 +130,11 @@ export const comboCreate = (newCombo, chef_id) => dispatch => {
       })
     } else { return chef_id; }
   }).then((chef_id) => { dispatch(fetchCombos(chef_id)); })
+}
+
+export const comboRemove = (chef_id) => dispatch => {
+  dispatch({
+    type: COMBO_REMOVE,
+  });
+  dispatch(fetchCombos(chef_id));
 }

@@ -37,13 +37,13 @@ class Restaurant extends Component {
       case 'chef':
         return (
           <NavItem eventKey='chef_page'>
-            Edit Menu
+            Chef Center
           </NavItem>
         )
       case 'delivery':
         return(
           <NavItem eventKey='delivery_page'>
-            Delivery Routes
+            Delivery Center
           </NavItem>
         )
       case 'manager':

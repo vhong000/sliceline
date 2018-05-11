@@ -117,3 +117,5 @@ export const approveRegister = (userInfo) => dispatch => {
     dispatch(fetchApprovals());
   })
 }
+
+

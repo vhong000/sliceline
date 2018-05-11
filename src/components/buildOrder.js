@@ -68,7 +68,7 @@ class BuildOrder extends Component {
               <Panel>
                 <Panel.Heading>
                   <Panel.Title>
-                    Chef {chef.emp_id}
+                    Chef {chef.full_name}
                   </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>

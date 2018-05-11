@@ -6,8 +6,7 @@ const initialState = {
   //user: '',
   user: {
     rest_id: 3,
-    status: 'chef',
-    emp_id: 4,
+    status: 'manager',
   },
   loading: false,
   status: 'Member',

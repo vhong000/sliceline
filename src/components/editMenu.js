@@ -5,7 +5,7 @@ import { Button, Panel, FormControl, ControlLabel, FormGroup,
   Row, Col,
 } from 'react-bootstrap';
 import { fetchCombos, comboEdit, comboUpdate, newComboForm,
-  comboCreate, comboDelete,
+  comboCreate, comboDelete, comboRemove,
 } from '../actions/menuActions.js';
 
 class EditMenu extends Component {
@@ -30,9 +30,13 @@ class EditMenu extends Component {
 
   handleDelete(comboPK) {
     const deletePK = {
-      pk: comboPK,
+      menu_id: comboPK,
     }
     this.props.comboDelete(deletePK, this.props.chef_id);
+  }
+
+  handleRemove() {
+    this.props.comboRemove(this.props.chef_id);
   }
 
   handleChange(event, index, category) {
@@ -119,21 +123,29 @@ class EditMenu extends Component {
               </FormGroup>
 
               {!item.pk ? (
-                <Button bsStyle='success'
-                  onClick={()=> this.handleCreate(index)}>
-                  Create
-                </Button>
+                <div>
+                  <Button bsStyle='success'
+                    onClick={()=> this.handleCreate(index)}>
+                    Create
+                  </Button>
+                  <Button bsStyle='danger'
+                    onClick={()=> this.handleRemove()}>
+                    Remove
+                  </Button>
+                </div>
               ) : (
-                <Button bsStyle='primary'
-                  onClick={()=> this.handleUpdate(index)}>
-                  Update
-                </Button>
+                <div>
+                  <Button bsStyle='primary'
+                    onClick={()=> this.handleUpdate(index)}>
+                    Update
+                  </Button>
+                  <Button bsStyle='danger'
+                    onClick={()=> this.handleDelete(item.pk)}>
+                    Delete
+                  </Button>
+                </div>
                 )
               }
-              <Button bsStyle='danger'
-                onClick={()=> this.handleDelete(item.pk)}>
-                Delete
-              </Button>
             </Panel.Body>
           </Panel>
           )
@@ -153,4 +165,4 @@ const mapStateToProps = state => ({
   combos: state.Menu.combos,
 })
 
-export default connect(mapStateToProps, { fetchCombos, comboEdit, comboUpdate, newComboForm, comboCreate, comboDelete })(EditMenu);
+export default connect(mapStateToProps, { fetchCombos, comboEdit, comboUpdate, newComboForm, comboCreate, comboDelete, comboRemove })(EditMenu);
