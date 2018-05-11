@@ -180,6 +180,49 @@ def Rating(rating,menu_id):
     print("DONE RATING")
     cursor.close()
 
+def deliveryLaidOff(emp_id, delivery_id):
+    cursor = connection.cursor()
+    cursor.execute("""delete from tables_delivery_order where delivery_id_id = %s""", [delivery_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_delivery where deli_id = %s""", [delivery_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_delivery_review where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_compliments where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_complaints where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_employees where emp_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.close()
+
+def chefLaidOff(emp_id, chef_id):
+    cursor = connection.cursor()
+    cursor.execute("""select menu_id from tables_menu where chef_id_id = %s""", [chef_id])
+    menus = cursor.fetchall()
+    for menu in menus:
+        cursor.execute("""select order_id from tables_order where menu_id_id = %s""", [menu[0]])
+        orders = cursor.fetchall()
+        for order in orders:
+            cursor.execute("""delete from tables_delivery_order where order_id_id = %s""", [order[0]])
+            cursor.execute("""delete from tables_customer_review where order_number_id = %s""", [order[0]])
+            transaction.commit()
+        cursor.execute("""delete from tables_order where menu_id_id = %s""", [menu[0]])
+        transaction.commit()
+    cursor.execute("""delete from tables_menu where chef_id_id = %s""", [chef_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_chef where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_compliments where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_complaints where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_customer_review where emp_id_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.execute("""delete from tables_employees where emp_id = %s""", [emp_id])
+    transaction.commit()
+    cursor.close()
+
 #checkout process
 #gets called after the user has made the review
 def checkOut(user_id,store):
@@ -189,7 +232,7 @@ def checkOut(user_id,store):
         cursor.execute("""select user_id_id, count(*)
                         FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
         row = cursor.fetchone()
-        number = int(row[0])
+        number = int(row[1])
         if( number >= 3):
             cursor.execute("""select sum(customer_rating), count(*)
                           FROM tables_delivery_review WHERE user_id_id=%s""",[user_id])
@@ -206,12 +249,80 @@ def checkOut(user_id,store):
                 email = row[0]
                 blackListed(email)
                 visitorDemotion(user_id,store)
-            # procced checkout still thinking
-            else:
-                return "still not done"
-        else:
-            # proceed checkout still thinking, customer hasnt made more than 3 orders
-            return "continue to checkout"
+
+
+        #review of devilery person
+        cursor.execute("""select D.delivery_id_id from tables_customer_review as R 
+                          join tables_delivery_order as D on R.order_number_id=D.order_id_id 
+                          where user_id_id = %s order by review_id desc;""", [user_id])
+        delivery_id = cursor.fetchone()
+
+        if (not (delivery_id is None)):
+            cursor.execute("""select delivery_rating from tables_customer_review as R join 
+                              tables_delivery_order as D on R.order_number_id=D.order_id_id where 
+                              D.delivery_id_id = %s order by review_id desc""", [delivery_id[0]])
+            row = cursor.fetchmany(3)
+            if (len(row) == 3):
+                sum = 0
+                for i in range(len(row)):
+                    sum = sum + row[i][0]
+                average = sum / 3
+
+                if (average < 2):
+                    cursor.execute("""select emp_id_id from tables_delivery where deli_id = %s""", [delivery_id[0]])
+                    emp_id = cursor.fetchone()
+                    cursor.execute("""update tables_delivery set warning=coalesce(warning,0)+1 
+                                      where emp_id_id=%s""", [emp_id[0]])
+                    transaction.commit()
+                    cursor.execute("""select warning from tables_delivery where emp_id_id = %s""", [emp_id[0]])
+                    row = cursor.fetchone()
+                    if (row[0] >= 3):
+                        deliveryLaidOff(emp_id[0], delivery_id[0])
+
+
+
+        #review for menu
+        cursor.execute("""select menu_id from tables_customer_review as R 
+                          join tables_order as O on R.order_number_id=O.order_id where
+                          user_id_id = %s order by review_id desc""", [user_id])
+        menus = cursor.fetchone()
+
+        menu_list = list()
+        menu_list2 = menus[0].split(',')
+        for menu in menu_list2:
+            if(menu.isdigit()):
+                menu_list.append(menu)
+
+        for menu_id in menu_list:
+            cursor.execute("""select rating from tables_menu_rating where menu_id_id = %s order by 
+                              menu_rating desc""", [menu_id])
+            ratings = cursor.fetchall()
+
+            if (len(ratings) != 0):
+                sum = 0
+                for rating in ratings:
+                    sum = sum + rating[0]
+                average = sum/len(ratings)
+
+                cursor.execute("""update tables_menu set rating = %s where menu_id = %s""", [round(average), menu_id])
+                transaction.commit()
+
+                if (len(ratings) >= 3):
+                    three_average=(ratings[0][0]+ratings[1][0]+ratings[2][0])/3
+                    if (three_average < 2):
+                        cursor.execute("""select chef_id_id from tables_menu where menu_id = %s""", [menu_id])
+                        warning_chef_id = cursor.fetchone()
+                        cursor.execute("""delete from tables_menu_rating where menu_id_id = %s""", [menu_id])
+                        cursor.execute("""delete from tables_menu where menu_id = %s""", [menu_id])
+                        cursor.execute("""update tables_chef set warning=coalesce(warning,0)+1
+                                                          where chef_id = %s""", [warning_chef_id[0]])
+                        transaction.commit()
+                        cursor.execute("""select warning from tables_chef where chef_id=%s""", [warning_chef_id[0]])
+                        row = cursor.fetchone()
+                        if (row[0] >= 6):
+                            cursor.execute("""select emp_id_id from tables_chef where chef_id = %s""", [warning_chef_id[0]])
+                            row = cursor.fetchone()
+                            chefLaidOff(row[0], warning_chef_id[0])
 
 
 def customerReview(pizza,store,delivery,emp_id,order,user_id):
