@@ -5,6 +5,7 @@ from .views import *
 router = DefaultRouter()
 
 router.register(r'restaurants', RestaurantViewSet, base_name='restaurants')
+router.register(r'customer/review', ReviewViewSet, base_name='review')
 router.register(r'customer', CustomerViewSet, base_name='customer')
 router.register(r'employees', EmployeesViewSet, base_name='employees')
 router.register(r'access', AccessViewSet, base_name='access')
