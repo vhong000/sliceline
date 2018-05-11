@@ -43,7 +43,7 @@
     <table id="33" parent="2" name="tables_login"/>
     <table id="34" parent="2" name="tables_manager"/>
     <table id="35" parent="2" name="tables_menu"/>
-    <table id="36" parent="2" name="tables_menurating"/>
+    <table id="36" parent="2" name="tables_menu_rating"/>
     <table id="37" parent="2" name="tables_order"/>
     <table id="38" parent="2" name="tables_restaurant"/>
     <column id="39" parent="6" name="id">
@@ -1378,7 +1378,7 @@ model</ColNames>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="303" parent="36" name="tables_menurating_menu_id_id_dea9dc9c">
+    <index id="303" parent="36" name="tables_menu_rating_menu_id_id_e5ad82de">
       <ColNames>menu_id_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
