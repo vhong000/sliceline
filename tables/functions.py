@@ -173,9 +173,11 @@ def Ordering(total,address,store_id,menu_id):
 def Rating(rating,menu_id):
     cursor = connection.cursor()
     array = menu_id.split(",")
-    for i in array:
+    results = list(map(int, array))
+    # print(results)
+    for i in range(len(results)):
         cursor.execute("""insert into tables_menu_rating (rating, menu_id_id)"""
-                       """VALUES (%s,%s)""", [rating,i])
+                       """VALUES (%s,%s)""", [rating,results[i]])
         transaction.commit()
     print("DONE RATING")
     cursor.close()
@@ -223,7 +225,7 @@ def customerReview(pizza,store,delivery,emp_id,order,user_id):
     row = cursor.fetchone()
     menu_id = row[0]
     print(menu_id)
-    # Rating(pizza,menu_id)
+    Rating(pizza,menu_id)
     cursor.close()
     return Response("Thanks for the review",status=200)
 
