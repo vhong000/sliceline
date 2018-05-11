@@ -5,8 +5,11 @@ import Header from './header.js';
 import BuildOrder from './buildOrder.js';
 import DisplayCombos from './displayCombos.js';
 import DisplayCart from './displayCart.js';
+import EditMenu from './editMenu.js';
+import ManagerEdit from './managerEdit.js';
 import Reviews from './reviews.js';
 import { fetchRestaurant } from '../actions/restaurantActions.js';
+import { determineStatus } from '../actions/authActions.js';
 import { Carousel, PageHeader, Navbar, Tab, Row, Col,
   TabContainer, TabPane, TabContent, Nav, NavItem, Image,
   Glyphicon,
@@ -17,34 +20,16 @@ class Restaurant extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      privilege: 'visitor'
-    }
     this.employeeTabs = this.employeeTabs.bind(this);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id; // redo new authenticate
-    this.props.fetchRestaurant(id).then(()=> { 
-    if (this.props.employeeStatus) {
-      if (this.props.employeeRestId === this.props.restaurant.rest_id) {
-        this.setState({
-          privilege: this.props.employeeStatus,
-        })
-      } else {
-        this.setState({
-          privilege: 'Customer',
-        })
+    const id = this.props.match.params.id;
+    this.props.fetchRestaurant(id).then(()=> {
+      if (this.props.userData) {
+        this.props.determineStatus(this.props.userData, parseInt(id));
       }
-    }})
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.userRestId === this.props.restaurant.rest_id) {
-      this.setState({
-        privilege: nextProps.userStatus,
-      })
-    }
+    })
   }
 
   employeeTabs(position) {
@@ -52,13 +37,13 @@ class Restaurant extends Component {
       case 'chef':
         return (
           <NavItem eventKey='chef_page'>
-            Edit Menu
+            Chef Center
           </NavItem>
         )
       case 'delivery':
         return(
           <NavItem eventKey='delivery_page'>
-            Delivery Routes
+            Delivery Center
           </NavItem>
         )
       case 'manager':
@@ -109,7 +94,7 @@ class Restaurant extends Component {
                 </NavItem>
               </Nav>
               <Nav bsStyle='tabs' pullRight>
-                {this.employeeTabs(this.state.privilege)}
+                {this.employeeTabs(this.props.status)}
               </Nav>
             </Navbar>
 
@@ -159,6 +144,14 @@ Et ligula ullamcorper malesuada proin libero. Diam maecenas ultricies mi eget ma
                 <Reviews/>
               </Tab.Pane>
 
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='chef_page'>
+                <EditMenu/>
+              </Tab.Pane>
+
+              <Tab.Pane mountOnEnter unmountOnExit eventKey='manager_page'>
+                <ManagerEdit/>
+              </Tab.Pane>
+
               <Tab.Pane mountOnEnter unmountOnExit eventKey='Cart'>
                 <DisplayCart/>
               </Tab.Pane>
@@ -183,11 +176,8 @@ const mapStateToProps = state => ({
   restaurant: state.Restaurant.restaurant,
   error: state.Restaurant.error,
   isLoading: state.Restaurant.loading,
-  employeeStatus: state.Authenticate.user.status,
-  employeeRestId: state.Authenticate.user.rest_id,
-  customerRests: state.Authenticate.user.rest,
-  customerVIPs: state.Authenticate.user.VIP,
-  mycart: state.Restaurant.cart,
+  userData: state.Authenticate.user,
+  status: state.Authenticate.status,
 })
 
-export default connect(mapStateToProps, { fetchRestaurant })(Restaurant);
+export default connect(mapStateToProps, { fetchRestaurant, determineStatus })(Restaurant);

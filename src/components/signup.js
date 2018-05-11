@@ -275,10 +275,12 @@ class Signup extends Component {
           ) : ( null )
           }
 
-          <Button block bsStyle='primary' 
-            bsSize='large' onClick={this.handleSubmit}>
-            Sign Up
-          </Button>
+          <Link to='/'>
+            <Button block bsStyle='primary' 
+              bsSize='large' onClick={this.handleSubmit}>
+              Sign Up
+            </Button>
+          </Link>
           
         </form>
       </div>

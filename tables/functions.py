@@ -409,14 +409,19 @@ def login(email,password):
             status = row[0]
             cursor.execute("""select store_id from tables_chef where emp_id_id=%s""",[emp_id])
             row = cursor.fetchone()
+            cursor.execute("""select store_id from tables_delivery where emp_id_id=%s""", [emp_id])
+            row1 = cursor.fetchone()
             if(row):
                 chef = row[0]
                 id = chef
-            else:
-                cursor.execute("""select store_id from tables_delivery where emp_id_id=%s""", [emp_id])
-                row = cursor.fetchone()
-                delivery = row[0]
+            elif(row1):
+                delivery = row1[0]
                 id = delivery
+            else:
+                cursor.execute("""select store_id from tables_manager where emp_id_id=%s""", [emp_id])
+                row2 = cursor.fetchone()
+                manager = row2[0]
+                id = manager
             returned_dict = {
                 'emp_id':emp_id,
                 'name':name,
@@ -599,16 +604,17 @@ def checkAccess(access_code,id,store_id,name):
     row = cursor.fetchone()
     employer = row[0]
     if(employer == "chef"):
-        cursor.execute("""INSERT INTO tables_chef (menu_name, warning, emp_id_id, store_id,full_name)"""
-                       """VALUES (%s,%s,%s,%s,%s)""",["",0,id,store_id,name])
+        cursor.execute("""INSERT INTO tables_chef (warning, emp_id_id, store_id,full_name)"""
+                       """VALUES (%s,%s,%s,%s)""",[0,id,store_id,name])
         transaction.commit()
     elif(employer == 'delivery'):
-        cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id,full_name)"""
-                       """VALUES (%s,%s,%s,%s,%s)""", [0, 0, id, store_id],name)
+        cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id,full_name,current_order)"""
+                       """VALUES (%s,%s,%s,%s,%s)""", [0, 0, id, store_id,name,0])
+        print("delivery")
         transaction.commit()
     elif(employer=='manager'):
         cursor.execute("""INSERT INTO tables_manager (emp_id_id, store_id,full_name)"""
-                       """VALUES (%s,%s,%s,%s,%s)""", [id, store_id,name])
+                       """VALUES (%s,%s,%s)""", [id, store_id,name])
         transaction.commit()
     else:
         return Response("Invalid access code",status=404)
