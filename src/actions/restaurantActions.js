@@ -116,3 +116,19 @@ export const fetchAllRestaurants = () => dispatch => {
   })
 }
 
+export const postOrder = (item) => dispatch => {
+  return fetch('/api/order/place/', {
+    method: "POST",   
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(item),
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot place order",
+      })
+    } else { return response.json(); }
+  })
+}
+
