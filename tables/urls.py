@@ -39,5 +39,5 @@ urlpatterns = [
     url(r'^manager/list$',listOfUnapproveCustomer), #gets all of the unapprove customer
     url(r'^manager/delivery/(?P<store>\d+)/$',allDelivery),
     url(r'^manager/chef/(?P<store>\d+)/$',allCook),
-    url(r'^manager/order/(?P<store>\d+)/(?P<current>\d+)/',allOrder), #get all order with current status 0 and store #
+    url(r'^manager/order/(?P<store>\d+)/',allOrder), #get all order with current status 0 and store #
 ]

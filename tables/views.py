@@ -168,7 +168,8 @@ class PlaceOrderViewSet(viewsets.ModelViewSet):
         store_id = request.data.get('store_id')
         menu_id = request.data.get('menu_id')
         print("this is: "+menu_id)
-        return Order(total,address,store_id,menu_id)
+        # return HttpResponse("Hello")
+        return HttpResponse(Order(total,address,store_id,menu_id))
 
 
 #manager
@@ -226,8 +227,8 @@ def allCook(request,store= None):
     r = serializers.serialize("json",chef)
     return HttpResponse(r, content_type='application/json')
 
-def allOrder(request,store=None,current=None):
-    order = get_list_or_404(Order,rest_id_id=store,status=current)
+def allOrder(request,store=None):
+    order = get_list_or_404(Order,rest_id_id=store,status=0)
     r = serializers.serialize("json",order)
     return HttpResponse(r,content_type='application/json')
 
