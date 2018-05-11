@@ -393,6 +393,7 @@ def customerApproval(user_id,aproval,store):
     cursor.execute("""select approve from tables_customer WHERE user_id=%s""",[user_id])
     row = cursor.fetchone()
     approve = row[0]
+    print(approve)
     if(approve):
         cursor.close()
         return Response("Approve by manager", status=200)
