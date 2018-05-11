@@ -182,6 +182,7 @@ def Rating(rating,menu_id):
     print("DONE RATING")
     cursor.close()
 
+
 def deliveryLaidOff(emp_id, delivery_id):
     cursor = connection.cursor()
     cursor.execute("""delete from tables_delivery_order where delivery_id_id = %s""", [delivery_id])
@@ -197,6 +198,7 @@ def deliveryLaidOff(emp_id, delivery_id):
     cursor.execute("""delete from tables_employees where emp_id = %s""", [emp_id])
     transaction.commit()
     cursor.close()
+    return Response("Delivery Laid Off", status=200)
 
 def chefLaidOff(emp_id, chef_id):
     cursor = connection.cursor()
@@ -224,6 +226,7 @@ def chefLaidOff(emp_id, chef_id):
     cursor.execute("""delete from tables_employees where emp_id = %s""", [emp_id])
     transaction.commit()
     cursor.close()
+    return Response("Chef Laid Off", status=200)
 
 
 #gets called after delivery makes a review for the customer
@@ -251,6 +254,7 @@ def deliveryReviewCheck(user_id, store):
                 blackListed(email)
                 visitorDemotion(user_id, store)
     cursor.close()
+
 
 
 #gets called after customer makes a review for the delivery and menu(pizza)
@@ -330,6 +334,7 @@ def customerReviewCheck(user_id):
                             row = cursor.fetchone()
                             chefLaidOff(row[0], warning_chef_id[0])
     cursor.close()
+
 
 
 def customerReview(pizza,store,delivery,emp_id,order,user_id):
