@@ -498,7 +498,7 @@ def checkAccess(access_code,id,store_id,name):
         transaction.commit()
     elif(employer == 'delivery'):
         cursor.execute("""INSERT INTO tables_delivery (status, warning, emp_id_id, store_id,full_name,current_order)"""
-                       """VALUES (%s,%s,%s,%s,%s)""", [0, 0, id, store_id,name,0])
+                       """VALUES (%s,%s,%s,%s,%s,%s)""", [0, 0, id, store_id,name,0])
         print("delivery")
         transaction.commit()
     elif(employer=='manager'):
