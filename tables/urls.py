@@ -24,6 +24,7 @@ router.register(r'menu/delete',DeleteMenuViewSet,base_name='menu_delete')
 router.register(r'menu/update',UpdateMenuViewSet,base_name='menu_update')
 router.register(r'menu', MenuViewSet, base_name='menu')
 router.register(r'manager/approval',ApprovalViewSet,base_name='approval')
+router.register(r'manager/assign',AssignDeliveryViewSet,base_name='assign')
 router.register(r'manager/salary',SalaryViewSet,base_name='salary')
 router.register(r'manager/remove',removeWarningViewSet,base_name='remove')
 router.register(r'ingredient',IngredientViewSet,base_name='create_pizza')
@@ -37,4 +38,5 @@ urlpatterns = [
     url(r'^manager/list$',listOfUnapproveCustomer), #gets all of the unapprove customer
     url(r'^manager/delivery/(?P<store>\d+)/$',allDelivery),
     url(r'^manager/chef/(?P<store>\d+)/$',allCook),
+    url(r'^manager/order/(?P<store>\d+)/(?P<current>\d+)/',allOrder),
 ]
