@@ -1,13 +1,12 @@
-
 .login, .signup {
   padding: 60px 0;
   margin: auto;
-  width: 50%;
+  width: 70%;
+  max-width: 800px;
 }
 
 .login, .signup form {
   margin: 0 auto;
-  min-width: 320px;
 }
 
 .login-header {

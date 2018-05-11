@@ -1,0 +1,10 @@
+
+.restaurant {
+  width: 60%;
+  min-width: 900px;
+  margin: auto;
+}
+
+.restaurant-body {
+  margin-top: 10px;
+}

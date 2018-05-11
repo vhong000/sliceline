@@ -1,0 +1,16 @@
+
+.display-combo {
+  text-align: center;
+}
+
+.display-combo-chefs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.display-combo-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

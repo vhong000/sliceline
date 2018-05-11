@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Button, ToggleButton, ButtonToolbar, ToggleButtonGroup } from 'react-bootstrap';
-import { Collapse } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { FormGroup, FormControl, ControlLabel,
+  Button, ToggleButton, ButtonToolbar, ToggleButtonGroup,
+  Collapse, Panel, Label, Well, Row, Col, Alert, Image,
+	Glyphicon,
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { fetchAllRestaurants } from '../actions/restaurantActions.js';
+import { registerEmployee, registerCustomer } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/login_signup.css';
 
@@ -11,72 +16,87 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      firstname: "",
-      lastname: "",
-      password: "",
-      phonenum: "",
-      dob: {
-        month: 'January',
-        day: '1',
-        year: '',
+      applicant: {
+        email: "",
+        first_name: "",
+        last_name: "",
+        password: "",
+        phone: "",
+        birthday: "",
+        address: "",
+        city: "",
+        state: "NY",
+        zipcode: "",
+        ssn: "",
+        access_code: "", 
+        store_id: '',
       },
-      address: "",
-      city: "",
-      state: "NY",
-      zipcode: "",
-      ssn: "",
-      access: "customer",
-      accessID: '',
+      access: 'customer',
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleDobChange = this.handleDobChange.bind(this)
+    this.handleAccessChange = this.handleAccessChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleRestSelect = this.handleRestSelect.bind(this)
   }
 
-  handleChange(event, isRadio) {
-    isRadio ? (
-      this.setState({
-        access: event.target.value,
-      })
-    ) : (
-      this.setState({
-        [event.target.id]: event.target.value,
-      })
-    )
+  componentDidMount() {
+    this.props.fetchAllRestaurants();
   }
 
-  handleDobChange(event) {
-    const name = event.target.name;
-    const newdob = this.state.dob;
-    newdob[name] = event.target.value;
+  handleChange(event) {
     this.setState({
-      dob: newdob,
+      applicant: {
+        ...this.state.applicant,
+        [event.target.id]: event.target.value,
+      }
     })
+  }
+
+  handleRestSelect(event) {
+    this.setState({
+      applicant: {
+        ...this.state.applicant,
+        store_id: event,
+      }
+    })
+  }
+
+  handleAccessChange(event) {
+    this.setState({
+      access: event.target.value,
+    })
+  }
+
+  handleSubmit(event) {
+    const final = this.state.applicant;
+    if (this.state.access === 'employee') {
+      console.log(JSON.stringify(final));
+      this.props.registerEmployee(final);
+    } else {
+      delete final.ssn;
+      delete final.access_code;
+      console.log(JSON.stringify(final));
+      this.props.registerCustomer(final);
+    }
   }
 
   render() {
     return (
       <div className='signup'>
         <header className='login-header'>   
-          <Link to="/">
-            <img src={sliceline_header} className='login-header-logo' alt='main'/>
+          <Link to='/'>
+            <Image src={sliceline_header} className='login-header-logo' alt='main'/>
           </Link>
         </header>
 
         <form>
           <ButtonToolbar>
             <ToggleButtonGroup type='radio' name='access' defaultValue='customer' justified>
-              <ToggleButton name='access' value='customer' onChange={(event) => this.handleChange(event, true)}>
+              <ToggleButton name='access' value='customer' onChange={(event) => this.handleAccessChange(event, true)}>
                 Customer
               </ToggleButton>
-              <ToggleButton name='access' value='manager' onChange={(event) => this.handleChange(event, true)}>
-                Manager
-              </ToggleButton>
-              <ToggleButton name='access' value='cook' onChange={(event) => this.handleChange(event, true)}>
-                Cook
-              </ToggleButton>
-              <ToggleButton name='access' value='delivery' onChange={(event) => this.handleChange(event, true)}>
-                Delivery
+              <ToggleButton name='access' value='employee' onChange={(event) => this.handleAccessChange(event, true)}>
+                Employee
               </ToggleButton>
             </ToggleButtonGroup>
           </ButtonToolbar>
@@ -84,9 +104,15 @@ class Signup extends Component {
 
           <Collapse unmountOnExit mountOnEnter in={this.state.access !== 'customer'} >
             <Row>
-              <Col xs={6}>
-                <FormGroup controlId='accessID'>
-                  <ControlLabel>Access ID: </ControlLabel>
+              <Col xs={3}>
+                <FormGroup controlId='access_code'>
+                  <ControlLabel>Access Code: </ControlLabel>
+                  <FormControl type='text' onChange={this.handleChange}/>
+                </FormGroup>
+              </Col>
+              <Col xs={3}>
+                <FormGroup controlId='store_id'>
+                  <ControlLabel>Store Code: </ControlLabel>
                   <FormControl type='text' onChange={this.handleChange}/>
                 </FormGroup>
               </Col>
@@ -110,13 +136,13 @@ class Signup extends Component {
           
           <Row>
             <Col xs={6}>
-              <FormGroup controlId='firstname'>
+              <FormGroup controlId='first_name'>
                 <ControlLabel>First Name: </ControlLabel>
                 <FormControl bsSize='lg' type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
             <Col xs={6}>
-              <FormGroup controlId='lastname'>
+              <FormGroup controlId='last_name'>
                 <ControlLabel>Last Name: </ControlLabel>
                 <FormControl bsSize='lg' type='text' onChange={this.handleChange}/>
               </FormGroup>
@@ -124,73 +150,16 @@ class Signup extends Component {
           </Row>
 
           <Row>
-            <Col xs={4}>
-              <FormGroup controlId='phonenum'>
+            <Col xs={6}>
+              <FormGroup controlId='phone'>
                 <ControlLabel>Phone Number: </ControlLabel>
                 <FormControl type='text' onChange={this.handleChange}/>
               </FormGroup>
             </Col>
-            <Col xs={1} >
-              <br></br>
-              <h4>DoB:</h4>
-            </Col>
-            <FormGroup controlId='dob'>
-              <Col xs={3}>
-                <ControlLabel>Month: </ControlLabel>
-                <FormControl name='month' componentClass="select" onChange={this.handleDobChange}>
-                  <option value="January">January</option>
-                  <option value="February">February</option>
-                  <option value="March">March</option>
-                  <option value="April">April</option>
-                  <option value="May">May</option>
-                  <option value="June">June</option>
-                  <option value="July">July</option>
-                  <option value="August">August</option>
-                  <option value="September">September</option>
-                  <option value="October">October</option>
-                  <option value="November">November</option>
-                  <option value="December">December</option>
-                </FormControl>
-              </Col>
-              <Col xs={2}>
-                <ControlLabel>Day: </ControlLabel>
-                <FormControl name='day' componentClass="select" onChange={this.handleDobChange}>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                  <option value='6'>6</option>
-                  <option value='7'>7</option>
-                  <option value='8'>8</option>
-                  <option value='9'>9</option>
-                  <option value='10'>10</option>
-                  <option value='11'>11</option>
-                  <option value='12'>12</option>
-                  <option value='13'>13</option>
-                  <option value='14'>14</option>
-                  <option value='15'>15</option>
-                  <option value='16'>16</option>
-                  <option value='17'>17</option>
-                  <option value='18'>18</option>
-                  <option value='19'>19</option>
-                  <option value='20'>20</option>
-                  <option value='21'>21</option>
-                  <option value='22'>22</option>
-                  <option value='23'>23</option>
-                  <option value='24'>24</option>
-                  <option value='25'>25</option>
-                  <option value='26'>26</option>
-                  <option value='27'>27</option>
-                  <option value='28'>28</option>
-                  <option value='29'>29</option>
-                  <option value='30'>30</option>
-                  <option value='31'>31</option>
-                </FormControl>
-              </Col>
-              <Col xs={2}>
-                <ControlLabel>Year: </ControlLabel>
-                <FormControl name='year' type='text' onChange={this.handleDobChange}/>
+            <FormGroup controlId='birthday'>
+              <Col xs={6}>
+                <ControlLabel>Date of Birth:</ControlLabel>
+                <FormControl type='text' placeholder='mm/dd/yyyy' onChange={this.handleChange}/>
               </Col>
             </FormGroup>
           </Row>
@@ -213,8 +182,8 @@ class Signup extends Component {
             <Col xs={2}>
               <FormGroup controlId='state'>
                 <ControlLabel>State: </ControlLabel>
-                <FormControl componentClass="select" defaultValue='NY' onChange={this.handleChange}>
-                  <option value="AL">AL</option>
+              <FormControl componentClass="select" defaultValue='NY' onChange={this.handleChange}>
+                 <option value="AL">AL</option>
                   <option value="AK">AK</option>
                   <option value="AR">AR</option>  
                   <option value="AZ">AZ</option>
@@ -278,7 +247,38 @@ class Signup extends Component {
           </Row>
           <br></br>
 
-          <Button block bsStyle='primary' bsSize='large'>Sign Up</Button>
+          <Collapse unmountOnExit mountOnEnter in={this.state.access === 'customer'}>
+            <ToggleButtonGroup type='checkbox' vertical block onChange={this.handleRestSelect}>
+            <ControlLabel>Choose Restaurants</ControlLabel>
+              {this.props.allRestaurants.map((elements) => (
+                <ToggleButton value={elements.rest_id}>
+                  {this.state.applicant.store_id.includes(elements.rest_id) ? (
+                    <div>
+                    <span class='glyphicon glyphicon-check'></span> {elements.name}
+                    </div>
+                  ): (
+                    <div>
+                    <span class='glyphicon glyphicon-unchecked'></span> {elements.name}
+                    </div>
+                  )}
+                </ToggleButton>
+              ))
+              }
+            </ToggleButtonGroup>
+          </Collapse>
+          <br></br>
+
+          {this.props.error ? (
+            <Alert bsStyle='danger'>
+              <Glyphicon glyph='exclamation-sign'/> {this.props.error.message}
+            </Alert>
+          ) : ( null )
+          }
+
+          <Button block bsStyle='primary' 
+            bsSize='large' onClick={this.handleSubmit}>
+            Sign Up
+          </Button>
           
         </form>
       </div>
@@ -286,4 +286,17 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+Signup.propTypes = {
+  fetchAllRestaurants: PropTypes.func.isRequired,
+  registerCustomer: PropTypes.func.isRequired,
+  registerEmployee: PropTypes.func.isRequired,
+  allRestaurants: PropTypes.array.isRequired,
+  error: PropTypes.object,
+}
+
+const mapStateToProps = state => ({
+  allRestaurants: state.Restaurant.restaurants,
+  error: state.Authenticate.error,
+})
+
+export default connect(mapStateToProps, { fetchAllRestaurants, registerCustomer, registerEmployee })(Signup);

@@ -1,0 +1,14 @@
+import { ORDER_ADD_SUCCESS, ORDER_ADD_FAIL, ORDER_ADD_LOAD,
+  ITEM_ADD_SUCCESS, ITEM_ADD_FAIL, ITEM_ADD_LOAD,
+} from '../actions/types.js';
+
+//    ADD ORDER TO CART   //
+
+
+//    REMOVE ORDER FROM CART    //
+
+
+//    ADD ITEM TO CART    //
+
+
+//    REMOVE ITEM FROM CART   //

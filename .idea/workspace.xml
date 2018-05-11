@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="" />
+    <list default="true" id="d674cbe2-497c-4a02-8231-bdf0d49cb6a6" name="Default" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/tables/views.py" afterPath="$PROJECT_DIR$/tables/views.py" />
+>>>>>>> master
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,7 +20,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/sliceline$functions.coverage" NAME="functions Coverage Results" MODIFIED="1522950993755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tables" />
+    <SUITE FILE_PATH="coverage/sliceline$functions.coverage" NAME="functions Coverage Results" MODIFIED="1523025309481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tables" />
+    <SUITE FILE_PATH="coverage/sliceline$tests.coverage" NAME="tests Coverage Results" MODIFIED="1523468249355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tables" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -24,7 +35,18 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
+        <item name="db.sqlite3" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db.sqlite3" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db.sqlite3" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="90513b60:SqliteImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -34,39 +56,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="functions.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tables/functions.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tables/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+<<<<<<< HEAD
+            <state relative-caret-position="318">
+              <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="1755">
+              <caret line="117" selection-start-line="117" selection-end-line="117" />
+=======
+            <state relative-caret-position="-1784">
+              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
               <folding>
-                <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-                <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-                <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-                <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-                <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-                <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-                <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-                <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-                <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-                <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-                <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-                <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-                <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-                <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tables/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="394">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="tables_account" pinned="false" current-in-tab="false">
+        <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_account">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+=======
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tables/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1137">
+              <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+>>>>>>> master
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tables/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="300">
+              <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+=======
+            <state relative-caret-position="666">
+              <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+>>>>>>> master
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
             </state>
           </provider>
         </entry>
@@ -80,6 +136,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>rest_id</find>
+      <find>store</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -90,8 +152,12 @@
         <option value="$PROJECT_DIR$/Sliceline/Databases/models.py" />
         <option value="$PROJECT_DIR$/Sliceline/Databases/apps.py" />
         <option value="$PROJECT_DIR$/tables/models.py" />
-        <option value="$PROJECT_DIR$/tables/functions.py" />
         <option value="$PROJECT_DIR$/Sliceline/settings.py" />
+        <option value="$PROJECT_DIR$/tables/functions.py" />
+        <option value="$PROJECT_DIR$/tables/admin.py" />
+        <option value="$PROJECT_DIR$/tables/urls.py" />
+        <option value="$PROJECT_DIR$/tables/serializers.py" />
+        <option value="$PROJECT_DIR$/tables/views.py" />
       </list>
     </option>
   </component>
@@ -101,10 +167,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="-1" />
-    <option name="width" value="3200" />
-    <option name="height" value="1751" />
+    <option name="y" value="199" />
+    <option name="width" value="1920" />
+    <option name="height" value="1061" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -126,22 +195,12 @@
     </entry>
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,7 +211,19 @@
             <path>
               <item name="sliceline" type="b2602c69:ProjectViewProjectNode" />
               <item name="sliceline" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
               <item name="Sliceline" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sliceline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sliceline" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
+              <item name="tables" type="462c0819:PsiDirectoryNode" />
+>>>>>>> master
             </path>
           </expand>
           <select />
@@ -161,10 +232,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -183,8 +254,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.functions">
+  <component name="RunManager" selected="Python.tests">
     <configuration name="functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sliceline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -195,9 +267,27 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sliceline" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tables/functions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tables" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Sliceline" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tables/tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,18 +315,26 @@
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Django server.Sliceline" />
-      <item index="1" class="java.lang.String" itemvalue="Python.functions" />
+<<<<<<< HEAD
+    <list>
+      <item itemvalue="Python.functions" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.functions" />
+      <list>
+        <item itemvalue="Python.functions" />
+=======
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Django server.Sliceline" />
+      <item index="1" class="java.lang.String" itemvalue="Python.functions" />
+      <item index="2" class="java.lang.String" itemvalue="Python.tests" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.functions" />
+>>>>>>> master
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -252,18 +350,39 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="3200" height="1751" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="199" width="1920" height="1061" extended-state="0" />
     <layout>
+<<<<<<< HEAD
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13622129" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3297224" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297224" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.21391486" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.21460892" />
+=======
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21462424" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25113124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20081967" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16418876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21460892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18972205" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -275,7 +394,30 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> master
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20081967" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20795602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984476" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -283,33 +425,14 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4329">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-          <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-          </folding>
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>
@@ -317,102 +440,104 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1554">
           <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
+=======
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery_review" />
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_complaints" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_menu" />
+>>>>>>> master
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant" />
     <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="das://table:/4943b9ab/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.auth_group" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/__init__.py" />
     <entry file="file://$PROJECT_DIR$/tables/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/apps.py" />
     <entry file="file://$PROJECT_DIR$/Sliceline/Databases/models.py" />
     <entry file="file://$PROJECT_DIR$/tables/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4436">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+        <state relative-caret-position="-4436" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/migrations/0010_account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6a9f0f58-2d16-463e-ae53-4984f1aa2872/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6a9f0f58-2d16-463e-ae53-4984f1aa2872/console.sql" />
     <entry file="file://$PROJECT_DIR$/tables/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+=======
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="555">
+          <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_checkout" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_order" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_delivery_review" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer_review" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_customer" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_compliments" />
-    <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_complaints" />
-    <entry file="file://$PROJECT_DIR$/tables/admin.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b70df003-9749-4738-950f-11a086ca49bb/console.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="1" column="21" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d724cb89-f18c-42b7-a9d8-2e8178de763b/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+>>>>>>> master
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_account" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_menu" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_restaurant" />
@@ -420,84 +545,60 @@
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_chef" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_employees" />
     <entry file="das://table:/b1e2ce28/ec47343b-89d6-4e94-9e3f-41f2489475c1/main.tables_access" />
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review">
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer_review" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order" />
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef" />
+    <entry file="file://$PROJECT_DIR$/tables/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant" />
+    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
+=======
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_customer">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_customer">
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_access">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_compliments">
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_checkout">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_complaints">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/tables/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="962">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_checkout">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_access">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.django_admin_log">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_employees">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_menu">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_order">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_chef">
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_chef">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -506,56 +607,180 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="-1665">
+          <caret line="63" column="23" lean-forward="true" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/b1e2ce28/21762460-4185-459b-8cad-1c8cfa44cbfd/main.tables_restaurant">
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_complaints">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Sliceline/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="42" column="1" lean-forward="false" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding />
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_compliments">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_customer_review">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_delivery">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_delivery_review">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_employees">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_menu">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_restaurant">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_order">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tables/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <marker date="1522952475816" expanded="true" signature="656:863" ph="insert into tables_employees... " />
-            <marker date="1522952475816" expanded="true" signature="1083:1162" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="1229:1283" ph="SELECT emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="1673:1874" ph="insert into tables_customer... " />
-            <marker date="1522952475816" expanded="true" signature="2090:2169" ph="INSERT INTO tables_account... " />
-            <marker date="1522952475816" expanded="true" signature="2312:2358" ph="SELECT types... tables_account" />
-            <marker date="1522952475816" expanded="true" signature="2700:2750" ph="select passw... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="2852:2906" ph="select user_... tables_customer" />
-            <marker date="1522952475816" expanded="true" signature="3040:3091" ph="select passw... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3193:3247" ph="select emp_i... tables_employees" />
-            <marker date="1522952475816" expanded="true" signature="3543:3667" ph="INSERT INTO main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="3817:3888" ph="UPDATE main.tables_menu... " />
-            <marker date="1522952475816" expanded="true" signature="4189:4240" ph="SELECT types... tables_access" />
-            <marker date="1522952475816" expanded="true" signature="4359:4475" ph="INSERT INTO main.tables_chef... " />
-            <marker date="1522952475816" expanded="true" signature="4557:4669" ph="INSERT INTO tables_delivery... " />
-            <marker date="1522952475816" expanded="true" signature="4763:4854" ph="SELECT name,... tables_restaurant" />
+            <marker date="1523027939088" expanded="true" signature="496:703" ph="insert into tables_employees... " />
+            <marker date="1523027939088" expanded="true" signature="923:1002" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="1069:1123" ph="SELECT emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="1513:1714" ph="insert into tables_customer... " />
+            <marker date="1523027939088" expanded="true" signature="1930:2009" ph="INSERT INTO tables_account... " />
+            <marker date="1523027939088" expanded="true" signature="2152:2198" ph="SELECT types... tables_account" />
+            <marker date="1523027939088" expanded="true" signature="2540:2590" ph="select passw... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2692:2746" ph="select user_... tables_customer" />
+            <marker date="1523027939088" expanded="true" signature="2880:2931" ph="select passw... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3033:3087" ph="select emp_i... tables_employees" />
+            <marker date="1523027939088" expanded="true" signature="3383:3507" ph="INSERT INTO main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="3657:3728" ph="UPDATE main.tables_menu... " />
+            <marker date="1523027939088" expanded="true" signature="4029:4080" ph="SELECT types... tables_access" />
+            <marker date="1523027939088" expanded="true" signature="4199:4315" ph="INSERT INTO main.tables_chef... " />
+            <marker date="1523027939088" expanded="true" signature="4397:4509" ph="INSERT INTO tables_delivery... " />
+            <marker date="1523027939088" expanded="true" signature="4603:4694" ph="SELECT name,... tables_restaurant" />
+          </folding>
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Sliceline/urls.py">
+    <entry file="file://$PROJECT_DIR$/src/fetchData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="318">
+          <caret line="24" column="30" lean-forward="false" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="1755">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+=======
+        <state relative-caret-position="1137">
+          <caret line="60" column="38" lean-forward="true" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="370">
+          <caret line="10" column="59" lean-forward="false" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="300">
+          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+=======
+        <state relative-caret-position="666">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+>>>>>>> 71f36bc653248584ce9c81067f9d0ce9c13d2aa6
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/b1e2ce28/d724cb89-f18c-42b7-a9d8-2e8178de763b/main.tables_account">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tables/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
