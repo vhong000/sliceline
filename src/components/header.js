@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Button, Well, Image, Modal, ButtonGroup,
-  Navbar, 
+  Navbar, Popover, OverlayTrigger,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Login from './login.js';
 import Signup from './signup.js';
-import { signout } from '../actions/authActions.js';
+import { signout, determineStatus } from '../actions/authActions.js';
 import sliceline_header from '../images/sliceline_header.jpg';
 import '../css/header.css';
 
@@ -20,6 +20,10 @@ class Header extends Component {
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignout = this.handleSignout.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.props.determineStatus(nextProps.userData, this.props.rest_id) 
   }
 
   handleLogin(event) {
@@ -35,8 +39,21 @@ class Header extends Component {
   }
 
   render() {
+    const infoPopover = (
+        <Popover id='info-pop'>
+          {this.props.userData.status ? (
+            <div>
+            <strong>Employee ID: </strong>{this.props.userData.emp_id}
+            </div>
+          ) : (
+            <div>
+            <strong>Wallet: </strong>{this.props.userData.wallet}
+            </div>
+          )}
+        </Popover>
+    )
     return (
-      <header className="header">
+      <div className="header">
         <div className="header-main"> 
           <Link to='/'>
             <Image responsive src={sliceline_header} />
@@ -44,14 +61,17 @@ class Header extends Component {
         </div>
 
         {this.props.userData ? (
-          <Navbar fluid='true'>
-            <Navbar.Header>
-              Welcome {this.props.userData.name}
-          </Navbar.Header>
-            <Button block onClick={this.handleSignout}>
-              Sign out
-            </Button>
-          </Navbar>
+            <div className='header-info'>
+          <OverlayTrigger trigger='hover' placement='bottom' overlay={infoPopover}>
+              <p>Welcome {this.props.status} {this.props.userData.name}</p>
+          </OverlayTrigger>
+              <Button block 
+                bsSize='small'
+                bsStyle='warning'
+                onClick={this.handleSignout}>
+                Sign out
+              </Button>
+          </div>
           ) : (
           <div className='header-login'>
             <ButtonGroup vertical>
@@ -69,14 +89,15 @@ class Header extends Component {
 
           </div>
         )}
-      </header>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  rest_id: state.Restaurant.restaurant.rest_id,
   userData: state.Authenticate.user,
-  cart: state.Restaurant.cart,
+  status: state.Authenticate.status,
 })
 
-export default withRouter(connect(mapStateToProps, { signout })(Header));
+export default withRouter(connect(mapStateToProps, { signout, determineStatus })(Header));

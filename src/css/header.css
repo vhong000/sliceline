@@ -10,6 +10,14 @@
   border-bottom: 2px solid black;
 }
 
+.header-info {
+  padding: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+  border-color: #f24b3e;
+}
+
 .header-login {
   width: 10%;
   padding-right: 10px;

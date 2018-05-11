@@ -1,5 +1,6 @@
 import { COMBO_FETCH_SUCCESS, COMBO_FETCH_FAIL, COMBO_FETCH_LOADING,
   ITEM_FETCH_SUCCESS, ITEM_FETCH_FAIL, ITEM_FETCH_LOADING,
+  COMBO_ON_CHANGE, NEW_COMBO_FORM, COMBO_REMOVE,
 } from '../actions/types.js';
 
 const initialState = {
@@ -14,9 +15,9 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case COMBO_FETCH_SUCCESS:
-      var allCombos = [];
-      action.payload.map((item) => {
-        allCombos.push(item.fields);
+      const allCombos = action.payload.map((item) => {
+        item.fields.pk = item.pk;
+        return item.fields;
       });
       return {
         ...state,
@@ -63,6 +64,33 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true,
+      }
+    case COMBO_ON_CHANGE:
+      const newCombos = state.combos.map((combo, index) => {
+        if (index === action.index) {
+          const newCombo = {
+            ...combo,
+            [action.name]: action.payload,
+          }
+          return newCombo;
+        } else { return combo; }
+      })
+      return {
+        ...state,
+        combos: newCombos,
+      }
+    case NEW_COMBO_FORM:
+      const newForm = state.combos.concat(action.payload);
+      return {
+        ...state,
+        combos: newForm,
+      }
+    case COMBO_REMOVE:
+      const removedCombo = [...state.combos];
+      removedCombo.pop();
+      return {
+        ...state,
+        combos: removedCombo,
       }
     default: 
       return state;

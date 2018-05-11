@@ -1,10 +1,16 @@
 import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
-  USER_SIGNOUT, USER_REGISTER_SUCCESS,
+  USER_SIGNOUT, USER_REGISTER_SUCCESS, SET_USER_STATUS, ALL_REST_FETCH_SUCCESS,
 } from '../actions/types.js';
 
 const initialState = {
   user: '',
+  //user: {
+  //  rest_id: [2],
+  //  //status: 'manager',
+  //  //emp_id: 4,
+  //},
   loading: false,
+  status: 'Member',
 }
 
 function stringToIntArray(array) {
@@ -18,7 +24,6 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case USER_AUTH_SUCCESS:
       // parse user info
-      stringToIntArray('woop');
       var userInfo = {}
       if (action.payload.status) { // employee
         userInfo = action.payload;
@@ -56,6 +61,16 @@ export default function(state = initialState, action) {
     case USER_REGISTER_SUCCESS:
       return {
         ...initialState,
+      }
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        status: action.payload,
+      }
+    case ALL_REST_FETCH_SUCCESS:
+      return {
+        ...state,
+        status: 'Member',
       }
     default:
       return state;

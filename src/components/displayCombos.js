@@ -22,6 +22,12 @@ class DisplayCombos extends Component {
                   </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
+                  <p> Crust: {combo.crust} </p>
+                  <p> Toppings: {combo.toppings} </p>
+                  <p> Drink: {combo.drinks} </p>
+                  <p> Appetizer: {combo.appetizers} </p>
+                  <p> Rating: {combo.rating} </p>
+                  <p> Description: {combo.description} </p>
                   <p> Price: {combo.price} </p>
                   <Button bsStyle='success'
                     onClick={()=> this.props.addToCart(combo)}>
@@ -48,7 +54,7 @@ class DisplayCombos extends Component {
               <Panel>
                 <Panel.Heading>
                   <Panel.Title>
-                    Chef {chef.emp_id}
+                    Chef {chef.full_name}
                   </Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>

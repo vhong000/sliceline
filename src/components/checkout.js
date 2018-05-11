@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PageHeader, Button, Well, } from 'react-bootstrap';
+import { PageHeader, Button, Well, FormControl,
+  ControlLabel,
+} from 'react-bootstrap';
 import Header from './header.js';
+import { postOrder } from '../actions/restaurantActions.js';
 import '../css/checkout.css';
 
 class Checkout extends Component {
@@ -9,12 +12,65 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: '',
+      address: '',
+    }
+    this.calculateTotal = this.calculateTotal.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  calculateTotal(sum) {
+    var total = sum;
+    switch (this.props.userStatus) {
+      case 'Customer':
+        total = sum * .9;
+        return total;
+      case 'VIP':
+        total = sum * .85;
+        return total;
+      default:
+        return total;
     }
   }
 
+  handleAddressChange(event) {
+    this.setState({
+      address: event.target.value,
+    })
+  }
+
+  handleSubmit(event) {
+    const totalArry = this.props.cart.map((item) => {
+      return parseInt(item.price);
+    })
+    const sum = totalArry.reduce((acc, curr) => {
+      return acc + curr;
+    })
+    const total = this.calculateTotal(sum);
+    const combos = this.props.cart.filter((combo) => {
+      return combo.pk !== undefined;
+    })
+    const menu_ids = combos.map((combo) => {
+      return combo.pk;
+    })
+
+    const item = {
+      total: total,
+      address: this.state.address,
+      store_id: this.props.rest_id,
+      menu_id: menu_ids.toString(),
+    }
+
+    this.props.postOrder(item);
+  }
+
+  //total
+  //address
+  //storeid
+  //menuid
+
   render() {
-    var newTotal = 0;
+    var sum = 0;
     return(
       <div className='checkout'>
         <Header/>
@@ -24,9 +80,9 @@ class Checkout extends Component {
           </PageHeader>
           <div className='checkout-map'>
             {this.props.cart.map((item) => {
-              newTotal = newTotal + parseInt(item.price);
+              sum = sum + parseInt(item.price);
               return(
-                <div className='checkout-items'>
+              <div className='checkout-items'>
                 <Well>
                   <p>{item.name}</p>
                   <p>{item.price}</p>
@@ -35,8 +91,13 @@ class Checkout extends Component {
             )})
             }
           </div>
-          <p>Total: {newTotal}</p>
-          <Button bsStyle='success'>
+          <p>Total: {sum}</p>
+          <p>Discounted Total: {this.calculateTotal(sum)}</p>
+          <FormControl placeholder='Address' type='text'
+            onChange={this.handleAddressChange}>
+          </FormControl>
+          <Button bsStyle='success'
+            onClick={this.handleSubmit}>
             Finalize Order
           </Button>
         </div>
@@ -48,6 +109,9 @@ class Checkout extends Component {
 
 const mapStateToProps = state => ({
   cart: state.Restaurant.cart,
+  userStatus: state.Authenticate.status,
+  chef_id: state.Restaurant.activeChef.emp_id,
+  rest_id: state.Restaurant.restaurant.rest_id,
 })
 
-export default connect(mapStateToProps, null)(Checkout)
+export default connect(mapStateToProps, { postOrder })(Checkout)

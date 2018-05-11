@@ -1,0 +1,10 @@
+
+.display-cart {
+  text-align: center;
+}
+
+.display-cart-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

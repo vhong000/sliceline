@@ -1,5 +1,5 @@
 import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
-  USER_SIGNOUT, USER_REGISTER_SUCCESS,
+  USER_SIGNOUT, USER_REGISTER_SUCCESS, SET_USER_STATUS,
 } from './types.js'; 
 
 //    EMPLOYEE REGISTER   //
@@ -118,5 +118,23 @@ export const login = (user) => dispatch => {
 export const signout = ()=> dispatch => {
   dispatch({
     type: USER_SIGNOUT,
+  })
+}
+
+//    DETERMINE STATUS    //
+export const determineStatus = (data, currRest) => dispatch => {
+  var newStatus = 'Visitor';
+  if (data.rest_id === currRest) {
+      newStatus = data.status;
+  } 
+  else if (data.VIP && data.VIP.includes(currRest)) {
+      newStatus = 'VIP';
+  } 
+  else if (data.rest && data.rest.includes(currRest)) {
+    newStatus = 'Customer';
+  } 
+  dispatch({
+    type: SET_USER_STATUS,
+    payload: newStatus,
   })
 }
