@@ -169,7 +169,7 @@ class PlaceOrderViewSet(viewsets.ModelViewSet):
         menu_id = request.data.get('menu_id')
         print("this is: "+menu_id)
         # return HttpResponse("Hello")
-        return HttpResponse(Order(total,address,store_id,menu_id))
+        return Ordering(total,address,store_id,menu_id)
 
 
 #manager

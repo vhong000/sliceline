@@ -150,32 +150,25 @@ def visitorDemotion(user_id,store):
 
 
 #place order
-def Order(total,address,store_id,menu_id):
+def Ordering(total,address,store_id,menu_id):
     cursor = connection.cursor()
     print("called Order")
     list = ''.join(str(e) + ',' for e in menu_id)
     list = list[:-1]
-    print(list)
-    cursor.execute("""insert into tables_order (total,menu_id,address,status,rest_id_id)"""
+    # print(list)
+    cursor.execute("""INSERT INTO tables_order (total,menu_id,address,status,rest_id_id)"""
                    """VALUES (%s,%s,%s,%s,%s)""",[total,list,address,0,store_id])
     transaction.commit()
-    # cursor.execute("""select order_id from tables_order ORDER BY order_id ASC """)
-    # row = cursor.fetchone()
-    # print(row[0])
-    # context = {
-    #     "order": "lol"
-    # }
-    # list = ''.join(str(e) + ',' for e in store_id)
-    # list = list[:-1]
-    # cursor.execute("""insert into tables_customer_restaurant (rest_id, user_id_id,VIP)"""
-    #                """VALUES (%s,%s,%s)""", [list, user_id, 0])
-    # transaction.commit()
+    cursor.execute("""SELECT order_id FROM tables_order ORDER BY order_id DESC """)
+    row = cursor.fetchone()
+    order = row[0]
+    context = {
+        "message": "Order placed",
+        "order": order
+    }
     cursor.close()
-    # return Response("Sign up successful", status=200)
-    return "Hello"
+    return Response(context, status=200)
 
-    # cursor.close()
-    # return Response("lol",status=200)
 
 
 
