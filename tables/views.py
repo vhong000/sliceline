@@ -161,6 +161,17 @@ class CreateMenuViewSet(viewsets.ModelViewSet):
         name = request.data.get('name')
         return createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name)
 
+class PlaceOrderViewSet(viewsets.ModelViewSet):
+    def create(self,request):
+        total = request.data.get('total')
+        address = request.data.get('address')
+        store_id = request.data.get('store_id')
+        menu_id = request.data.get('menu_id')
+        print("this is: "+menu_id)
+        # return HttpResponse("Hello")
+        return HttpResponse(Order(total,address,store_id,menu_id))
+
+
 #manager
 class SalaryViewSet(viewsets.ModelViewSet):
     def put(self,request):
@@ -216,8 +227,8 @@ def allCook(request,store= None):
     r = serializers.serialize("json",chef)
     return HttpResponse(r, content_type='application/json')
 
-def allOrder(request,store=None,current=None):
-    order = get_list_or_404(Order,rest_id_id=store,status=current)
+def allOrder(request,store=None):
+    order = get_list_or_404(Order,rest_id_id=store,status=0)
     r = serializers.serialize("json",order)
     return HttpResponse(r,content_type='application/json')
 

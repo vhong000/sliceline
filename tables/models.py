@@ -93,13 +93,16 @@ class Menu(models.Model):
     drinks      = models.CharField(max_length=100)
     appetizers  = models.CharField(max_length=100)
 
-
+class Menurating(models.Model):
+    menu_rating = models.AutoField(primary_key=True)
+    rating = models.IntegerField()
+    menu_id = models.ForeignKey(Menu,on_delete=models.CASCADE)
 
 #Table for ordering
 class Order(models.Model):
     order_id     = models.AutoField(primary_key=True)
     rest_id      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
-    menu_id      = models.ForeignKey(Menu,on_delete=models.CASCADE)
+    menu_id      = models.CharField(max_length=100)
     total        = models.IntegerField()
     status       = models.BooleanField()
     address      = models.CharField(max_length=100)
