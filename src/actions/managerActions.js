@@ -1,5 +1,5 @@
 import { MANAGER_FETCH_CHEF, MANAGER_FETCH_DELIVERY, MANAGER_FIRE_EMPLOYEE,
-  MANAGER_FETCH_FAIL, MANAGER_REMOVE_WARNING, MANAGER_FETCH_APPROVAL, MANAGER_SUBMIT_APPROVAL,
+  MANAGER_FETCH_FAIL, MANAGER_REMOVE_WARNING, MANAGER_FETCH_APPROVAL, MANAGER_SUBMIT_APPROVAL, ASSIGN_DELIVERY, MANAGER_FETCH_ORDERS,
 } from '../actions/types.js';
 
 const fetchChefEdits = (rest_id) => dispatch => {
@@ -78,6 +78,7 @@ export const fetchEmployees = (rest_id) => dispatch => {
   dispatch(fetchChefEdits(rest_id));
   dispatch(fetchDeliveryEdits(rest_id));
   dispatch(fetchApprovals());
+  dispatch(fetchOrders(rest_id));
 }
 
 export const removeWarning = (info, rest_id) => dispatch => {
@@ -118,4 +119,44 @@ export const approveRegister = (userInfo) => dispatch => {
   })
 }
 
+export const fetchOrders = (rest_id) => dispatch => {
+  return fetch(`api/manager/order${rest_id}/`, {
+    method: "GET",
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot fetch orders",
+      })
+    } else {
+      return response.json();
+    }
+  }).then((json_orders) => {
+    dispatch({
+      type: MANAGER_FETCH_ORDERS,
+      payload: json_orders,
+    })
+  }).catch((error) => {
+    dispatch({
+      type: MANAGER_FETCH_FAIL,
+      payload: error,
+    })
+  })
+}
 
+export const assignDelivery = (info, rest_id) => dispatch => {
+  return fetch('/api/manager/assign/', {
+    method: "PUT",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(info)
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot assign delivery",
+      })
+    } else { return response.json(); }
+  }).then((rest_id) => {
+    dispatch(fetchDeliveryEdits(rest_id));
+  })
+}

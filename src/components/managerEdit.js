@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Label, Well, Button, Panel } from 'react-bootstrap';
-import { fetchEmployees, removeWarning, approveRegister } from '../actions/managerActions.js';
+import { fetchEmployees, removeWarning, approveRegister,
+  fetchOrders,
+} from '../actions/managerActions.js';
 import Header from './header.js';
 import '../css/managerEdit.css';
 
@@ -36,6 +38,24 @@ class ManagerEdit extends Component {
   render() {
     return(
       <div className='manager-edit'>
+        <div className='manager-edit-orders'>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title>Orders</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>
+            {this.props.orders.map((order) => {
+              return (
+              <div className='manager-order-list'>
+                <Well>
+                </Well>
+              </div>
+              )
+            })
+            }
+            </Panel.Body>
+          </Panel>
+        </div>
         <div className='manager-edit-chef'>
           <Panel>
             <Panel.Heading>
@@ -75,6 +95,7 @@ class ManagerEdit extends Component {
                     <p><Label>Full Name:</Label> {deliv.full_name}</p>
                     <p><Label>Employee ID:</Label> {deliv.emp_id}</p>
                     <p><Label>Warnings:</Label> {deliv.warning}</p>
+                    <p><Label>Status:</Label> {deliv.status}</p>
                 {deliv.warning > 0 ? (
                   <Button onClick={()=> this.removeWarning(deliv.pk, deliv.role)}>
                   Remove Warning
@@ -126,8 +147,10 @@ class ManagerEdit extends Component {
 const mapStateToProps = state => ({
   rest_id: state.Restaurant.restaurant.rest_id,
   chefs: state.Manager.chefs,
+  orders: state.Manager.pendingOrders,
   approvals: state.Manager.approvals,
   deliverys: state.Manager.deliverys,
 })
 
-export default connect(mapStateToProps, { fetchEmployees, removeWarning, approveRegister })(ManagerEdit);
+export default connect(mapStateToProps, { fetchEmployees, removeWarning, approveRegister,
+fetchOrders })(ManagerEdit);

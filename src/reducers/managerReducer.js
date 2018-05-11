@@ -1,6 +1,6 @@
 import { MANAGER_FETCH_CHEF, MANAGER_FETCH_DELIVERY, 
   MANAGER_FETCH_FAIL, MANAGER_REMOVE_WARNING,
-  MANAGER_FETCH_APPROVAL,
+  MANAGER_FETCH_APPROVAL, ASSIGN_DELIVERY, MANAGER_FETCH_ORDERS,
 } from '../actions/types.js';
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
   chefs: [],
   deliverys: [],
   approvals: [],
+  pendingOrders: [],
 }
 
 export default function(state = initialState, action) {
@@ -25,6 +26,11 @@ export default function(state = initialState, action) {
       }
     case MANAGER_FETCH_DELIVERY:
       const newDelivs = action.payload.map((deliv) => {
+        deliv.fields.status === 0 ? ( 
+          deliv.fields.status = 'Available' 
+        ) : (
+          deliv.fields.status = 'Busy' 
+        );
         deliv.fields.pk = deliv.pk;
         deliv.fields.role = 'delivery';
         return deliv.fields;
@@ -53,6 +59,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         approvals: newApprovals,
+      }
+    case ASSIGN_DELIVERY:
+      return {
+        ...state,
+      }
+    case MANAGER_FETCH_ORDERS:
+      return {
+        ...state,
+        pendingOrders: action.payload,
       }
 
     default:
