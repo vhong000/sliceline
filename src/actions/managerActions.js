@@ -119,17 +119,15 @@ export const approveRegister = (userInfo) => dispatch => {
   })
 }
 
-export const fetchOrders = (rest_id) => dispatch => {
-  return fetch(`api/manager/order${rest_id}/`, {
+const fetchOrders = (rest_id) => dispatch => {
+  return fetch(`/api/manager/order/${rest_id}/`, {
     method: "GET",
   }).then((response) => {
     if (response.status !== 200) {
       return Promise.reject({
         message: "cannot fetch orders",
       })
-    } else {
-      return response.json();
-    }
+    } else { return response.json(); }
   }).then((json_orders) => {
     dispatch({
       type: MANAGER_FETCH_ORDERS,

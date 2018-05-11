@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Label, Well, Button, Panel } from 'react-bootstrap';
+import { Label, Well, Button, Panel, DropdownButton,
+  MenuItem,
+} from 'react-bootstrap';
 import { fetchEmployees, removeWarning, approveRegister,
-  fetchOrders,
 } from '../actions/managerActions.js';
 import Header from './header.js';
 import '../css/managerEdit.css';
@@ -48,6 +49,18 @@ class ManagerEdit extends Component {
               return (
               <div className='manager-order-list'>
                 <Well>
+                  <p><Label>Address:</Label> {order.address}</p>
+                  <p><Label>Total:</Label> {order.total}</p>
+                  <DropdownButton title='Select Delivery'>
+                    {this.props.deliverys.filter((deliv)=>{
+                      return deliv.status === 'Available'
+                      }).map((deliv) => {
+                      <MenuItem>
+                        deliv.full_name
+                      </MenuItem>
+                    })
+                    }
+                  </DropdownButton>
                 </Well>
               </div>
               )
@@ -153,4 +166,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { fetchEmployees, removeWarning, approveRegister,
-fetchOrders })(ManagerEdit);
+})(ManagerEdit);

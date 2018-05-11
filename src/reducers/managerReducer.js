@@ -65,9 +65,13 @@ export default function(state = initialState, action) {
         ...state,
       }
     case MANAGER_FETCH_ORDERS:
+      const finalOrders = action.payload.map((order) => {
+        order.fields.pk = order.pk;
+        return order.fields;
+      })
       return {
         ...state,
-        pendingOrders: action.payload,
+        pendingOrders: finalOrders,
       }
 
     default:

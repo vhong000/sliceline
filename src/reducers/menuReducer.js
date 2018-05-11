@@ -73,9 +73,7 @@ export default function(state = initialState, action) {
             [action.name]: action.payload,
           }
           return newCombo;
-        } else {
-          return combo;
-        }
+        } else { return combo; }
       })
       return {
         ...state,

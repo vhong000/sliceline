@@ -5,8 +5,9 @@ import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
 const initialState = {
   //user: '',
   user: {
-    rest_id: 2,
-    status: 'manager',
+    rest_id: 4,
+    status: 'chef',
+    emp_id: 4,
   },
   loading: false,
   status: 'Member',
