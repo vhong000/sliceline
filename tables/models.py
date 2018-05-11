@@ -68,6 +68,7 @@ class Manager(models.Model):
     mana_id =  models.AutoField(primary_key=True)
     emp_id  =  models.ForeignKey(Employees,on_delete=models.CASCADE)
     store   =  models.ForeignKey(Restaurant,on_delete=models.CASCADE)
+    full_name  = models.CharField(max_length=50)
 
 
 #Table for delivery guy
@@ -78,6 +79,7 @@ class Delivery(models.Model):
     status     = models.IntegerField(null=True)
     warning    = models.IntegerField(null=True)
     current_order = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=100)
 
 #Table for menu
 class Menu(models.Model):

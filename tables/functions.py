@@ -163,14 +163,11 @@ def Ordering(total,address,store_id,menu_id):
     row = cursor.fetchone()
     order = row[0]
     context = {
-        "message": "Order placed",
-        "order": order
+        "order": order,
+        "message":"Order placed"
     }
     cursor.close()
     return Response(context, status=200)
-
-
-
 
 #checkout process
 #gets called after the user has made the review
@@ -205,6 +202,14 @@ def checkOut(user_id,store):
             # proceed checkout still thinking, customer hasnt made more than 3 orders
             return "continue to checkout"
 
+
+def customerReview(pizza,store,delivery,emp_id,order,user_id):
+    cursor = connection.cursor()
+    cursor.execute("""insert into tables_customer_review (pizza_rating, store_rating, delivery_rating, emp_id_id, order_number_id, user_id_id) """
+                   """VALUES (%s,%s,%s,%s,%s,%s)""",[pizza,store,delivery,emp_id,order,user_id])
+    transaction.commit()
+    cursor.close()
+    return Response("Thanks for the review",status=200)
 
 #Checks if the email belongs to a customer or employee
 def checkEmail(email):

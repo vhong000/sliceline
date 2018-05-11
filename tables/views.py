@@ -139,6 +139,16 @@ class DeleteMenuViewSet(viewsets.ModelViewSet):
         menu_id = request.data.get('menu_id')
         return removeMenu(menu_id)
 
+class ReviewViewSet(viewsets.ModelViewSet):
+    def create(self, request):
+        pizza = request.data.get('pizza')
+        store = request.data.get('store')
+        delivery = request.data.get('delivery')
+        emp_id = request.data.get('emp_id')
+        order = request.data.get('order')
+        user_id = request.data.get('user_id')
+        return customerReview(pizza, store, delivery, emp_id, order, user_id)
+
 #manager
 class ApprovalViewSet(viewsets.ModelViewSet):
     def put(self,request):
