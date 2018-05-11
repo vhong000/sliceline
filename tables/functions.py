@@ -225,7 +225,7 @@ def chefLaidOff(emp_id, chef_id):
 
 #checkout process
 #gets called after the user has made the review
-def checkOut(user_id, store_id):
+def checkOut(user_id,store):
     cursor = connection.cursor()
     #if it is a customer
     if(user_id):
@@ -240,16 +240,15 @@ def checkOut(user_id, store_id):
             sum = int(row[0])
             average = float(sum/number)
             if(average > 4):
-                vipPromotion(user_id, store_id)
+                vipPromotion(user_id,store)
             elif(average > 1 and average < 2 ):
-                visitorDemotion(user_id, store_id)
+                visitorDemotion(user_id,store)
             elif(average < 1):
                 cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
                 row = cursor.fetchone()
                 email = row[0]
                 blackListed(email)
-                visitorDemotion(user_id, store_id)
-            # procced checkout still thinking
+                visitorDemotion(user_id,store)
 
 
         #review of devilery person
