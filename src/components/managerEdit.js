@@ -4,6 +4,7 @@ import { Label, Well, Button, Panel, DropdownButton,
   MenuItem,
 } from 'react-bootstrap';
 import { fetchEmployees, removeWarning, approveRegister,
+  assignDelivery,
 } from '../actions/managerActions.js';
 import Header from './header.js';
 import '../css/managerEdit.css';
@@ -28,6 +29,14 @@ class ManagerEdit extends Component {
     this.props.approveRegister(userInfo);
   }
 
+  handleSelect(emp_id, order) {
+    const assignObj = {
+      emp_id: emp_id,
+      order: order,
+    }
+    this.props.assignDelivery(assignObj, this.props.rest_id);
+  };
+
   removeWarning(pk, status) {
     const empInfo = {
       status: status,
@@ -37,6 +46,11 @@ class ManagerEdit extends Component {
   }
 
   render() {
+    const freeDelivs = this.props.deliverys.filter((deliv => {
+      return deliv.status === 'Available';
+    })
+    )
+
     return(
       <div className='manager-edit'>
         <div className='manager-edit-orders'>
@@ -51,16 +65,21 @@ class ManagerEdit extends Component {
                 <Well>
                   <p><Label>Address:</Label> {order.address}</p>
                   <p><Label>Total:</Label> {order.total}</p>
-                  <DropdownButton title='Select Delivery'>
-                    {this.props.deliverys.filter((deliv)=>{
-                      return deliv.status === 'Available'
-                      }).map((deliv) => {
-                      <MenuItem>
-                        deliv.full_name
+                  {order.status ? ( 
+                    <p><Label>Being Delivered</Label></p>
+                  ) : (
+                  <DropdownButton title='Select Delivery'
+                    onSelect={(eventKey) => this.handleSelect(eventKey, order.pk)}>
+                    {freeDelivs.map((deliv)=> {
+                      return (
+                      <MenuItem eventKey={deliv.emp_id}>
+                        {deliv.full_name}
                       </MenuItem>
+                      )
                     })
                     }
                   </DropdownButton>
+                  )}
                 </Well>
               </div>
               )
@@ -166,4 +185,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { fetchEmployees, removeWarning, approveRegister,
+  assignDelivery,
 })(ManagerEdit);

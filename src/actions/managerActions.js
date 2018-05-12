@@ -153,8 +153,9 @@ export const assignDelivery = (info, rest_id) => dispatch => {
       return Promise.reject({
         message: "cannot assign delivery",
       })
-    } else { return response.json(); }
+    } else { return rest_id; }
   }).then((rest_id) => {
     dispatch(fetchDeliveryEdits(rest_id));
+    dispatch(fetchOrders(rest_id));
   })
 }
