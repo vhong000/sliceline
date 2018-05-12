@@ -7,6 +7,8 @@ import Checkout from './components/checkout.js';
 import Restaurant from './components/restaurant.js';
 import Login from './components/login.js';
 import Signup from './components/signup.js';
+import ChooseRoutes from './components/chooseRoutes.js';
+//import MapWithADirectionsRenderer from './components/mapWithADirectionsRenderer.js';
 import ReviewForm from './components/reviewForm.js';
 import store from './store.js';
 import { Provider } from 'react-redux';
@@ -21,6 +23,7 @@ ReactDOM.render(
 				<Route exact path="/signup" component={Signup}/>
 				<Route exact path="/restaurant/:id" component={Restaurant}/>
         <Route exact path="/checkout" component={Checkout}/>
+        <Route exact path="/routes" component={ChooseRoutes}/>
         <Route exact path="/review" component={ReviewForm}/>
 			</div>
 		</Router> 
