@@ -614,13 +614,18 @@ def chooseDelivery(emp_id,order_id):
     cursor = connection.cursor()
     cursor.execute("""update tables_delivery set current_order=%s, status=%s where emp_id_id=%s""",[order_id,1,emp_id])
     transaction.commit()
+    cursor.execute("""update tables_order set status=%s WHERE order_id=%s""",[1,order_id])
+    transaction.commit()
     cursor.execute("""select deli_id from tables_delivery where emp_id_id = %s""", [emp_id])
     row = cursor.fetchone()
     cursor.execute("""insert into tables_delivery_order (delivery_id_id, order_id_id) values 
                       (%s, %s)""", [row[0], order_id])
     transaction.commit()
     cursor.close()
-    return Response("Order assigned to delivery guy", status=200)
+    context ={
+        "message":"Order assigned to delivery guy"
+    }
+    return Response(context, status=200)
 
 # USE IN SIGNUP
 #validate the access code and assign to the corresponding job(chef/delivery)
