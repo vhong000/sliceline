@@ -110,8 +110,9 @@ def vipPromotion(user_id,store):
     row = cursor.fetchone()
     rest = row[0][0]
     if (rest == '0'):
-        rest = ""
-    rest = rest+','+store
+        rest = "".join(store)
+    else:
+        rest = rest+','+store
     cursor.execute("""update tables_customer_restaurant set VIP =%s WHERE user_id_id= %s""",[rest,user_id])
     transaction.commit()
     cursor.close()
@@ -126,16 +127,13 @@ def visitorDemotion(user_id,store):
     rest = rest.split(',')
     print(rest)
     if(store in rest):
-        print("if statement")
         rest.remove(store)
         joined = ",".join(rest)
-        print(joined)
         cursor.execute("""update tables_customer_restaurant set VIP =%s""",[joined,user_id])
         transaction.commit()
         cursor.close()
         return Response("Not vip anymore",status=200)
     else:
-        print("else statement")
         cursor.execute("""select rest_id from tables_customer_restaurant WHERE user_id_id=%s""",[user_id])
         row = cursor.fetchone()
         rest = row[0]
@@ -243,6 +241,7 @@ def deliveryReviewCheck(user_id, store):
             sum = int(row[0])
             average = float(sum / number)
             if (average > 4):
+                print("promotion to VIP")
                 vipPromotion(user_id, store)
             elif (average > 1 and average < 2):
                 visitorDemotion(user_id, store)
