@@ -59,6 +59,7 @@ class Checkout extends Component {
       address: this.state.address,
       store_id: this.props.rest_id,
       menu_id: menu_ids.toString(),
+      user_id: this.props.user_id,
     }
 
     this.props.postOrder(item);
@@ -109,6 +110,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => ({
   cart: state.Restaurant.cart,
+  user_id: state.Authenticate.user.user_id,
   userStatus: state.Authenticate.status,
   chef_id: state.Restaurant.activeChef.emp_id,
   rest_id: state.Restaurant.restaurant.rest_id,
