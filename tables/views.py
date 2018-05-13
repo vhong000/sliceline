@@ -186,9 +186,8 @@ class PlaceOrderViewSet(viewsets.ModelViewSet):
         address = request.data.get('address')
         store_id = request.data.get('store_id')
         menu_id = request.data.get('menu_id')
-        print("this is: "+menu_id)
-        # return HttpResponse("Hello")
-        return Ordering(total,address,store_id,menu_id)
+        user_id = request.data.get('user_id')
+        return Ordering(total,address,store_id,menu_id,user_id)
 
 
 #manager
