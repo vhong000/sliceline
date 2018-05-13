@@ -1,5 +1,6 @@
 import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
   USER_SIGNOUT, USER_REGISTER_SUCCESS, SET_USER_STATUS, ALL_REST_FETCH_SUCCESS,
+  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL,
 } from '../actions/types.js';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   //},
   loading: false,
   status: 'Member',
+  activeOrder: '', // used by delivery and customer for orders and reviews
 }
 
 function stringToIntArray(array) {
@@ -72,6 +74,22 @@ export default function(state = initialState, action) {
         ...state,
         status: 'Member',
       }
+    case DELIVERY_FETCH_ORDER:
+      const menu_ids = stringToIntArray(action.payload[0].fields.menu_id).filter((item) => {
+        return !!item;
+      });
+      console.log(menu_ids);
+      const orderObj = action.payload[0].fields;
+      return {
+        ...state,
+        activeOrder: orderObj,
+      }
+    case DELIVERY_FETCH_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      }
+
     default:
       return state;
   }

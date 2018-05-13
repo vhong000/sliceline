@@ -2,6 +2,7 @@ import { REST_FETCH_SUCCESS, REST_FETCH_FAIL,
   REST_FETCH_LOADING, ALL_REST_FETCH_SUCCESS, 
   CHEF_FETCH_SUCCESS, CHEF_FETCH_FAIL, CHEF_FETCH_LOADING,
   SET_ACTIVE_CHEF, ADD_TO_CART, REMOVE_FROM_CART,
+  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL,
 } from '../actions/types';
 import { fetchCombos } from './menuActions.js';
 
@@ -132,3 +133,24 @@ export const postOrder = (item) => dispatch => {
   })
 }
 
+export const fetchDeliveryOrder = (emp_id) => dispatch => {
+  return fetch(`/api/delivery/order/${emp_id}/`, {
+    method: "GET",
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot fetch delivery order"
+      })
+    } else { return response.json(); }
+  }).then((order) => {
+    dispatch({
+      type: DELIVERY_FETCH_ORDER,
+      payload: order,
+    })
+  }).catch((error) => {
+    dispatch({
+      type: DELIVERY_FETCH_FAIL,
+      payload: error,
+    })
+  })
+}
