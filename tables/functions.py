@@ -253,7 +253,19 @@ def deliveryReviewCheck(user_id, store):
                 visitorDemotion(user_id, store)
     cursor.close()
 
-
+def deliveryOrder(emp_id):
+    cursor = connection.cursor()
+    cursor.execute("""select current_order from tables_delivery WHERE emp_id_id=%s""",[emp_id])
+    row = cursor.fetchone()
+    cursor.execute("""select total,menu_id,address from tables_order WHERE order_id=%s""",[row[0]])
+    cursor.fetchall()
+    context = {
+        "total":row[0][0],
+        "menu_id":row[0][1],
+        "address":row[0][2]
+    }
+    cursor.close()
+    return Response(context,status=200)
 
 #gets called after customer makes a review for the delivery and menu(pizza)
 def customerReviewCheck(user_id):
