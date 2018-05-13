@@ -155,6 +155,7 @@ class DeliveryReviewViewSet(viewsets.ModelViewSet):
         emp_id = request.data.get('emp_id')
         user_id= request.data.get('user_id')
         store = request.data.get('store')
+        send_email(user_id)
         return deliveryReview(rating, emp_id, user_id, store)
 
 #manager
@@ -253,5 +254,6 @@ def allOrder(request,store=None):
 def deliverOrder(request,emp_id=None):
     current_order = get_object_or_404(Delivery,emp_id_id=emp_id)
     order = get_list_or_404(Order,order_id=current_order.current_order)
+    print(order)
     r = serializers.serialize("json",order)
     return HttpResponse(r,content_type="application/json")
