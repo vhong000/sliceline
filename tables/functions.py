@@ -148,15 +148,15 @@ def visitorDemotion(user_id,store):
 
 
 #place order
-def Ordering(total,address,store_id,menu_id):
+def Ordering(total,address,store_id,menu_id,user_id):
     cursor = connection.cursor()
     print("called Order")
     # check when order is passing as a json
     list = ''.join(str(e) for e in menu_id)
     # list = list[:-1]
     # print(list)
-    cursor.execute("""INSERT INTO tables_order (total,menu_id,address,status,rest_id_id)"""
-                   """VALUES (%s,%s,%s,%s,%s)""",[total,list,address,0,store_id])
+    cursor.execute("""INSERT INTO tables_order (total,menu_id,address,status,rest_id_id,user_id_id)"""
+                   """VALUES (%s,%s,%s,%s,%s,%s)""",[total,list,address,0,store_id,user_id])
     transaction.commit()
     cursor.execute("""SELECT order_id FROM tables_order ORDER BY order_id DESC """)
     row = cursor.fetchone()
