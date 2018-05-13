@@ -675,6 +675,41 @@ def showRestaurant(store_id):
     return Response(restaurant,status=200)
     cursor.close()
 
+#Special feature
+def send_email(user_id):
+    import smtplib
+    user ="Sliceline@hotmail.com"
+    pwd ="Specialfeature"
+    subject = "Pizza is on the way"
+    body = "Thanks for ordering through Sliceline, the best and faster pizza ordering system"
+    cursor = connection.cursor()
+    cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
+    row = cursor.fetchone()
+    recipient = row[0]
+    FROM = user
+    TO = recipient if isinstance(recipient, list) else [recipient]
+    SUBJECT = subject
+    TEXT = body
+
+    # Prepare actual message
+    message = """From: %s\nTo: %s\nSubject: %s\n\n%s
+    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+    try:
+        server = smtplib.SMTP("smtp.live.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.login(user, pwd)
+        server.sendmail(FROM, TO, message)
+        server.close()
+        print('successfully sent the mail')
+    except:
+        print("failed to send mail")
+
+
+# recipient ="carlosngsang.cs@gmail.com"
+# subject ="Testing email"
+# body ="It works"
+# send_email(user,pwd,recipient,subject,body)
 
 #Will need a how menu function
 #Function to be done: Place order, Review, Delivery, Manager

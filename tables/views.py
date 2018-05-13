@@ -155,6 +155,7 @@ class DeliveryReviewViewSet(viewsets.ModelViewSet):
         emp_id = request.data.get('emp_id')
         user_id= request.data.get('user_id')
         store = request.data.get('store')
+        send_email(user_id)
         return deliveryReview(rating, emp_id, user_id, store)
 
 #manager
