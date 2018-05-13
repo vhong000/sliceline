@@ -367,6 +367,8 @@ def deliveryReview(rating,emp_id,user_id,store):
                     VALUES (%s,%s,%s)""",[rating,emp_id,user_id])
     transaction.commit()
     deliveryReviewCheck(user_id,store)
+    cursor.execute("""update tables_delivery set current_order=%s, status=%s""",[0,0])
+    transaction.commit()
     cursor.close()
     return Response("Customer reviewed",status=200)
 
