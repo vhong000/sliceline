@@ -2,7 +2,8 @@ import { REST_FETCH_SUCCESS, REST_FETCH_FAIL,
   REST_FETCH_LOADING, ALL_REST_FETCH_SUCCESS, 
   CHEF_FETCH_SUCCESS, CHEF_FETCH_FAIL, CHEF_FETCH_LOADING,
   SET_ACTIVE_CHEF, ADD_TO_CART, REMOVE_FROM_CART,
-  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL,
+  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL, DELIVERY_REVIEWED,
+  ORDER_POSTED,
 } from '../actions/types';
 import { fetchCombos } from './menuActions.js';
 
@@ -130,6 +131,11 @@ export const postOrder = (item) => dispatch => {
         message: "cannot place order",
       })
     } else { return response.json(); }
+  }).then((res_json) => {
+    dispatch({
+      type: ORDER_POSTED,
+      payload: res_json,
+    })
   })
 }
 
@@ -152,5 +158,49 @@ export const fetchDeliveryOrder = (emp_id) => dispatch => {
       type: DELIVERY_FETCH_FAIL,
       payload: error,
     })
+  })
+}
+
+export const deliveryReview = (orderInfo) => dispatch => {
+  return fetch('/api/delivery/review/', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderInfo),
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot review customer",
+      })
+    } else { return response.json(); }
+  }).then((res_json) => {
+    dispatch({
+      type: DELIVERY_REVIEWED,
+    })
+  }).catch((error) => {
+    dispatch({ type: DELIVERY_FETCH_FAIL, })
+  })
+}
+
+export const customerReview = (orderInfo) => dispatch => {
+  return fetch('/api/customer/review/', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderInfo),
+  }).then((response) => {
+    if (response.status !== 200) {
+      return Promise.reject({
+        message: "cannot review restaurant",
+      })
+    } else { return response.json(); }
+  }).then((res_json) => {
+    dispatch({
+      type: DELIVERY_REVIEWED,
+    })
+  }).catch((error) => {
+    dispatch({ type: DELIVERY_FETCH_FAIL, })
   })
 }

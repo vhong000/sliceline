@@ -1,6 +1,7 @@
 import { USER_AUTH_SUCCESS, USER_AUTH_FAIL, USER_AUTH_LOAD,
   USER_SIGNOUT, USER_REGISTER_SUCCESS, SET_USER_STATUS, ALL_REST_FETCH_SUCCESS,
-  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL,
+  DELIVERY_FETCH_ORDER, DELIVERY_FETCH_FAIL, DELIVERY_REVIEWED,
+  ORDER_POSTED,
 } from '../actions/types.js';
 
 const initialState = {
@@ -88,6 +89,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         error: action.payload,
+      }
+    case DELIVERY_REVIEWED:
+      return {
+        ...state,
+        activeOrder: '',
+      }
+    case ORDER_POSTED:
+      return {
+        ...state,
+        activeOrder: action.payload.order,
       }
 
     default:

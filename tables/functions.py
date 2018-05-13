@@ -685,6 +685,8 @@ def send_email(user_id):
     cursor = connection.cursor()
     cursor.execute("""select email from tables_customer WHERE user_id=%s""",[user_id])
     row = cursor.fetchone()
+    email = row[0]
+    print(email)
     recipient = row[0]
     FROM = user
     TO = recipient if isinstance(recipient, list) else [recipient]

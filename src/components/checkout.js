@@ -63,12 +63,8 @@ class Checkout extends Component {
     }
 
     this.props.postOrder(item);
+    this.props.history.goBack();
   }
-
-  //total
-  //address
-  //storeid
-  //menuid
 
   render() {
     var sum = 0;
