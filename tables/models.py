@@ -104,8 +104,8 @@ class Menu_rating(models.Model):
 class Order(models.Model):
     order_id     = models.AutoField(primary_key=True)
     rest_id      = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
-    user_id      = models.ForeignKey(Customer,on_delete=models.CASCADE)
-    menu_id      = models.CharField(max_length=100)
+    user_id      = models.CharField(max_length=100)
+    menu_id      = models.CharField(max_length=100,null=True)
     total        = models.IntegerField()
     status       = models.BooleanField()
     address      = models.CharField(max_length=100)
