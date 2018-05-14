@@ -213,7 +213,8 @@ class vipViewSet(viewsets.ModelViewSet):
 
 ##GET FUNCTIONS!!
 def ListMenu(request,chef=None):
-    instance = get_list_or_404(Menu,chef_id=chef)
+    chefs = get_object_or_404(Chef,emp_id_id=chef)
+    instance = get_list_or_404(Menu,chef_id=chefs.chef_id)
     r = serializers.serialize("json", instance)
     return HttpResponse(r,content_type='application/json')
 

@@ -504,8 +504,10 @@ def listMenu(store_id):
 #chef creates a menu
 def createMenu(chef_id,price,description,picture,crust,toppings,appetizers,drinks,name):
     cursor = connection.cursor()
+    cursor.execute("""select chef_id from tables_chef WHERE emp_id_id=%s""",[chef_id])
+    chef = cursor.fetchone()
     cursor.execute("""INSERT INTO tables_menu (price, description, rating, picture, chef_id_id,crust,toppings,appetizers,drinks,name)"""
-                    """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",[price,description,0,picture,chef_id,crust,toppings,appetizers,drinks,name])
+                    """VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",[price,description,0,picture,chef[0],crust,toppings,appetizers,drinks,name])
     transaction.commit()
     cursor.close()
     return Response("Menu created",status=200)

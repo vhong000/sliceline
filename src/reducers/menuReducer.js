@@ -35,7 +35,7 @@ export default function(state = initialState, action) {
       }
     case ITEM_FETCH_SUCCESS:
       const newDrinks = action.payload.filter((drink) => {
-        return drink.type === 'drink';
+        return drink.type === 'drinks';
       })
       const newCrusts = action.payload.filter((crust) => {
         return crust.type === 'crust';
@@ -44,7 +44,7 @@ export default function(state = initialState, action) {
         return topping.type === 'topping';
       })
       const newAppetizers = action.payload.filter((appetizer) => {
-        return appetizer.type === 'appetizer';
+        return appetizer.type === 'appetizers';
       })
       return {
         ...state,
